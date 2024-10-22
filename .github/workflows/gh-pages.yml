@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-20.04
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v2
 
@@ -18,7 +20,6 @@ jobs:
         uses: peaceiris/actions-mdbook@v2
         with:
           mdbook-version: '0.4.10'
-          # mdbook-version: 'latest'
 
       - run: mdbook build
 
