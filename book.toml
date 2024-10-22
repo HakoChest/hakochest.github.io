@@ -1,0 +1,6 @@
+[book]
+authors = ["HakoChest"]
+language = "en"
+multilingual = false
+src = "src"
+title = "HakoBook"
