@@ -1,4 +1,4 @@
-name: github pages
+name: Deploy GitHub Pages
 
 on:
   push:
@@ -20,12 +20,28 @@ jobs:
         uses: peaceiris/actions-mdbook@v2
         with:
           mdbook-version: '0.4.10'
+          
+      # Build default book
+      - name: Build default book
+        run: mdbook build
+        
+      # Build GXCI book
+      - name: Build GXCI book
+        working-directory: ./gxci-book-cn
+        run: mdbook build
+        
+      # Combine books
+      - name: Prepare combined output
+        run: |
+          mkdir -p ./combined-output
+          cp -r ./book/* ./combined-output/
+          mkdir -p ./combined-output/gxci-cn
+          cp -r ./gxci-book-cn/book/* ./combined-output/gxci-cn/
 
-      - run: mdbook build
-
+      # Deploy
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.ref == 'refs/heads/main' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./book
+          publish_dir: ./combined-output
