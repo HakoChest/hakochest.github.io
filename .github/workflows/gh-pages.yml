@@ -42,10 +42,10 @@ jobs:
           # Copy default book
           cp -r ./book/* ./combined-output/
           # Copy Chinese version
-          mkdir -p ./combined-output/gxci/zh
+          mkdir -p ./combined-output/gxci-cn
           cp -r ./gxci-book-cn/book/* ./combined-output/gxci-cn/
           # Copy English version
-          mkdir -p ./combined-output/gxci/en
+          mkdir -p ./combined-output/gxci-en
           cp -r ./gxci-book-en/book/* ./combined-output/gxci-en/
 
       # Deploy
