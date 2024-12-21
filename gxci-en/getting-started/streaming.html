@@ -1,0 +1,400 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Streaming</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="../favicon.svg">
+                        <link rel="shortcut icon" href="../favicon.png">
+                <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+                <link rel="stylesheet" href="../css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="../fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+                <link rel="stylesheet" href="../theme/pagetoc.css">
+        
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../getting-started/index.html"><strong aria-hidden="true">2.</strong> Getting Started</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-started/prerequisites.html"><strong aria-hidden="true">2.1.</strong> Prerequisites</a></li><li class="chapter-item expanded "><a href="../getting-started/installation.html"><strong aria-hidden="true">2.2.</strong> Installation</a></li><li class="chapter-item expanded "><a href="../getting-started/list-your-devices.html"><strong aria-hidden="true">2.3.</strong> List Your Devices</a></li><li class="chapter-item expanded "><a href="../getting-started/take-a-image.html"><strong aria-hidden="true">2.4.</strong> Take a Image</a></li><li class="chapter-item expanded "><a href="../getting-started/streaming.html" class="active"><strong aria-hidden="true">2.5.</strong> Streaming</a></li><li class="chapter-item expanded "><a href="../getting-started/adjusting-camera-settings.html"><strong aria-hidden="true">2.6.</strong> Adjusting Camera Settings</a></li></ol></li><li class="chapter-item expanded "><a href="../change-log.html"><strong aria-hidden="true">3.</strong> Change Log</a></li><li class="chapter-item expanded "><a href="../roadmap.html"><strong aria-hidden="true">4.</strong> Roadmap</a></li><li class="chapter-item expanded "><a href="../appendix.html"><strong aria-hidden="true">5.</strong> Appendix</a></li><li class="chapter-item expanded "><a href="../control-list.html"><strong aria-hidden="true">6.</strong> ControlList</a></li><li class="chapter-item expanded "><a href="../ending.html"><strong aria-hidden="true">7.</strong> Ending</a></li><li class="chapter-item expanded "><a href="../reference.html"><strong aria-hidden="true">8.</strong> Reference</a></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                                                <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                        
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="streaming"><a class="header" href="#streaming">Streaming</a></h1>
+<h2 id="hal-code-example"><a class="header" href="#hal-code-example">HAL Code Example</a></h2>
+<p>The core function is <code>gxi_use_stream</code>, a function added in version <code>0.3.4</code>.</p>
+<pre><pre class="playground"><code class="language-rust">use gxci::hal::device::*;
+use gxci::hal::base::*;
+use gxci::utils::debug::print_device_info;
+use gxci::utils::extract::{extract_callback_img_buf,extract_frame_callback_param};
+use gxci::raw::gx_struct::GX_FRAME_CALLBACK_PARAM;
+use gxci::raw::gx_interface::Result;
+use gxci::opencv::{core, highgui};
+
+
+extern &quot;C&quot; fn frame_callback(p_frame_callback_data: *mut GX_FRAME_CALLBACK_PARAM) {
+    
+    let frame_callback_data = extract_frame_callback_param(p_frame_callback_data);
+    let data = extract_callback_img_buf(frame_callback_data);
+
+    let mat = core::Mat::new_rows_cols_with_data(
+        frame_callback_data.nHeight, 
+        frame_callback_data.nWidth, 
+        data
+    ).unwrap();
+    
+    highgui::imshow(&quot;Camera Frame&quot;, &amp;mat).unwrap();
+    if highgui::wait_key(10).unwrap() &gt; 0 {
+        highgui::destroy_window(&quot;Camera Frame&quot;).unwrap();
+    }
+}
+
+fn main()-&gt;Result&lt;()&gt; {
+    gxci_init_default()?;
+
+    let device_num = gxi_count_devices( 1000)?;
+    println!(&quot;Device number: {}&quot;, device_num);
+
+    let base_info = gxi_list_devices()?;
+    for device in &amp;base_info {
+        print_device_info(&amp;device);
+    }
+
+    gxi_open_device()?;
+
+    gxi_use_stream(frame_callback)?;
+
+    gxi_close_device()?;
+
+    gxci_close()?;
+
+    Ok(())
+}
+</code></pre></pre>
+<h2 id="hal-attention"><a class="header" href="#hal-attention">HAL Attention</a></h2>
+<ol>
+<li>The most impressive function is <code>gxi_use_stream</code>, which takes a callback function of type <code>pub type GXCaptureCallBack = extern &quot;C&quot; fn(pFrameData: *mut GX_FRAME_CALLBACK_PARAM);</code> as its parameter. This allows you to define your own callback function to handle the image data captured from the stream. Additionally, the utils module provides two helper functions - <code>extract_callback_img_buf</code> and <code>extract_frame_callback_param</code> - to help you extract image data from within the callback function.</li>
+<li>In this case, the <code>frame_callback</code> simply displays the image using OpenCV - nothing fancy. You can process the image data however you want based on your needs. For example, you could expose the image data through global variables and then process it in the main thread, among other approaches.</li>
+</ol>
+<h2 id="raw-code-example"><a class="header" href="#raw-code-example">RAW Code Example</a></h2>
+<pre><pre class="playground"><code class="language-rust">use std::mem::size_of;
+use std::slice;
+use std::thread::sleep;
+use std::time::Duration;
+
+use opencv::{
+    highgui,
+    core,
+};
+
+use gxci::{
+    raw::{
+        gx_interface::*, 
+        gx_enum::*,
+        gx_struct::*,
+        gx_handle::*,
+    },
+    utils::{
+        debug::print_device_info,
+        builder::GXDeviceBaseInfoBuilder,
+    },
+};
+
+extern &quot;C&quot; fn frame_callback(p_frame_callback_data: *mut GX_FRAME_CALLBACK_PARAM) {
+    // 避免刷屏
+    // println!(&quot;Frame callback triggered.&quot;);
+    // println!(&quot;Frame status: {:?}&quot;, unsafe { (*p_frame_callback_data).status });
+    // println!(&quot;Frame All: {:?}&quot;, unsafe { *p_frame_callback_data });
+
+    unsafe {
+        let frame_callback_data = &amp;*p_frame_callback_data;
+        if frame_callback_data.status == 0 {
+            let data = slice::from_raw_parts(frame_callback_data.pImgBuf as *const u8, (frame_callback_data.nWidth * frame_callback_data.nHeight) as usize);
+            let mat = core::Mat::new_rows_cols_with_data(
+                frame_callback_data.nHeight, 
+                frame_callback_data.nWidth, 
+                // core::CV_8UC1, 
+                data
+            ).unwrap();
+            highgui::imshow(&quot;Camera Frame&quot;, &amp;mat).unwrap();
+            if highgui::wait_key(10).unwrap() &gt; 0 {
+                highgui::destroy_window(&quot;Camera Frame&quot;).unwrap();
+            }
+        }
+    }
+}
+
+fn main()-&gt;Result&lt;()&gt; {
+        // You can change the library path as you need
+        let gx = GXInstance::new(&quot;C:\\Program Files\\Daheng Imaging\\GalaxySDK\\APIDll\\Win64\\GxIAPI.dll&quot;).expect(&quot;Failed to load library&quot;);
+        gx.gx_init_lib().expect(&quot;Failed to initialize library&quot;);
+
+        // Update the device list
+        let mut device_num = 0;
+        gx.gx_update_device_list(&amp;mut device_num, 1000)
+            .expect(&quot;Failed to update device list&quot;);
+
+        if device_num &gt; 0 {
+
+            let mut base_info: Vec&lt;GX_DEVICE_BASE_INFO&gt; = (0..device_num).map(|_| {
+                GXDeviceBaseInfoBuilder::new().build()
+            }).collect();
+            let mut size = (device_num as usize) * size_of::&lt;GX_DEVICE_BASE_INFO&gt;();
+            let status = gx
+                .gx_get_all_device_base_info(base_info.as_mut_ptr(), &amp;mut size)
+                .expect(&quot;Failed to get all device base info&quot;);
+
+            if status == 0 {
+                // Assuming 0 is GX_STATUS_SUCCESS
+                println!(
+                    &quot;Device base info retrieved successfully. Number of devices: {}&quot;,
+                    device_num
+                );
+                
+                for device in &amp;base_info {
+                    print_device_info(&amp;device);
+                }
+
+                // Attempt to open the first device using its SN
+                let first_device_sn = std::str::from_utf8(&amp;base_info[0].szSN).unwrap_or(&quot;&quot;);
+                let mut device_handle: GX_DEV_HANDLE = std::ptr::null_mut();
+
+                let open_status = gx
+                    .gx_open_device_by_index(1, &amp;mut device_handle)
+                    .expect(&quot;Failed to open device with index&quot;);
+
+                if open_status == 0 {
+                    println!(
+                        &quot;Successfully opened device index 1 with SN: {}&quot;,
+                        first_device_sn.trim_end_matches(char::from(0))
+                    );
+
+                    gx.gx_set_float(device_handle, GX_FEATURE_ID::GX_FLOAT_GAIN, 20.0)?;
+
+                    let reg_result = gx.gx_register_capture_callback(device_handle, frame_callback);
+                    match reg_result {
+                        Ok(_) =&gt; println!(&quot;Capture callback registered successfully.&quot;),
+                        Err(e) =&gt; eprintln!(&quot;Failed to register capture callback: {:?}&quot;, e),
+                    }
+
+                    gx.gx_send_command(device_handle, GX_FEATURE_ID::GX_COMMAND_ACQUISITION_START)
+                        .expect(&quot;Failed to send command&quot;);
+                        
+                        highgui::named_window(&quot;Camera&quot;, highgui::WINDOW_AUTOSIZE).unwrap();
+                    loop {
+                        sleep(Duration::from_secs(60));
+                        break;
+                    }
+
+                    gx.gx_send_command(device_handle, GX_FEATURE_ID::GX_COMMAND_ACQUISITION_STOP)
+                        .expect(&quot;Failed to send command&quot;);
+
+                    let unregeister_result = gx.gx_unregister_capture_callback(device_handle);
+                    match unregeister_result {
+                        Ok(_) =&gt; println!(&quot;Capture callback unregistered successfully.&quot;),
+                        Err(e) =&gt; eprintln!(&quot;Failed to unregister capture callback: {:?}&quot;, e),
+                    }
+
+                    // Close the device
+                    gx.gx_close_device(device_handle)
+                        .expect(&quot;Failed to close device&quot;);
+                    println!(&quot;Device closed.&quot;)
+                } else {
+                    println!(
+                        &quot;Failed to open device with SN: {}&quot;,
+                        first_device_sn.trim_end_matches(char::from(0))
+                    );
+                }
+            } else {
+                println!(&quot;Failed to retrieve device base info, status: {}&quot;, status);
+            }
+        } else {
+            println!(&quot;No Devices found.&quot;);
+        }
+
+        gx.gx_close_lib().expect(&quot;Failed to close library&quot;);
+        println!(&quot;Library closed.&quot;);
+        Ok(())
+    }
+
+</code></pre></pre>
+<h2 id="raw-attention"><a class="header" href="#raw-attention">RAW Attention</a></h2>
+<ol>
+<li>Use with caution, it is more comfortable to use <code>hal</code> for normal development (mainly because I am lazy to write documents)</li>
+</ol>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="../getting-started/take-a-image.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="../getting-started/adjusting-camera-settings.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="../getting-started/take-a-image.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+                                    <a rel="next" href="../getting-started/adjusting-camera-settings.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+                <script type="text/javascript" src="../theme/pagetoc.js"></script>
+        
+        
+    </body>
+</html>

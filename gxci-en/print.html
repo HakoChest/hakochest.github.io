@@ -84,7 +84,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> 简介</a></li><li class="chapter-item expanded "><a href="getting-started/index.html"><strong aria-hidden="true">2.</strong> 快速开始</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="getting-started/migration.html"><strong aria-hidden="true">2.1.</strong> 从旧版本迁移</a></li><li class="chapter-item expanded "><a href="getting-started/prerequisites.html"><strong aria-hidden="true">2.2.</strong> 预配置项</a></li><li class="chapter-item expanded "><a href="getting-started/installation.html"><strong aria-hidden="true">2.3.</strong> 安装</a></li><li class="chapter-item expanded "><a href="getting-started/list-your-devices.html"><strong aria-hidden="true">2.4.</strong> 列举你的设备</a></li><li class="chapter-item expanded "><a href="getting-started/take-a-image.html"><strong aria-hidden="true">2.5.</strong> 采一张图</a></li><li class="chapter-item expanded "><a href="getting-started/streaming.html"><strong aria-hidden="true">2.6.</strong> 推流</a></li><li class="chapter-item expanded "><a href="getting-started/adjusting-camera-settings.html"><strong aria-hidden="true">2.7.</strong> 调整相机参数</a></li></ol></li><li class="chapter-item expanded "><a href="change-log.html"><strong aria-hidden="true">3.</strong> 更改日志</a></li><li class="chapter-item expanded "><a href="roadmap.html"><strong aria-hidden="true">4.</strong> 路线图</a></li><li class="chapter-item expanded "><a href="appendix.html"><strong aria-hidden="true">5.</strong> 附录</a></li><li class="chapter-item expanded "><a href="control-list.html"><strong aria-hidden="true">6.</strong> 控制列表</a></li><li class="chapter-item expanded "><a href="ending.html"><strong aria-hidden="true">7.</strong> 后记</a></li><li class="chapter-item expanded "><a href="reference.html"><strong aria-hidden="true">8.</strong> 参考</a></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="getting-started/index.html"><strong aria-hidden="true">2.</strong> Getting Started</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="getting-started/prerequisites.html"><strong aria-hidden="true">2.1.</strong> Prerequisites</a></li><li class="chapter-item expanded "><a href="getting-started/installation.html"><strong aria-hidden="true">2.2.</strong> Installation</a></li><li class="chapter-item expanded "><a href="getting-started/list-your-devices.html"><strong aria-hidden="true">2.3.</strong> List Your Devices</a></li><li class="chapter-item expanded "><a href="getting-started/take-a-image.html"><strong aria-hidden="true">2.4.</strong> Take a Image</a></li><li class="chapter-item expanded "><a href="getting-started/streaming.html"><strong aria-hidden="true">2.5.</strong> Streaming</a></li><li class="chapter-item expanded "><a href="getting-started/adjusting-camera-settings.html"><strong aria-hidden="true">2.6.</strong> Adjusting Camera Settings</a></li></ol></li><li class="chapter-item expanded "><a href="change-log.html"><strong aria-hidden="true">3.</strong> Change Log</a></li><li class="chapter-item expanded "><a href="roadmap.html"><strong aria-hidden="true">4.</strong> Roadmap</a></li><li class="chapter-item expanded "><a href="appendix.html"><strong aria-hidden="true">5.</strong> Appendix</a></li><li class="chapter-item expanded "><a href="control-list.html"><strong aria-hidden="true">6.</strong> ControlList</a></li><li class="chapter-item expanded "><a href="ending.html"><strong aria-hidden="true">7.</strong> Ending</a></li><li class="chapter-item expanded "><a href="reference.html"><strong aria-hidden="true">8.</strong> Reference</a></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -145,130 +145,111 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="简介"><a class="header" href="#简介">简介</a></h1>
-<p>GXCI是基于Rust的大恒相机API上层封装</p>
-<h2 id="模块"><a class="header" href="#模块">模块</a></h2>
-<p>主要分为四大模块：</p>
+                        <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+<p>GXCI is a high-level encapsulation based on the Rust of the Daheng camera API</p>
+<h2 id="modules"><a class="header" href="#modules">Modules</a></h2>
+<p>It is mainly divided into four modules:</p>
 <ol>
-<li>HAL API：基于RAW Wrapper的为具体功能而作高级封装</li>
-<li>RAW Wrapper：GxIAPI.dll的直接Rust封装，提供原生API调用</li>
-<li>Utils：一些工具函数</li>
-<li>Error Handling：统一错误处理</li>
+<li>HAL API: High-level encapsulation based on RAW Wrapper for specific functions</li>
+<li>RAW Wrapper: Direct Rust encapsulation of GxIAPI.dll, providing native API calls</li>
+<li>Utils: Some utility functions</li>
+<li>Error Handling: Unified error handling</li>
 </ol>
-<h2 id="特性"><a class="header" href="#特性">特性</a></h2>
-<p>目前有四个Features：</p>
+<h2 id="features"><a class="header" href="#features">Features</a></h2>
+<p>There are currently four Features:</p>
 <ul>
-<li>solo：单相机模式</li>
-<li>use-opencv：使用opencv库</li>
-<li>（开发中）multi模式：多相机模式</li>
-<li>（开发中）use-imageproc：使用imageproc库</li>
+<li>solo: Single camera mode</li>
+<li>use-opencv: Use the opencv library</li>
+<li>(under development) multi-mode: Multi-camera mode</li>
+<li>(under development) use-imageproc: Use the imageproc library</li>
 </ul>
-<p>默认开启的是solo和use-opencv</p>
-<h2 id="说白了"><a class="header" href="#说白了">说白了</a></h2>
-<p>raw就是用大恒相机给的C语言开发用的GXIAPI.dll,结合开发文档，用libloading这个库把dll的所有函数加载进来封装了一层。然后此外每个对应的类型、结构体、枚举、常量等等都重新用rust写了一遍。特别是枚举描述部分还遇到过结构体内存没对齐的问题。</p>
-<p>hal最主要做的其实就是给GX_INSTANCE、DEVICE_HANDLE这些在库内部用全局变量封装了一层，在调库的时候就不用每次let一个gx出来然后调gx的方法。</p>
-<p>但其实全局变量封装目前用的还是std的Mutex（典中典<code>LazyLock&lt;Arc&lt;Mutex&lt;T&gt;&gt;&gt;</code>），暂时还没引入tokio（毕竟手头也只有一个相机，前端那边也还没有多相机的业务）</p>
-<p>utils写的一坨狗屎，乱成一堆，开始写的时候项目水平还很差是怎样的，但也暂时懒得改了</p>
-<p>error部分挺好的，还是喜欢原生Error Handling</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="快速开始"><a class="header" href="#快速开始">快速开始</a></h1>
-<p>主要分为</p>
+<p>The default is solo and use-opencv</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="getting-started"><a class="header" href="#getting-started">Getting Started</a></h1>
+<p>This section is mainly divided into</p>
 <ol>
-<li>从旧版本迁移</li>
-<li>预配置项</li>
-<li>安装</li>
-<li>列举你的设备</li>
-<li>采一张图</li>
-<li>推流</li>
-<li>调整相机参数</li>
+<li>Migration from the old version</li>
+<li>Pre-configuration items</li>
+<li>Installation</li>
+<li>List your devices</li>
+<li>Take a picture</li>
+<li>Streaming</li>
+<li>Adjust camera settings</li>
 </ol>
-<p>这样七个部分，搭配examples快速上手GXCI</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="从旧版本迁移"><a class="header" href="#从旧版本迁移">从旧版本迁移</a></h1>
-<p>如果你是第一次使用GXCI那么，你可以跳过这一节。这一节主要是为了帮助0.3.6之前的GXCI用户迁移到新版本。</p>
-<p>GXCI在0.3.5及此前的版本一直使用的是4.9.0版本的OpenCV，但GXCI从0.3.6开始使用4.10.0版本的OpenCV。所以用户也需要相应的升级一下自己的OpenCV版本</p>
-<h2 id="通过choco升级opencv"><a class="header" href="#通过choco升级opencv">通过Choco升级OpenCV</a></h2>
-<pre><code class="language-powershell">choco upgrade chocolatey
-choco upgrade opencv
-</code></pre>
-<h2 id="更改系统环境变量"><a class="header" href="#更改系统环境变量">更改系统环境变量</a></h2>
-<p>把系统变量的<code>OPENCV_LINK_LIBS</code>更新为<code>opencv_world4100</code>即可</p>
-<p>以后如果报错<code>STATUS_DLL_NOT_FOUND</code>，就复制一份<code>opencv_world4100.dll</code>到exe的同级文件夹就行</p>
-<h2 id="清理旧版本target"><a class="header" href="#清理旧版本target">清理旧版本Target</a></h2>
-<p>如果你之前使用过GXCI，那么你可能需要清理一下之前的target文件夹，因为之前的target文件夹可能会有一些旧的依赖库，导致编译错误</p>
-<pre><code class="language-shell">cargo clean
-</code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="预配置项"><a class="header" href="#预配置项">预配置项</a></h1>
-<p>预配置项一共有两个，即<a href="https://www.daheng-imaging.com/">大恒相机官方驱动</a>和<a href="https://opencv.org/">OpenCV</a>。</p>
-<h2 id="大恒相机官方驱动"><a class="header" href="#大恒相机官方驱动">大恒相机官方驱动</a></h2>
-<p>GXCI库基于大恒相机官方提供的C语言dll（即GxIAPI.dll）进行开发，默认位于C:\Program Files\Daheng Imaging\GalaxySDK\APIDll\Win64\GxIAPI.dll</p>
-<p>直接前往<a href="https://www.daheng-imaging.com/downloads/">大恒官网下载中心</a>下载你所使用的相机的驱动即可。</p>
+<p>These seven parts, combined with examples, quickly get started with GXCI</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="prerequisites"><a class="header" href="#prerequisites">Prerequisites</a></h1>
+<p>There are two prerequisites in total, namely the <a href="https://www.daheng-imaging.com/">official driver of Daheng camera</a> and <a href="https://opencv.org/">OpenCV</a>.</p>
+<h2 id="official-driver-of-daheng-camera"><a class="header" href="#official-driver-of-daheng-camera">Official driver of Daheng camera</a></h2>
+<p>GXCI library is developed based on the C language dll provided by the official driver of Daheng camera (i.e. GxIAPI.dll), which is located by default at C:\Program Files\Daheng Imaging\GalaxySDK\APIDll\Win64\GxIAPI.dll</p>
+<p>You can download the driver of the camera you are using directly from the <a href="https://www.daheng-imaging.com/downloads/">official website of Daheng</a>.</p>
 <h2 id="opencv"><a class="header" href="#opencv">OpenCV</a></h2>
-<p>GXCI默认依赖的图像处理库为<a href="https://crates.io/crates/opencv">opencv</a>,即OpenCV的Rust绑定库。</p>
-<p>这部分配置可以参照如下几个文章，但都是英文</p>
+<p>The default image processing library that GXCI depends on is <a href="https://crates.io/crates/opencv">opencv</a>, which is the Rust binding library of OpenCV.</p>
+<p>This part of the configuration can refer to the following articles.</p>
 <ul>
-<li><a href="https://github.com/twistedfall/opencv-rust/blob/master/INSTALL.md">opencv-rust的INSATLL.md</a></li>
-<li><a href="https://github.com/twistedfall/opencv-rust/issues/118#issuecomment-619608278">(Win)用Chocolatey安装OpenCV</a></li>
-<li><a href="https://github.com/twistedfall/opencv-rust/issues/113">(Win)解决STATUS_DLL_NOT_FOUND问题</a></li>
+<li><a href="https://github.com/twistedfall/opencv-rust/blob/master/INSTALL.md">INSATLL.md of opencv-rust</a></li>
+<li><a href="https://github.com/twistedfall/opencv-rust/issues/118#issuecomment-619608278">Install OpenCV with Chocolatey (Win)</a></li>
+<li><a href="https://github.com/twistedfall/opencv-rust/issues/113">Solve the STATUS_DLL_NOT_FOUND problem (Win)</a></li>
 </ul>
-<p>当然我们这里也提供了一份中文版的opencv-rust配置方法</p>
-<h3 id="安装llvm和opencv-4100"><a class="header" href="#安装llvm和opencv-4100">安装LLVM和OpenCV 4.10.0</a></h3>
-<p>在Windows 10/11中，我建议使用Chocolatey来安装LLVM和OpenCV 4.10.0：</p>
+<p>Of course, we also provide a pre-configured method for OpenCV-rust.</p>
+<h3 id="install-llvm-and-opencv-4100"><a class="header" href="#install-llvm-and-opencv-4100">Install LLVM and OpenCV 4.10.0</a></h3>
+<p>In Windows 10/11, I recommend using Chocolatey to install LLVM and OpenCV 4.10.0:</p>
 <pre><code class="language-shell">choco install llvm opencv
 </code></pre>
-<p>以下是一些会用到的官方网站：</p>
+<p>Here are some official websites that will be used:</p>
 <ul>
 <li><a href="https://releases.llvm.org/download.html">LLVM</a></li>
 <li><a href="https://opencv.org/releases/">OpenCV</a></li>
 <li><a href="https://chocolatey.org/">Chocolatey</a></li>
 </ul>
-<h3 id="添加path环境变量系统变量"><a class="header" href="#添加path环境变量系统变量">添加Path环境变量（系统变量）</a></h3>
-<p>将以下路径添加到相应的系统的Path环境变量中：</p>
+<h3 id="add-path-environment-variables-system-variables"><a class="header" href="#add-path-environment-variables-system-variables">Add Path environment variables (system variables)</a></h3>
+<p>Add the following paths to the corresponding system Path environment variables:</p>
 <ol>
-<li>OpenCV的bin路径</li>
-<li>OpenCV的x64 bin路径</li>
-<li>Chocolatey的bin路径</li>
-<li>LLVM的bin路径</li>
+<li>OpenCV bin path</li>
+<li>OpenCV x64 bin path</li>
+<li>Chocolatey bin path</li>
+<li>LLVM bin path</li>
 </ol>
-<p>请根据你的安装路径自行调整，下面是一个示例：</p>
+<p>Please adjust according to your installation path, here is an example:</p>
 <pre><code class="language-shell">C:\tools\opencv\build\bin
 C:\tools\opencv\build\x64\vc16\bin
 C:\ProgramData\chocolatey\bin
 C:\Program Files\LLVM\bin
 </code></pre>
-<h3 id="添加opencv环境变量系统变量"><a class="header" href="#添加opencv环境变量系统变量">添加OpenCV环境变量（系统变量）</a></h3>
-<p>新建三个系统变量：</p>
+<h3 id="add-opencv-environment-variables-system-variables"><a class="header" href="#add-opencv-environment-variables-system-variables">Add OpenCV environment variables (system variables)</a></h3>
+<p>Create three system variables:</p>
 <ol>
 <li>OPENCV_INCLUDE_PATHS</li>
 <li>OPENCV_LINK_LIBS</li>
 <li>OPENCV_LINK_PATHS</li>
 </ol>
-<p>请根据你的安装路径自行调整，下面是一个示例：
-|变量名|变量值|
+<p>Please adjust according to your installation path, here is an example:
+|Variable name|Variable value|
 |---|---|
 |OPENCV_INCLUDE_PATHS|C:\tools\opencv\build\include|
 |OPENCV_LINK_LIBS|opencv_world410|
 |OPENCV_LINK_PATHS|C:\tools\opencv\build\x64\vc16\lib|</p>
-<h3 id="复制opencv_world410dll到目标目录如果需要"><a class="header" href="#复制opencv_world410dll到目标目录如果需要">复制opencv_world410.dll到目标目录（如果需要）</a></h3>
-<p>有时候你需要将opencv_world4100.dll复制到目标目录，即与exe文件同级的目录。</p>
-<h3 id="重启电脑如果需要"><a class="header" href="#重启电脑如果需要">重启电脑（如果需要）</a></h3>
-<p>有时候你需要重启电脑才能使环境变量生效。</p>
-<h2 id="galaxy-viewer-可选"><a class="header" href="#galaxy-viewer-可选">Galaxy Viewer （可选）</a></h2>
-<p><a href="https://www.daheng-imaging.com/downloads/">Galaxy Viewer</a>是大恒相机官方提供的相机调试工具，可以用来查看相机的参数、调整相机的参数等。</p>
-<h2 id="难绷碎碎念"><a class="header" href="#难绷碎碎念">难绷碎碎念</a></h2>
-<p>OpenCV库在这里用于方便地将图像矩阵化并提供GUI显示图像，说白了就用来保存图片和显示推流的，实际上GXCI目前并没有用到太多的图像处理算法。</p>
-<p>怎么说呢，我认为OpenCV在图像处理领域确实是一个必要的库，所以我们也re-export了这个库，依赖启用了<code>use-opencv</code>的<code>gxci</code>就可以直接用<code>use gxci::opencv</code>来使用opencv。</p>
-<p>但是OpenCV的缺点是配置和编译时间都有点难绷，所以这里还提供了一个<code>use-imageproc</code>特性，通过使用<code>imageproc</code>库来避免使用OpenCV。</p>
-<p>但是在我测试的过程中<code>imageproc</code>的编译时间也很长（或者说就没编译成果过），特别是在nalgebra部分。有一天我编译<code>imageproc</code>的nalgebra花了3个小时都还没完成，绝对是卡在那了，尝试被迫终止。所以我也只能认为OpenCV仍然是一个不错的选择了，所以GXCI默认启用的也就是<code>use-opencv</code>这个特性了。</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="安装"><a class="header" href="#安装">安装</a></h1>
-<p>在Cargo.toml中添加依赖：</p>
+<h3 id="copy-opencv_world410dll-to-the-target-directory-if-necessary"><a class="header" href="#copy-opencv_world410dll-to-the-target-directory-if-necessary">Copy opencv_world410.dll to the target directory (if necessary)</a></h3>
+<p>Sometimes you need to copy opencv_world4100.dll to the target directory, which is the same directory as the exe file.</p>
+<h3 id="restart-the-computer-if-necessary"><a class="header" href="#restart-the-computer-if-necessary">Restart the computer (if necessary)</a></h3>
+<p>Sometimes you need to restart the computer to make the environment variables take effect.</p>
+<h2 id="galaxy-viewer-optional"><a class="header" href="#galaxy-viewer-optional">Galaxy Viewer (optional)</a></h2>
+<p><a href="https://www.daheng-imaging.com/downloads/">Galaxy Viewer</a> is a camera debugging tool provided by Daheng Imaging, which can be used to view camera parameters, adjust camera parameters, etc.</p>
+<h2 id="oh-whats-this-part-unbengable-babble"><a class="header" href="#oh-whats-this-part-unbengable-babble">Oh, what's this part? Unbengable babble</a></h2>
+<p>The OpenCV library is used here to conveniently matrix the image and provide GUI display of the image, in other words, to save the image and display the push stream. In fact, GXCI currently does not use too many image processing algorithms.</p>
+<p>How should I put it, I think OpenCV is indeed a necessary library in the field of image processing, so we also re-exported this library, and the dependency enabled the <code>use-opencv</code> feature of <code>gxci</code> can directly use <code>use gxci::opencv</code> to use opencv.</p>
+<p>But the disadvantage of OpenCV is that the configuration and compilation time are a bit difficult, so here is also a <code>use-imageproc</code> feature, which uses the <code>imageproc</code> library to avoid using OpenCV.</p>
+<p>But in my testing process, the compilation time of <code>imageproc</code> is also very long (or I have never compiled it successfully), especially in the nalgebra part. One day I spent 3 hours compiling the nalgebra of <code>imageproc</code> and it was not finished yet, it was definitely stuck there, and I was forced to terminate the attempt. So I can only think that OpenCV is still a good choice, so the default feature enabled by GXCI is the <code>use-opencv</code> feature. </p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="installation"><a class="header" href="#installation">Installation</a></h1>
+<p>Add the dependency to your <code>Cargo.toml</code>:</p>
 <pre><code class="language-toml">[dependencies]
 gxci = &quot;0.3.6&quot;
-# 默认并且目前也只支持solo和use-opencv两个特性
+# Only support solo and use-opencv features，because multi-camera and use-imageproc are under development
 </code></pre>
-<p>就OK啦，开始调库吧</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="列举你的设备"><a class="header" href="#列举你的设备">列举你的设备</a></h1>
-<h2 id="hal代码示例"><a class="header" href="#hal代码示例">HAL代码示例</a></h2>
-<p>下面是列举已链接设备的示例代码。该示例代码使用 <code>gxi_count_devices</code> 和 <code>gxi_list_devices</code> 函数来获取设备数量和设备信息，然后使用 <code>print_device_info</code> 函数打印设备信息。</p>
-<pre><pre class="playground"><code class="language-rust">use gxci::hal::base::*;
+<p>That's it, start using the library!</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="list-your-devices"><a class="header" href="#list-your-devices">List your devices</a></h1>
+<h2 id="hal-code-example"><a class="header" href="#hal-code-example">HAL code example</a></h2>
+<p>Here is an example code that lists the devices connected to the computer. This example code uses the <code>gxi_count_devices</code> and <code>gxi_list_devices</code> functions to get the number of devices and device information, and then uses the <code>print_device_info</code> function to print the device information.</p>
+<pre><pre class="playground"><code class="language-rust">
+use gxci::hal::base::*;
 use gxci::hal::device::{gxi_count_devices，gxi_list_devices};
 use gxci::utils::debug::print_device_info;
 
@@ -288,17 +269,18 @@ fn main()-&gt;Result&lt;()&gt; {
     Ok(())
 }
 </code></pre></pre>
-<h2 id="hal注意点"><a class="header" href="#hal注意点">HAL注意点</a></h2>
+<h2 id="hal-attention"><a class="header" href="#hal-attention">HAL Attention</a></h2>
 <ol>
-<li><code>hal</code>部分的<code>base</code>模块推荐还是直接<code>use gxci::hal::base::*</code>全部引入，一是里面的函数绝对都会用到，而是这里还re-export了<code>error</code>模块的<code>Result</code>类型，方便错误处理。</li>
-<li><code>gxci_init_default()</code>默认的初始化地址是<code>&quot;C:\\Program Files\\Daheng Imaging\\GalaxySDK\\APIDll\\Win64\\GxIAPI.dll&quot;</code>，如果你的dll文件不在默认路径，可以使用<code>gxci_init(&quot;your_dll_path&quot;)</code>来初始化。（暂时只支持绝对路径，请自行拼接适配）</li>
-<li><code>gxi_count_devices</code>函数的参数是超时时间，通常就传<code>1000</code>，单位是毫秒。</li>
-<li><code>gxi_list_devices</code>函数返回的是一个<code>Vec&lt;GX_DEVICE_BASE_INFO&gt;</code>，<code>GX_DEVICE_BASE_INFO</code>的具体内容参看<a href="https://docs.rs/gxci/latest/gxci/raw/gx_struct/index.html">GXCI的Docs.rs文档的struct部分</a>或者大恒的C语言SDK文档，文档是SDK自带的，默认位置在<code>C:\Program Files\Daheng Imaging\GalaxySDK\Doc</code>，自己根据安装目录找一找就行。</li>
-<li>在程序结束时，记得调用<code>gxci_close()</code>来释放dll。</li>
+<li>It is recommended to import all functions from the <code>base</code> module of the <code>hal</code> part using <code>use gxci::hal::base::*</code>. This is because all functions in this module will be used, and the <code>Result</code> type of the <code>error</code> module is re-exported here for easy error handling.</li>
+<li>The default initialization address of <code>gxci_init_default()</code> is <code>&quot;C:\\Program Files\\Daheng Imaging\\GalaxySDK\\APIDll\\Win64\\GxIAPI.dll&quot;</code>. If your DLL file is not in the default path, you can use <code>gxci_init(&quot;your_dll_path&quot;)</code> to initialize it. (Currently only absolute paths are supported, please concatenate them yourself)</li>
+<li>The parameter of the <code>gxi_count_devices</code> function is the timeout time, usually just pass <code>1000</code>, in milliseconds.</li>
+<li>The <code>gxi_list_devices</code> function returns a <code>Vec&lt;GX_DEVICE_BASE_INFO&gt;</code>. The specific content of <code>GX_DEVICE_BASE_INFO</code> can be found in the <a href="https://docs.rs/gxci/latest/gxci/raw/gx_struct/index.html">struct section of the GXCI Docs.rs document</a> or Daheng's C language SDK document. The document is included with the SDK and is located by default at <code>C:\Program Files\Daheng Imaging\GalaxySDK\Doc</code>. You can find it yourself according to the installation directory.</li>
+<li>Remember to call <code>gxci_close()</code> to release the DLL when the program ends.</li>
 </ol>
-<h2 id="raw代码示例"><a class="header" href="#raw代码示例">RAW代码示例</a></h2>
-<p>下面是列举已链接设备的示例代码。首先new一个GXInstance,然后调用 <code>gx_init_lib</code> 函数来初始化库，接着调用 <code>gx_update_device_list</code> 和 <code>gx_get_all_device_base_info</code> 函数来获取设备数量和设备信息，然后使用 <code>print_device_info</code> 函数打印设备信息，最后调用 <code>gx_close_lib</code> 函数来关闭库。</p>
-<pre><pre class="playground"><code class="language-rust">use std::mem::size_of;
+<h2 id="raw-code-example"><a class="header" href="#raw-code-example">RAW code example</a></h2>
+<p>Here is an example code that lists the devices connected to the computer. First, create a <code>GXInstance</code>, then call the <code>gx_init_lib</code> function to initialize the library, then call the <code>gx_update_device_list</code> and <code>gx_get_all_device_base_info</code> functions to get the number of devices and device information, and then use the <code>print_device_info</code> function to print the device information, and finally call the <code>gx_close_lib</code> function to close the library.</p>
+<pre><pre class="playground"><code class="language-rust">
+use std::mem::size_of;
 use gxci::{
     raw::{
         gx_interface::*, 
@@ -369,14 +351,14 @@ fn main() {
     }
 
 </code></pre></pre>
-<h2 id="raw注意点"><a class="header" href="#raw注意点">RAW注意点</a></h2>
+<h2 id="raw-attention"><a class="header" href="#raw-attention">RAW Attention</a></h2>
 <ol>
-<li>谨慎使用吧，平常开发用hal还是更舒服一些（主要还是懒得写文档了）</li>
+<li>Use with caution, it is more comfortable to use <code>hal</code> for normal development (mainly because I am lazy to write documents)</li>
 </ol>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="采一张图"><a class="header" href="#采一张图">采一张图</a></h1>
-<h2 id="hal代码示例-1"><a class="header" href="#hal代码示例-1">HAL代码示例</a></h2>
-<p>采图首先要用<code>gxi_open_device</code>打开设备，然后调用<code>gxi_get_image</code>获取图像，最后调用<code>gxi_save_image_as_png</code>保存缓存区中的图像，然后调用<code>gxi_close_device</code>关闭设备就走完一遍流程了</p>
-<p>当然，除了<code>gxi_get_image</code>把图像保存在缓存区这个返回<code>Resulf&lt;()&gt;</code>函数，还有<code>gxi_get_image_as_raw</code>和<code>gxi_get_image_as_bytes</code>两个函数可以返回拿到的图像数据，前者返回的是<code>Result&lt;&amp;[u8]&gt;</code>，后者返回的是<code>Result&lt;Vec&lt;u8&gt;&gt;</code>。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="take-a-image"><a class="header" href="#take-a-image">Take a Image</a></h1>
+<h2 id="hal-code-example-1"><a class="header" href="#hal-code-example-1">HAL Code Example</a></h2>
+<p>Taking a picture first requires opening the device with <code>gxi_open_device</code>, then calling <code>gxi_get_image</code> to get the image, and finally calling <code>gxi_save_image_as_png</code> to save the image in the buffer. After that, call <code>gxi_close_device</code> to close the device.</p>
+<p>Of course, in addition to <code>gxi_get_image</code> to save the image data in the buffer and return <code>Resulf&lt;()&gt;</code>, there are also two functions <code>gxi_get_image_as_raw</code> and <code>gxi_get_image_as_bytes</code> that can return the acquired image data. The former returns <code>Result&lt;&amp;[u8]&gt;</code>, and the latter returns <code>Result&lt;Vec&lt;u8&gt;&gt;</code>.</p>
 <pre><pre class="playground"><code class="language-rust">use gxci::hal::device::*;
 use gxci::hal::base::*;
 use gxci::utils::debug::print_device_info;
@@ -405,17 +387,16 @@ fn main()-&gt;Result&lt;()&gt; {
     Ok(())
 }
 </code></pre></pre>
-<h2 id="hal注意点-1"><a class="header" href="#hal注意点-1">HAL注意点</a></h2>
+<h2 id="hal-attention-1"><a class="header" href="#hal-attention-1">HAL Attention</a></h2>
 <ol>
-<li>当然偷懒直接把<code>device</code>的全部都引入也是可以的23333</li>
-<li><code>gxi_open_device</code>在<code>solo</code>模式下默认打开第一个设备，多设备暂时没写</li>
-<li><code>gxi_get_image</code>函数返回的是<code>Result&lt;()&gt;</code>，因为图像数据是保存在缓存区的，所以这个函数只是把图像数据保存在缓存区，如果要获取图像数据，可以使用<code>gxi_get_image_as_raw</code>和<code>gxi_get_image_as_bytes</code>两个函数</li>
-<li><code>gxi_save_image_as_png</code>函数的参数是保存的文件名，保存在当前目录下</li>
+<li>Of course, you can also take the lazy approach and import everything from 'device' at once, 23333</li>
+<li><code>gxi_open_device</code> defaults to opening the first device in <code>solo</code> mode. Multiple devices are not yet supported</li>
+<li><code>gxi_get_image</code> returns <code>Result&lt;()&gt;</code> because the image data is saved in the buffer, so this function only saves the image data in the buffer. If you want to get the image data, you can use the two functions <code>gxi_get_image_as_raw</code> and <code>gxi_get_image_as_bytes</code></li>
+<li>The parameter of the <code>gxi_save_image_as_png</code> function is the file name to save, and it is saved in the current directory</li>
 </ol>
-<h2 id="raw代码示例-1"><a class="header" href="#raw代码示例-1">RAW代码示例</a></h2>
-<p>采图首先要用<code>gx_open_device_by_index</code>打开设备，然后发送<code>GX_COMMAND_ACQUISITION_START</code>命令开始采集，接着调用<code>gx_get_image</code>获取图像，采图成功后调用<code>opencv</code>库把<code>image_buffer</code>转换成<code>Mat</code>对象，然后调用<code>imwrite</code>函数保存图像，最后调用<code>gx_send_command</code>发送<code>GX_COMMAND_ACQUISITION_STOP</code>命令停止采集，然后调用<code>gx_close_device</code>关闭设备就走完一遍流程了</p>
-<pre><pre class="playground"><code class="language-rust">
-use std::mem::size_of;
+<h2 id="raw-code-example-1"><a class="header" href="#raw-code-example-1">RAW Code Example</a></h2>
+<p>Taking a picture first requires opening the device with <code>gx_open_device_by_index</code>, then sending the <code>GX_COMMAND_ACQUISITION_START</code> command to start the acquisition, then calling <code>gx_get_image</code> to get the image, after the acquisition is successful, calling the <code>opencv</code> library to convert the <code>image_buffer</code> to a <code>Mat</code> object, and finally calling the <code>imwrite</code> function of the <code>opencv</code> library to save the image. After that, call <code>gx_send_command</code> to send the <code>GX_COMMAND_ACQUISITION_STOP</code> command to stop the acquisition, and finally call <code>gx_close_device</code> to close the device.</p>
+<pre><pre class="playground"><code class="language-rust">use std::mem::size_of;
 use std::slice;
 
 use opencv::{
@@ -546,14 +527,14 @@ fn main() -&gt; Result&lt;()&gt; {
     }
 }
 </code></pre></pre>
-<h2 id="raw注意点-1"><a class="header" href="#raw注意点-1">RAW注意点</a></h2>
+<h2 id="raw-attention-1"><a class="header" href="#raw-attention-1">RAW Attention</a></h2>
 <ol>
-<li>谨慎使用吧，平常开发用hal还是更舒服一些（主要还是懒得写文档了）</li>
-<li>这里还玩了会所有权游戏，image_buffer如果不返回到当前作用域，就会在facade的那个函数中被释放掉，导致下文直接就拿不到图像数据了（送客不接客，客死他乡了）</li>
+<li>Use with caution, it is more comfortable to use <code>hal</code> for normal development (mainly because I am lazy to write documents)</li>
+<li>The <code>image_buffer</code> is released when it is returned, so if it is not returned to the current scope, it will be released in the <code>facade</code> function, causing the image data to be directly unavailable in the following text (send the guest without receiving the guest, then the guest dies in a foreign land~)</li>
 </ol>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="推流"><a class="header" href="#推流">推流</a></h1>
-<h2 id="hal代码示例-2"><a class="header" href="#hal代码示例-2">HAL代码示例</a></h2>
-<p>核心在于<code>gxi_use_stream</code>，这个<code>0.3.4</code>版本新增的函数</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="streaming"><a class="header" href="#streaming">Streaming</a></h1>
+<h2 id="hal-code-example-2"><a class="header" href="#hal-code-example-2">HAL Code Example</a></h2>
+<p>The core function is <code>gxi_use_stream</code>, a function added in version <code>0.3.4</code>.</p>
 <pre><pre class="playground"><code class="language-rust">use gxci::hal::device::*;
 use gxci::hal::base::*;
 use gxci::utils::debug::print_device_info;
@@ -602,14 +583,13 @@ fn main()-&gt;Result&lt;()&gt; {
     Ok(())
 }
 </code></pre></pre>
-<h2 id="hal注意点-2"><a class="header" href="#hal注意点-2">HAL注意点</a></h2>
+<h2 id="hal-attention-2"><a class="header" href="#hal-attention-2">HAL Attention</a></h2>
 <ol>
-<li>最闪亮的函数当属<code>gxi_use_stream</code>，这个函数的参数是一个类型为<code>pub type GXCaptureCallBack = extern &quot;C&quot; fn(pFrameData: *mut GX_FRAME_CALLBACK_PARAM);</code>的回调函数，允许你自定义回调函数来处理推流采集到的图像数据。此外，在utils模块中还提供了<code>extract_callback_img_buf</code>和<code>extract_frame_callback_param</code>两个函数来帮助你提取回调函数中的图像数据。</li>
-<li>这里的<code>frame_callback</code>就仅仅只是把图像用opencv显示出来罢了，你可以根据自己的需求来处理图像数据。例如通过全局变量来暴露图像数据，然后在主线程中处理图像数据等等</li>
+<li>The most impressive function is <code>gxi_use_stream</code>, which takes a callback function of type <code>pub type GXCaptureCallBack = extern &quot;C&quot; fn(pFrameData: *mut GX_FRAME_CALLBACK_PARAM);</code> as its parameter. This allows you to define your own callback function to handle the image data captured from the stream. Additionally, the utils module provides two helper functions - <code>extract_callback_img_buf</code> and <code>extract_frame_callback_param</code> - to help you extract image data from within the callback function.</li>
+<li>In this case, the <code>frame_callback</code> simply displays the image using OpenCV - nothing fancy. You can process the image data however you want based on your needs. For example, you could expose the image data through global variables and then process it in the main thread, among other approaches.</li>
 </ol>
-<h2 id="raw代码示例-2"><a class="header" href="#raw代码示例-2">RAW代码示例</a></h2>
-<pre><pre class="playground"><code class="language-rust">
-use std::mem::size_of;
+<h2 id="raw-code-example-2"><a class="header" href="#raw-code-example-2">RAW Code Example</a></h2>
+<pre><pre class="playground"><code class="language-rust">use std::mem::size_of;
 use std::slice;
 use std::thread::sleep;
 use std::time::Duration;
@@ -750,13 +730,13 @@ fn main()-&gt;Result&lt;()&gt; {
     }
 
 </code></pre></pre>
-<h2 id="raw注意点-2"><a class="header" href="#raw注意点-2">RAW注意点</a></h2>
+<h2 id="raw-attention-2"><a class="header" href="#raw-attention-2">RAW Attention</a></h2>
 <ol>
-<li>谨慎使用吧，平常开发用hal还是更舒服一些（主要还是懒得写文档了）</li>
+<li>Use with caution, it is more comfortable to use <code>hal</code> for normal development (mainly because I am lazy to write documents)</li>
 </ol>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="调整相机参数"><a class="header" href="#调整相机参数">调整相机参数</a></h1>
-<h2 id="hal代码示例-3"><a class="header" href="#hal代码示例-3">HAL代码示例</a></h2>
-<p>这里我们就承接着上面推流部分的代码进行了，这里我们调整了相机的一些参数，例如设置了相机的分辨率、自动增益等等，分别是通过<code>gxi_set_width</code>、<code>gxi_set_height</code>、<code>gxi_set_gain_auto_continuous</code>、<code>gxi_set_gain</code>函数。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="adjusting-camera-settings"><a class="header" href="#adjusting-camera-settings">Adjusting Camera Settings</a></h1>
+<h2 id="hal-code-example-3"><a class="header" href="#hal-code-example-3">HAL Code Example</a></h2>
+<p>Here we continue with the code from the previous streaming section. Here we adjust some camera parameters, such as setting the camera's resolution, automatic gain, etc., which are set by the <code>gxi_set_width</code>, <code>gxi_set_height</code>, <code>gxi_set_gain_auto_continuous</code>, and <code>gxi_set_gain</code> functions, respectively.</p>
 <pre><pre class="playground"><code class="language-rust">use gxci::hal::device::*;
 use gxci::hal::base::*;
 use gxci::hal::control::analog::*;
@@ -816,78 +796,85 @@ fn main()-&gt;Result&lt;()&gt; {
     Ok(())
 }
 </code></pre></pre>
-<h2 id="hal注意点-3"><a class="header" href="#hal注意点-3">HAL注意点</a></h2>
+<h2 id="hal-attention-3"><a class="header" href="#hal-attention-3">HAL Attention</a></h2>
 <ol>
-<li>注意参数设置范围，例如分辨率的设置范围，增益的设置范围等等，超出相机限制范围会导致函数返回错误</li>
-<li>实际上<code>control</code>这个模块就是按照<code>Galaxy Viewer</code>的设置界面来对应编写了，涵盖了大部分的相机参数设置需求。但是底层都是通过<code>gxi_get_feature_value</code>和<code>gxi_set_feature_value</code>函数来设置的，所以如果有特殊的参数设置需求，可以参考具体文档来直接调用这两个函数</li>
+<li>Pay attention to the setting range of parameters, such as the setting range of resolution, the setting range of gain, etc. Exceeding the camera's limit range will cause the function to return an error.</li>
+<li>In fact, the <code>control</code> module is written according to the setting interface of <code>Galaxy Viewer</code>, covering most of the camera parameter setting needs. However, it is set through the <code>gxi_get_feature_value</code> and <code>gxi_set_feature_value</code> functions at the bottom, so if there are special parameter setting needs, you can refer to the specific document to directly call these two functions.</li>
 </ol>
-<h2 id="raw代码示例-3"><a class="header" href="#raw代码示例-3">RAW代码示例</a></h2>
-<p>哦豁，这个还没写</p>
-<h2 id="raw注意点-3"><a class="header" href="#raw注意点-3">RAW注意点</a></h2>
+<h2 id="raw-code-example-3"><a class="header" href="#raw-code-example-3">RAW Code Example</a></h2>
+<p>Oh, this hasn't been written yet</p>
+<h2 id="raw-attention-3"><a class="header" href="#raw-attention-3">RAW Attention</a></h2>
 <ol>
-<li>有时间再写</li>
+<li>Write when I have time</li>
 </ol>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="更改日志"><a class="header" href="#更改日志">更改日志</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="change-log"><a class="header" href="#change-log">Change Log</a></h1>
 <h2 id="01"><a class="header" href="#01">0.1</a></h2>
 <ul>
-<li><code>raw</code>模块从<code>gxi_hako</code>库迁移过来，然后<code>gxi_hako</code>库进入<code>deprecated</code>状态</li>
-<li>初步实现了<code>hal</code>模块，用于相机的基本操作</li>
+<li>The <code>raw</code> module is migrated from the <code>gxi_hako</code> library, and then the <code>gxi_hako</code> library enters the <code>deprecated</code> state</li>
+<li>The <code>hal</code> module is initially implemented for basic camera operations</li>
 </ul>
 <h2 id="02"><a class="header" href="#02">0.2</a></h2>
 <h3 id="020"><a class="header" href="#020">0.2.0</a></h3>
 <ul>
-<li>安全化了<code>raw</code>模块，现在所有对<code>raw</code>模块的调用都不需要<code>unsafe</code>块</li>
-<li>初步实现了全局错误处理，但是是在<code>raw</code>模块的<code>gx_interface</code>中</li>
-<li>md文档中的图片上云，减少体积</li>
+<li>The <code>raw</code> module is secured, and now all calls to the <code>raw</code> module do not require an <code>unsafe</code> block</li>
+<li>Initial implementation of global error handling, but in the <code>gx_interface</code> of the <code>raw</code> module</li>
+<li>Images in the md document are uploaded to the cloud to reduce volume</li>
 </ul>
 <h3 id="023"><a class="header" href="#023">0.2.3</a></h3>
 <ul>
-<li>重新加入了<code>solo</code>feature</li>
-<li><code>gxci_init_default()</code>可以通过默认路径加载GxIAPI.dll，<code>gxci_check_device_handle()</code>可以检查设备句柄是否有效</li>
+<li>The <code>solo</code> feature is reintroduced</li>
+<li><code>gxci_init_default()</code> can load GxIAPI.dll from the default path, and <code>gxci_check_device_handle()</code> can check whether the device handle is valid</li>
+<li><code>gxi_get_device_handle()</code> is used to obtain the device handle</li>
 </ul>
 <h3 id="024"><a class="header" href="#024">0.2.4</a></h3>
 <ul>
-<li><code>gxi_get_device_handle()</code>用于获取设备句柄</li>
-<li>初始化配置了<code>config</code>模块，但是没有实现任何功能</li>
+<li><code>gxi_get_device_handle()</code> is used to obtain the device handle</li>
+<li>The <code>config</code> module is initialized, but no functions are implemented</li>
 </ul>
 <h2 id="03"><a class="header" href="#03">0.3</a></h2>
 <h3 id="030"><a class="header" href="#030">0.3.0</a></h3>
 <ul>
-<li>为<code>hal</code>添加了<code>check</code>模块，用于检查常见错误</li>
-<li>为<code>hal</code>添加了<code>config</code>模块，用于配置相机参数，但是某些FeatureID缺失，导致部分功能未实现</li>
-<li>为<code>hal</code>添加了<code>control</code>模块，用于控制相机，基于<code>Galaxy Viewer</code>的侧边栏</li>
+<li>Added the <code>check</code> module to <code>hal</code> for checking common errors</li>
+<li>Added the <code>config</code> module to <code>hal</code> for configuring camera parameters, but some FeatureIDs are missing, resulting in some functions not implemented</li>
+<li>Added the <code>control</code> module to <code>hal</code> for camera control, based on the sidebar of <code>Galaxy Viewer</code></li>
 </ul>
 <h3 id="032"><a class="header" href="#032">0.3.2</a></h3>
 <ul>
-<li><code>gxi_use_stream()</code>允许使用自定义流回调函数处理图像数据。您可以在<code>hal_use_stream</code>示例中查看用法</li>
+<li><code>gxi_use_stream()</code> allows the use of custom stream callback functions to process image data. You can see the usage in the <code>hal_use_stream</code> example</li>
 </ul>
 <h3 id="033"><a class="header" href="#033">0.3.3</a></h3>
 <ul>
-<li>re-export了<code>opencv</code>和<code>imageproc</code>，您可以通过<code>gxci::opencv</code>和<code>gxci::imageproc</code>访问这两个模块</li>
+<li>re-exported <code>opencv</code> and <code>imageproc</code>, you can access these two modules through <code>gxci::opencv</code> and <code>gxci::imageproc</code></li>
 </ul>
 <h3 id="034"><a class="header" href="#034">0.3.4</a></h3>
 <ul>
-<li><code>gxi_get_image_as_frame_data()</code>、<code>gxi_get_image_as_raw()</code>和<code>gxi_get_image_as_bytes()</code>提供了使用图像数据的接口，并提供了示例</li>
+<li><code>gxi_get_image_as_frame_data()</code>, <code>gxi_get_image_as_raw()</code> and <code>gxi_get_image_as_bytes()</code> provide interfaces for using image data, and provide examples</li>
 </ul>
 <h3 id="035"><a class="header" href="#035">0.3.5</a></h3>
 <ul>
-<li>独立的<code>error.rs</code>模块和优化的错误处理部分</li>
+<li>Independent <code>error.rs</code> module and optimized error handling section</li>
 </ul>
 <h3 id="036"><a class="header" href="#036">0.3.6</a></h3>
 <ul>
-<li>升级到OpenCV 4.10.0，依赖<code>opencv</code>和升级到最新的<code>0.93.5</code></li>
-<li>基于<code>mdbook</code>搭建了中文与英文的文档站，提供了快速上手的教程，网址为<a href="https://hakochest.github.io/gxci/">https://hakochest.github.io/gxci/</a></li>
+<li>Upgraded to OpenCV 4.10.0, dependent on <code>opencv</code> and upgraded to the latest <code>0.93.5</code></li>
+<li>Built a Chinese and English document site based on <code>mdbook</code>, providing a quick start tutorial, the URL is <a href="https://hakochest.github.io/gxci-en/">https://hakochest.github.io/gxci/</a></li>
 </ul>
-<h2 id="这啥好像是之前写的不过还是留着吧"><a class="header" href="#这啥好像是之前写的不过还是留着吧">这啥，好像是之前写的，不过还是留着吧</a></h2>
-<p>旧版是一个叫做<a href="https://crates.io/crates/gxi_hako">gxi_hako</a>的crate库，里面raw部分和utils部分的不完全实现，现在已经暂时弃用了;</p>
-<p>新版也就是这一款gxci，里面包含了raw、HAL、utils三个部分的实现;</p>
-<p>截至目前，2024年7月11日23点45分，已经完成了<code>features=[&quot;solo&quot;]</code>部分的HAL库编写，多相机的feature还未实现，等再次闲下来再来更新吧(๑˃ᴗ˂)ﻭ</p>
-<p>2024年9月8日21点15分，2.0更新！主要是错误处理和安全化，现在所有的库函数都是安全的了，同时建立了非常规范和健壮的错误处理。此外也更新了所有例子，消除了所有的Warning。</p>
-<p>2024年9月19日16点09分，3.0更新！主要是增加了config模块，现在所有的HAL和raw-binding的config模块都已经实现了，你可以调节宽高、增益、白平衡以及一切已实现的相机参数！但是由于inc中部分FeatureID的缺失，所以config模块还有一些函数没有实现。此外，增加了control模块，这是基于Galaxy Viewer的侧边栏常用部分的封装。</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="路线图"><a class="header" href="#路线图">路线图</a></h1>
-<p>0.4计划更新多相机支持，尝试解决<code>imageproc</code>的依赖问题</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="附录"><a class="header" href="#附录">附录</a></h1>
-<h2 id="gxiapidll的方法实现情况"><a class="header" href="#gxiapidll的方法实现情况">GxIAPI.dll的方法实现情况</a></h2>
+<h2 id="whats-this-it-seems-like-it-was-written-before-but-lets-keep-it"><a class="header" href="#whats-this-it-seems-like-it-was-written-before-but-lets-keep-it">What's this? It seems like it was written before, but let's keep it</a></h2>
+<p>The old version is a crate library called <a href="https://crates.io/crates/gxi_hako">gxi_hako</a>, which is not completely implemented in the raw and utils parts, and is now temporarily abandoned;</p>
+<p>The new version is this gxci, which contains the implementation of the raw, HAL, and utils parts;</p>
+<p>As of now, 11:45 PM on July 11, 2024, the HAL library writing part of <code>features=[&quot;solo&quot;]</code> has been completed, and the multi-camera feature has not been implemented yet. Let's update it when we are free again(๑˃ᴗ˂)ﻭ</p>
+<p>September 8, 2024, 9:15 PM, 2.0 update! Mainly error handling and security, now all library functions are safe, and a very standardized and robust error handling has been established. In addition, all examples have been updated, eliminating all warnings.</p>
+<p>September 19, 2024, 4:09 PM, 3.0 update! Mainly added the config module, now all HAL and raw-binding config modules have been implemented, you can adjust width, height, gain, white balance and all implemented camera parameters! But due to the lack of some FeatureID in inc, some functions in the config module have not been implemented. In addition, the control module has been added, which is an encapsulation of the sidebar commonly used in Galaxy Viewer.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="roadmap"><a class="header" href="#roadmap">Roadmap</a></h1>
+<h2 id="04"><a class="header" href="#04">0.4</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Add multi-camera support</li>
+<li><input disabled="" type="checkbox"/>
+Try to solve the dependency problem of <code>imageproc</code></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="appendix"><a class="header" href="#appendix">Appendix</a></h1>
+<h2 id="gxiapidll-method-implementation-status"><a class="header" href="#gxiapidll-method-implementation-status">GxIAPI.dll method implementation status</a></h2>
 <ul>
 <li><input disabled="" type="checkbox" checked=""/>
 302    0 0001C020 GXCloseDevice</li>
@@ -896,7 +883,7 @@ fn main()-&gt;Result&lt;()&gt; {
 <li><input disabled="" type="checkbox" checked=""/>
 700    2 0001E9E0 GXExportConfigFile</li>
 <li><input disabled="" type="checkbox"/>
-707    3 0001EA50 GXExportConfigFileW  ?在开发文档里面没介绍这个函数</li>
+707    3 0001EA50 GXExportConfigFileW  ?This function is not mentioned in the development document</li>
 <li><input disabled="" type="checkbox" checked=""/>
 602    4 0001E920 GXFlushEvent</li>
 <li><input disabled="" type="checkbox" checked=""/>
@@ -952,7 +939,7 @@ fn main()-&gt;Result&lt;()&gt; {
 <li><input disabled="" type="checkbox" checked=""/>
 701   1E 0001EAC0 GXImportConfigFile</li>
 <li><input disabled="" type="checkbox"/>
-708   1F 0001EB40 GXImportConfigFileW  ?在开发文档里面没介绍这个函数</li>
+708   1F 0001EB40 GXImportConfigFileW  ?This function is not mentioned in the development document</li>
 <li><input disabled="" type="checkbox" checked=""/>
 100   20 0001BB70 GXInitLib</li>
 <li><input disabled="" type="checkbox" checked=""/>
@@ -1008,7 +995,7 @@ fn main()-&gt;Result&lt;()&gt; {
 <li><input disabled="" type="checkbox"/>
 711   3A 0001F450 GXWriteRemoteDevicePortStacked (Windows Only)</li>
 </ul>
-<h2 id="hal模块函数实现情况"><a class="header" href="#hal模块函数实现情况">HAL模块函数实现情况</a></h2>
+<h2 id="hal-module-function-implementation-status"><a class="header" href="#hal-module-function-implementation-status">HAL module function implementation status</a></h2>
 <ul>
 <li>base
 <ul>
@@ -1115,7 +1102,7 @@ gxi_get_buffer()</li>
 gxi_set_buffer()</li>
 </ul>
 </li>
-<li>control (这里只列出了函数的数量，这部分的列表太长了，所以请查看<a href="./control-list.html">ControlList</a> markdown)
+<li>control (Here only the number of functions is listed, the list is too long, so please refer to the <a href="./control-list.html">ControlList</a> markdown)
 <ul>
 <li>device             17</li>
 <li>image_format       27+</li>
@@ -1124,7 +1111,7 @@ gxi_set_buffer()</li>
 <li>analog             40+ </li>
 <li>transport_layer    1 </li>
 <li>user_set           10 </li>
-<li>chunk_data         8 </li>
+<li>chunk_data         8</li>
 </ul>
 </li>
 <li>event
@@ -1134,14 +1121,14 @@ gxi_set_buffer()</li>
 </li>
 <li>network
 <ul>
-<li>todo!()</li>
+<li>todo!() </li>
 </ul>
 </li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="控制函数列表"><a class="header" href="#控制函数列表">控制函数列表</a></h1>
-<p>这部分的列表太长了，所以我把它分成了这个文档。</p>
-<p>某些枚举选择函数将在未来实现，但应该不是在0.3。</p>
-<p>并且很多FeatureID都缺失了，所以很多函数都没有实现。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="list-of-control-functions"><a class="header" href="#list-of-control-functions">List of Control Functions</a></h1>
+<p>This part's list is too long, so I devided it into this document.</p>
+<p>The special enum selection functions will be implemented in the future, but not 0.3.</p>
+<p>And lots of feature_id are missing, so lots of functions are not implemented.</p>
 <ul>
 <li>control 
 <ul>
