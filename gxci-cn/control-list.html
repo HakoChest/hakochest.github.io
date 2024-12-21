@@ -1,0 +1,659 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>控制列表</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="favicon.svg">
+                        <link rel="shortcut icon" href="favicon.png">
+                <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+                <link rel="stylesheet" href="css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+                <link rel="stylesheet" href="theme/pagetoc.css">
+        
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> 简介</a></li><li class="chapter-item expanded "><a href="getting-started/index.html"><strong aria-hidden="true">2.</strong> 快速开始</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="getting-started/migration.html"><strong aria-hidden="true">2.1.</strong> 从旧版本迁移</a></li><li class="chapter-item expanded "><a href="getting-started/prerequisites.html"><strong aria-hidden="true">2.2.</strong> 预配置项</a></li><li class="chapter-item expanded "><a href="getting-started/installation.html"><strong aria-hidden="true">2.3.</strong> 安装</a></li><li class="chapter-item expanded "><a href="getting-started/list-your-devices.html"><strong aria-hidden="true">2.4.</strong> 列举你的设备</a></li><li class="chapter-item expanded "><a href="getting-started/take-a-image.html"><strong aria-hidden="true">2.5.</strong> 采一张图</a></li><li class="chapter-item expanded "><a href="getting-started/streaming.html"><strong aria-hidden="true">2.6.</strong> 推流</a></li><li class="chapter-item expanded "><a href="getting-started/adjusting-camera-settings.html"><strong aria-hidden="true">2.7.</strong> 调整相机参数</a></li></ol></li><li class="chapter-item expanded "><a href="change-log.html"><strong aria-hidden="true">3.</strong> 更改日志</a></li><li class="chapter-item expanded "><a href="roadmap.html"><strong aria-hidden="true">4.</strong> 路线图</a></li><li class="chapter-item expanded "><a href="appendix.html"><strong aria-hidden="true">5.</strong> 附录</a></li><li class="chapter-item expanded "><a href="control-list.html" class="active"><strong aria-hidden="true">6.</strong> 控制列表</a></li><li class="chapter-item expanded "><a href="ending.html"><strong aria-hidden="true">7.</strong> 后记</a></li><li class="chapter-item expanded "><a href="reference.html"><strong aria-hidden="true">8.</strong> 参考</a></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                                                <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                        
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <p>This part's list is too long, so I devided it into this document.</p>
+<p>The special enum selection functions will be implemented in the future, but not 0.3.</p>
+<p>And lots of feature_id are missing, so lots of functions are not implemented.</p>
+<ul>
+<li>control 
+<ul>
+<li>device
+<ul>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_device_vendor_name()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_device_model_name()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_device_version()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_device_firmware_version()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_device_serial_number()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_factory_setting_version()</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_device_user_id()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_device_user_id()</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_device_link_selector()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_device_link_selector()</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_device_link_throughput_limit_mode()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_device_link_throughput_limit_mode()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_device_link_throughput_limit_mode_off()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_device_link_throughput_limit_mode_on()</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_device_link_throughput_limit()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_device_link_throughput_limit()</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_device_link_current_throughput()</li>
+<li></li>
+<li>todo!()</li>
+</ul>
+</li>
+<li>image_format
+<ul>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_sensor_width()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_sensor_height()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_max_width()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_max_height()</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_width()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_width()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_height()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_height()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_offset_x()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_offset_x()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_offset_y()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_offset_y()</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_region_selector()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_region_selector()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_region_selector_region0()</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_pixel_format()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_pixel_format()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_pixel_format_bayer_rgb()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_pixel_format_bayer_rg10()</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_pixel_size()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_pixel_color_filter()</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_test_pattern_generator_selector()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_test_pattern_generator_selector()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_test_pattern_generator_selector_region0()</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_test_pattern()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_test_pattern()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_test_pattern_off()</li>
+<li><input disabled="" type="checkbox"/>
+gxi_set_test_pattern_gray_frame_ramp_moving()</li>
+<li><input disabled="" type="checkbox"/>
+gxi_set_test_pattern_slant_line_moving()</li>
+<li><input disabled="" type="checkbox"/>
+gxi_set_test_pattern_slant_line()</li>
+<li></li>
+<li>todo!()</li>
+</ul>
+</li>
+<li>acquisition
+<ul>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_acquisition_mode()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_acquisition_mode()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_acquisition_mode_continuous()</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_acquisition_start()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_acquisition_stop()</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_trigger_selector()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_trigger_selector()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_trigger_selector_frame_start()</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_trigger_mode()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_trigger_mode()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_trigger_mode_off()</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_trigger_source()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_trigger_source()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_trigger_source_software()</li>
+<li><input disabled="" type="checkbox"/>
+gxi_set_trigger_source_line0()</li>
+<li><input disabled="" type="checkbox"/>
+gxi_set_trigger_source_line2()</li>
+<li><input disabled="" type="checkbox"/>
+gxi_set_trigger_source_line3()</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_trigger_activation()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_trigger_activation()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_trigger_activation_falling_edge()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_trigger_activation_rising_edge()</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_trigger_delay()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_trigger_delay()</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_trigger_filter_rasing_edge()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_trigger_filter_rasing_edge()</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_trigger_filter_falling_edge()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_trigger_filter_falling_edge()</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_exposure_mode()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_exposure_mode()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_exposure_mode_timed()</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_exposure_time()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_exposure_time()</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_exposure_auto()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_exposure_auto()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_exposure_auto_off()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_exposure_auto_continuous()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_exposure_auto_once()</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_auto_exposure_time_min()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_auto_exposure_time_min()</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_auto_exposure_time_max()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_auto_exposure_time_min() </li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_aaroi_width()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_aaroi_width()</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_aaroi_height()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_aaroi_height()</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_aaroi_offset_x()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_aaroi_offset_x()</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_aaroi_offset_y()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_aaroi_offset_y()</li>
+<li></li>
+<li><input disabled="" type="checkbox"/>
+gxi_get_expected_gray_value()</li>
+<li><input disabled="" type="checkbox"/>
+gxi_set_expected_gray_value()</li>
+<li></li>
+<li>todo!()</li>
+</ul>
+</li>
+<li>digital_io (But MISSING this module's FEATURE_ID)
+<ul>
+<li><input disabled="" type="checkbox"/>
+gxi_get_line_selector()</li>
+<li><input disabled="" type="checkbox"/>
+gxi_set_line_selector()</li>
+<li><input disabled="" type="checkbox"/>
+gxi_set_line_selector_line0()</li>
+<li><input disabled="" type="checkbox"/>
+gxi_set_line_selector_line1()</li>
+<li><input disabled="" type="checkbox"/>
+gxi_set_line_selector_line2()</li>
+<li><input disabled="" type="checkbox"/>
+gxi_set_line_selector_line3()</li>
+<li></li>
+<li><input disabled="" type="checkbox"/>
+gxi_get_line_mode()</li>
+<li><input disabled="" type="checkbox"/>
+gxi_set_line_mode()</li>
+<li><input disabled="" type="checkbox"/>
+gxi_set_line_mode_input()</li>
+<li></li>
+<li><input disabled="" type="checkbox"/>
+gxi_get_line_inverter()</li>
+<li><input disabled="" type="checkbox"/>
+gxi_set_line_inverter()</li>
+<li></li>
+<li><input disabled="" type="checkbox"/>
+gxi_get_line_source()</li>
+<li></li>
+<li><input disabled="" type="checkbox"/>
+gxi_get_line_status()</li>
+<li></li>
+<li><input disabled="" type="checkbox"/>
+gxi_get_line_status_all()</li>
+<li></li>
+<li><input disabled="" type="checkbox"/>
+gxi_get_user_output_selector()</li>
+<li><input disabled="" type="checkbox"/>
+gxi_set_user_output_selector()</li>
+<li><input disabled="" type="checkbox"/>
+gxi_set_user_output_selector_user_output0()</li>
+<li><input disabled="" type="checkbox"/>
+gxi_set_user_output_selector_user_output1()</li>
+<li><input disabled="" type="checkbox"/>
+gxi_set_user_output_selector_user_output2()</li>
+<li></li>
+<li><input disabled="" type="checkbox"/>
+gxi_get_user_output_value()</li>
+<li><input disabled="" type="checkbox"/>
+gxi_set_user_output_value()</li>
+<li>todo!()</li>
+</ul>
+</li>
+<li>analog
+<ul>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_gain_selector()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_gain_selector()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_gain_selector_analog_all()</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_gain()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_gain()</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_gain_auto()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_gain_auto()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_gain_auto_off()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_gain_auto_continuous()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_gain_auto_once()</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_auto_gain_min()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_auto_gain_min()</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_auto_gain_max()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_auto_gain_max()</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_balance_ratio_selector()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_balance_ratio_selector()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_balance_ratio_selector_red()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_balance_ratio_selector_green()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_balance_ratio_selector_blue() </li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_balance_ratio()</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_balance_white_auto()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_balance_white_auto()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_balance_white_auto_off()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_balance_white_auto_continuous()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_balance_white_auto_once()</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_awb_lamp_house()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_awb_lamp_house()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_awb_lamp_house_adaptive()</li>
+<li><input disabled="" type="checkbox"/>
+todo!(&quot;more variants&quot;)</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_awbroi_width()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_awbroi_width()</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_awbroi_height()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_awbroi_height()</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_awbroi_offset_x()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_awbroi_offset_x()</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_awbroi_offset_y()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_awbroi_offset_y()</li>
+<li></li>
+<li>todo!()</li>
+</ul>
+</li>
+<li>transport_layer
+<ul>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_payload_size()</li>
+<li></li>
+<li>todo!()</li>
+</ul>
+</li>
+<li>user_set
+<ul>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_user_set_selector()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_user_set_selector()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_user_set_selector_default()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_user_set_selector_user_set0()</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_user_set_load()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_user_set_save()</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_user_set_default()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_user_set_default()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_user_set_default_default()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_user_set_default_user_set0()</li>
+<li></li>
+<li>todo!()</li>
+</ul>
+</li>
+<li>chunk_data
+<ul>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_chunk_mode_active()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_chunk_mode_active()</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_chunk_selector()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_chunk_selector()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_chunk_selector_frame_id()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_chunk_selector_timestamp()</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_chunk_enable()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_chunk_enable()</li>
+<li></li>
+<li><input disabled="" type="checkbox"/>
+gxi_get_chunk_timestamp()</li>
+<li></li>
+<li>todo!()</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="appendix.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="ending.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="appendix.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+                                    <a rel="next" href="ending.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+                <script type="text/javascript" src="theme/pagetoc.js"></script>
+        
+        
+    </body>
+</html>

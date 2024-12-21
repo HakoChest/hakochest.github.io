@@ -1,0 +1,453 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>附录</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="favicon.svg">
+                        <link rel="shortcut icon" href="favicon.png">
+                <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+                <link rel="stylesheet" href="css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+                <link rel="stylesheet" href="theme/pagetoc.css">
+        
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> 简介</a></li><li class="chapter-item expanded "><a href="getting-started/index.html"><strong aria-hidden="true">2.</strong> 快速开始</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="getting-started/migration.html"><strong aria-hidden="true">2.1.</strong> 从旧版本迁移</a></li><li class="chapter-item expanded "><a href="getting-started/prerequisites.html"><strong aria-hidden="true">2.2.</strong> 预配置项</a></li><li class="chapter-item expanded "><a href="getting-started/installation.html"><strong aria-hidden="true">2.3.</strong> 安装</a></li><li class="chapter-item expanded "><a href="getting-started/list-your-devices.html"><strong aria-hidden="true">2.4.</strong> 列举你的设备</a></li><li class="chapter-item expanded "><a href="getting-started/take-a-image.html"><strong aria-hidden="true">2.5.</strong> 采一张图</a></li><li class="chapter-item expanded "><a href="getting-started/streaming.html"><strong aria-hidden="true">2.6.</strong> 推流</a></li><li class="chapter-item expanded "><a href="getting-started/adjusting-camera-settings.html"><strong aria-hidden="true">2.7.</strong> 调整相机参数</a></li></ol></li><li class="chapter-item expanded "><a href="change-log.html"><strong aria-hidden="true">3.</strong> 更改日志</a></li><li class="chapter-item expanded "><a href="roadmap.html"><strong aria-hidden="true">4.</strong> 路线图</a></li><li class="chapter-item expanded "><a href="appendix.html" class="active"><strong aria-hidden="true">5.</strong> 附录</a></li><li class="chapter-item expanded "><a href="control-list.html"><strong aria-hidden="true">6.</strong> 控制列表</a></li><li class="chapter-item expanded "><a href="ending.html"><strong aria-hidden="true">7.</strong> 后记</a></li><li class="chapter-item expanded "><a href="reference.html"><strong aria-hidden="true">8.</strong> 参考</a></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                                                <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                        
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="附录"><a class="header" href="#附录">附录</a></h1>
+<h2 id="gxiapidll的方法实现情况"><a class="header" href="#gxiapidll的方法实现情况">GxIAPI.dll的方法实现情况</a></h2>
+<ul>
+<li><input disabled="" type="checkbox" checked=""/>
+302    0 0001C020 GXCloseDevice</li>
+<li><input disabled="" type="checkbox" checked=""/>
+101    1 0001BBC0 GXCloseLib</li>
+<li><input disabled="" type="checkbox" checked=""/>
+700    2 0001E9E0 GXExportConfigFile</li>
+<li><input disabled="" type="checkbox"/>
+707    3 0001EA50 GXExportConfigFileW  ?在开发文档里面没介绍这个函数</li>
+<li><input disabled="" type="checkbox" checked=""/>
+602    4 0001E920 GXFlushEvent</li>
+<li><input disabled="" type="checkbox" checked=""/>
+505    5 0001E6E0 GXFlushQueue</li>
+<li><input disabled="" type="checkbox" checked=""/>
+201    6 0001BDE0 GXGetAllDeviceBaseInfo</li>
+<li><input disabled="" type="checkbox" checked=""/>
+414    7 0001D5F0 GXGetBool</li>
+<li><input disabled="" type="checkbox" checked=""/>
+419    8 0001E080 GXGetBuffer</li>
+<li><input disabled="" type="checkbox" checked=""/>
+418    9 0001DF50 GXGetBufferLength</li>
+<li><input disabled="" type="checkbox"/>
+205    A 0001BE80 GXGetDeviceIPInfo</li>
+<li><input disabled="" type="checkbox"/>
+423    B 0001C0B0 GXGetDevicePersistentIpAddress</li>
+<li><input disabled="" type="checkbox" checked=""/>
+411    C 0001D3C0 GXGetEnum</li>
+<li><input disabled="" type="checkbox" checked=""/>
+410    D 0001CF50 GXGetEnumDescription</li>
+<li><input disabled="" type="checkbox" checked=""/>
+409    E 0001CE20 GXGetEnumEntryNums</li>
+<li><input disabled="" type="checkbox" checked=""/>
+506    F 0001E970 GXGetEventNumInQueue</li>
+<li><input disabled="" type="checkbox" checked=""/>
+422   10 0001C1E0 GXGetFeatureName</li>
+<li><input disabled="" type="checkbox" checked=""/>
+408   11 0001CCF0 GXGetFloat</li>
+<li><input disabled="" type="checkbox" checked=""/>
+406   12 0001C960 GXGetFloatRange</li>
+<li><input disabled="" type="checkbox" checked=""/>
+504   13 0001E670 GXGetImage</li>
+<li><input disabled="" type="checkbox" checked=""/>
+404   14 0001C730 GXGetInt</li>
+<li><input disabled="" type="checkbox" checked=""/>
+403   15 0001C590 GXGetIntRange</li>
+<li><input disabled="" type="checkbox" checked=""/>
+204   16 0001BC40 GXGetLastError</li>
+<li><input disabled="" type="checkbox"/>
+709   17 0001F370 GXGetOptimalPacketSize  (Windows Only)</li>
+<li><input disabled="" type="checkbox" checked=""/>
+416   18 0001DAA0 GXGetString</li>
+<li><input disabled="" type="checkbox" checked=""/>
+415   19 0001D820 GXGetStringLength</li>
+<li><input disabled="" type="checkbox" checked=""/>
+425   1A 0001D970 GXGetStringMaxLength</li>
+<li><input disabled="" type="checkbox"/>
+705   1B 0001EEF0 GXGigEForceIp</li>
+<li><input disabled="" type="checkbox"/>
+704   1C 0001ECC0 GXGigEIpConfiguration</li>
+<li><input disabled="" type="checkbox"/>
+706   1D 0001F170 GXGigEResetDevice</li>
+<li><input disabled="" type="checkbox" checked=""/>
+701   1E 0001EAC0 GXImportConfigFile</li>
+<li><input disabled="" type="checkbox"/>
+708   1F 0001EB40 GXImportConfigFileW  ?在开发文档里面没介绍这个函数</li>
+<li><input disabled="" type="checkbox" checked=""/>
+100   20 0001BB70 GXInitLib</li>
+<li><input disabled="" type="checkbox" checked=""/>
+400   21 0001C260 GXIsImplemented</li>
+<li><input disabled="" type="checkbox" checked=""/>
+401   22 0001C370 GXIsReadable</li>
+<li><input disabled="" type="checkbox" checked=""/>
+402   23 0001C480 GXIsWritable</li>
+<li><input disabled="" type="checkbox" checked=""/>
+301   24 0001BFB0 GXOpenDevice</li>
+<li><input disabled="" type="checkbox" checked=""/>
+300   25 0001BF10 GXOpenDeviceByIndex</li>
+<li><input disabled="" type="checkbox"/>
+702   26 0001EBC0 GXReadRemoteDevicePort</li>
+<li><input disabled="" type="checkbox"/>
+710   27 0001F3E0 GXReadRemoteDevicePortStacked</li>
+<li><input disabled="" type="checkbox" checked=""/>
+500   28 0001E5B0 GXRegisterCaptureCallback</li>
+<li><input disabled="" type="checkbox" checked=""/>
+600   29 0001E730 GXRegisterDeviceOfflineCallback</li>
+<li><input disabled="" type="checkbox" checked=""/>
+603   2A 0001E820 GXRegisterFeatureCallback</li>
+<li><input disabled="" type="checkbox" checked=""/>
+421   2B 0001E480 GXSendCommand</li>
+<li><input disabled="" type="checkbox" checked=""/>
+507   2C 0001F100 GXSetAcqusitionBufferNumber</li>
+<li><input disabled="" type="checkbox" checked=""/>
+413   2D 0001D720 GXSetBool</li>
+<li><input disabled="" type="checkbox" checked=""/>
+420   2E 0001E350 GXSetBuffer</li>
+<li><input disabled="" type="checkbox"/>
+424   2F 0001C160 GXSetDevicePersistentIpAddress</li>
+<li><input disabled="" type="checkbox" checked=""/>
+412   30 0001D4F0 GXSetEnum</li>
+<li><input disabled="" type="checkbox" checked=""/>
+407   31 0001CBE0 GXSetFloat</li>
+<li><input disabled="" type="checkbox" checked=""/>
+405   32 0001C860 GXSetInt</li>
+<li><input disabled="" type="checkbox" checked=""/>
+417   33 0001DDC0 GXSetString</li>
+<li><input disabled="" type="checkbox" checked=""/>
+501   34 0001E620 GXUnregisterCaptureCallback</li>
+<li><input disabled="" type="checkbox" checked=""/>
+601   35 0001E7B0 GXUnregisterDeviceOfflineCallback</li>
+<li><input disabled="" type="checkbox" checked=""/>
+604   36 0001E8B0 GXUnregisterFeatureCallback</li>
+<li><input disabled="" type="checkbox" checked=""/>
+206   37 0001BD70 GXUpdateAllDeviceList</li>
+<li><input disabled="" type="checkbox" checked=""/>
+200   38 0001BD00 GXUpdateDeviceList</li>
+<li><input disabled="" type="checkbox"/>
+703   39 0001EC40 GXWriteRemoteDevicePort</li>
+<li><input disabled="" type="checkbox"/>
+711   3A 0001F450 GXWriteRemoteDevicePortStacked (Windows Only)</li>
+</ul>
+<h2 id="hal模块函数实现情况"><a class="header" href="#hal模块函数实现情况">HAL模块函数实现情况</a></h2>
+<ul>
+<li>base
+<ul>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_check()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxci_init()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxci_init_default()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxci_close()</li>
+</ul>
+</li>
+<li>device
+<ul>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_count_devices()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_list_devices()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_open_device()          // solo feature</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_close_device()         // solo feature</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_check_device_handle()  // solo feature</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_send_command()          // solo feature</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_image()             // solo feature</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_open_stream()           // solo feature</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_open_stream_interval()  // solo feature</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_close_stream()          // solo feature</li>
+</ul>
+</li>
+<li>check
+<ul>
+<li><input disabled="" type="checkbox" checked=""/>
+check_status()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+check_status_with_ok_fn()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+check_gx_status()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+check_gx_status_with_ok_fn()</li>
+</ul>
+</li>
+<li>config
+<ul>
+<li>Here are the HAL functions</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_feature_value()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_feature_value()</li>
+<li></li>
+<li>Following are the raw-wapper functions</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_feature_name()</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_int_range()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_int()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_int()</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_float_range()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_float()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_float()</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_enum_entry_nums()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_enum_description()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_enum()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_enum()</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_bool()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_bool()</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_string_length()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_string_max_length()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_string()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_string()</li>
+<li></li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_buffer_length()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_get_buffer()</li>
+<li><input disabled="" type="checkbox" checked=""/>
+gxi_set_buffer()</li>
+</ul>
+</li>
+</ul>
+<!-- - control (Here just listed the number of functions, this part's list is too long, so just see [ControlList](./ControlList.md) markdown) -->
+<ul>
+<li>control (这里只列出了函数的数量，这部分的列表太长了，所以请查看<a href="./control-list.html">ControlList</a> markdown)
+<ul>
+<li>device             17</li>
+<li>image_format       27+</li>
+<li>acquisition        46+</li>
+<li>digital_io         0      (But MISSING this module's FEATURE_ID)</li>
+<li>analog             40+ </li>
+<li>transport_layer    1 </li>
+<li>user_set           10 </li>
+<li>chunk_data         8 </li>
+</ul>
+</li>
+<li>event
+<ul>
+<li>todo!()</li>
+</ul>
+</li>
+<li>network
+<ul>
+<li>todo!()</li>
+</ul>
+</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="roadmap.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="control-list.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="roadmap.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+                                    <a rel="next" href="control-list.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+                <script type="text/javascript" src="theme/pagetoc.js"></script>
+        
+        
+    </body>
+</html>

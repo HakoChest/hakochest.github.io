@@ -1,0 +1,255 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>更改日志</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="favicon.svg">
+                        <link rel="shortcut icon" href="favicon.png">
+                <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+                <link rel="stylesheet" href="css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+                <link rel="stylesheet" href="theme/pagetoc.css">
+        
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> 简介</a></li><li class="chapter-item expanded "><a href="getting-started/index.html"><strong aria-hidden="true">2.</strong> 快速开始</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="getting-started/migration.html"><strong aria-hidden="true">2.1.</strong> 从旧版本迁移</a></li><li class="chapter-item expanded "><a href="getting-started/prerequisites.html"><strong aria-hidden="true">2.2.</strong> 预配置项</a></li><li class="chapter-item expanded "><a href="getting-started/installation.html"><strong aria-hidden="true">2.3.</strong> 安装</a></li><li class="chapter-item expanded "><a href="getting-started/list-your-devices.html"><strong aria-hidden="true">2.4.</strong> 列举你的设备</a></li><li class="chapter-item expanded "><a href="getting-started/take-a-image.html"><strong aria-hidden="true">2.5.</strong> 采一张图</a></li><li class="chapter-item expanded "><a href="getting-started/streaming.html"><strong aria-hidden="true">2.6.</strong> 推流</a></li><li class="chapter-item expanded "><a href="getting-started/adjusting-camera-settings.html"><strong aria-hidden="true">2.7.</strong> 调整相机参数</a></li></ol></li><li class="chapter-item expanded "><a href="change-log.html" class="active"><strong aria-hidden="true">3.</strong> 更改日志</a></li><li class="chapter-item expanded "><a href="roadmap.html"><strong aria-hidden="true">4.</strong> 路线图</a></li><li class="chapter-item expanded "><a href="appendix.html"><strong aria-hidden="true">5.</strong> 附录</a></li><li class="chapter-item expanded "><a href="control-list.html"><strong aria-hidden="true">6.</strong> 控制列表</a></li><li class="chapter-item expanded "><a href="ending.html"><strong aria-hidden="true">7.</strong> 后记</a></li><li class="chapter-item expanded "><a href="reference.html"><strong aria-hidden="true">8.</strong> 参考</a></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                                                <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                        
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="更改日志"><a class="header" href="#更改日志">更改日志</a></h1>
+<h2 id="01"><a class="header" href="#01">0.1</a></h2>
+<ul>
+<li><code>raw</code>模块从<code>gxi_hako</code>库迁移过来，然后<code>gxi_hako</code>库进入<code>deprecated</code>状态</li>
+<li>初步实现了<code>hal</code>模块，用于相机的基本操作</li>
+</ul>
+<h2 id="02"><a class="header" href="#02">0.2</a></h2>
+<h3 id="020"><a class="header" href="#020">0.2.0</a></h3>
+<ul>
+<li>安全化了<code>raw</code>模块，现在所有对<code>raw</code>模块的调用都不需要<code>unsafe</code>块</li>
+<li>初步实现了全局错误处理，但是是在<code>raw</code>模块的<code>gx_interface</code>中</li>
+<li>md文档中的图片上云，减少体积</li>
+</ul>
+<h3 id="023"><a class="header" href="#023">0.2.3</a></h3>
+<ul>
+<li>重新加入了<code>solo</code>feature</li>
+<li><code>gxci_init_default()</code>可以通过默认路径加载GxIAPI.dll，<code>gxci_check_device_handle()</code>可以检查设备句柄是否有效</li>
+</ul>
+<h3 id="024"><a class="header" href="#024">0.2.4</a></h3>
+<ul>
+<li><code>gxi_get_device_handle()</code>用于获取设备句柄</li>
+<li>初始化配置了<code>config</code>模块，但是没有实现任何功能</li>
+</ul>
+<h2 id="03"><a class="header" href="#03">0.3</a></h2>
+<h3 id="030"><a class="header" href="#030">0.3.0</a></h3>
+<ul>
+<li>为<code>hal</code>添加了<code>check</code>模块，用于检查常见错误</li>
+<li>为<code>hal</code>添加了<code>config</code>模块，用于配置相机参数，但是某些FeatureID缺失，导致部分功能未实现</li>
+<li>为<code>hal</code>添加了<code>control</code>模块，用于控制相机，基于<code>Galaxy Viewer</code>的侧边栏</li>
+</ul>
+<h3 id="032"><a class="header" href="#032">0.3.2</a></h3>
+<ul>
+<li><code>gxi_use_stream()</code>允许使用自定义流回调函数处理图像数据。您可以在<code>hal_use_stream</code>示例中查看用法</li>
+</ul>
+<h3 id="033"><a class="header" href="#033">0.3.3</a></h3>
+<ul>
+<li>re-export了<code>opencv</code>和<code>imageproc</code>，您可以通过<code>gxci::opencv</code>和<code>gxci::imageproc</code>访问这两个模块</li>
+</ul>
+<h3 id="034"><a class="header" href="#034">0.3.4</a></h3>
+<ul>
+<li><code>gxi_get_image_as_frame_data()</code>、<code>gxi_get_image_as_raw()</code>和<code>gxi_get_image_as_bytes()</code>提供了使用图像数据的接口，并提供了示例</li>
+</ul>
+<h3 id="035"><a class="header" href="#035">0.3.5</a></h3>
+<ul>
+<li>独立的<code>error.rs</code>模块和优化的错误处理部分</li>
+</ul>
+<h3 id="036"><a class="header" href="#036">0.3.6</a></h3>
+<ul>
+<li>升级到OpenCV 4.10.0，依赖<code>opencv</code>和升级到最新的<code>0.93.5</code></li>
+<li>基于<code>mdbook</code>搭建了中文与英文的文档站，提供了快速上手的教程，网址为<a href="https://hakochest.github.io/gxci/">https://hakochest.github.io/gxci/</a></li>
+</ul>
+<h2 id="这啥好像是之前写的不过还是留着吧"><a class="header" href="#这啥好像是之前写的不过还是留着吧">这啥，好像是之前写的，不过还是留着吧</a></h2>
+<p>旧版是一个叫做<a href="https://crates.io/crates/gxi_hako">gxi_hako</a>的crate库，里面raw部分和utils部分的不完全实现，现在已经暂时弃用了;</p>
+<p>新版也就是这一款gxci，里面包含了raw、HAL、utils三个部分的实现;</p>
+<p>截至目前，2024年7月11日23点45分，已经完成了<code>features=[&quot;solo&quot;]</code>部分的HAL库编写，多相机的feature还未实现，等再次闲下来再来更新吧(๑˃ᴗ˂)ﻭ</p>
+<p>2024年9月8日21点15分，2.0更新！主要是错误处理和安全化，现在所有的库函数都是安全的了，同时建立了非常规范和健壮的错误处理。此外也更新了所有例子，消除了所有的Warning。</p>
+<p>2024年9月19日16点09分，3.0更新！主要是增加了config模块，现在所有的HAL和raw-binding的config模块都已经实现了，你可以调节宽高、增益、白平衡以及一切已实现的相机参数！但是由于inc中部分FeatureID的缺失，所以config模块还有一些函数没有实现。此外，增加了control模块，这是基于Galaxy Viewer的侧边栏常用部分的封装。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="getting-started/adjusting-camera-settings.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="roadmap.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="getting-started/adjusting-camera-settings.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+                                    <a rel="next" href="roadmap.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+                <script type="text/javascript" src="theme/pagetoc.js"></script>
+        
+        
+    </body>
+</html>
