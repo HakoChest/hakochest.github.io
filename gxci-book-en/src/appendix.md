@@ -1,12 +1,11 @@
-# 附录
+# Appendix
 
-## GxIAPI.dll的方法实现情况
-
+## GxIAPI.dll method implementation status
 
 - [x] 302    0 0001C020 GXCloseDevice
 - [x] 101    1 0001BBC0 GXCloseLib
 - [x] 700    2 0001E9E0 GXExportConfigFile
-- [ ] 707    3 0001EA50 GXExportConfigFileW  ?在开发文档里面没介绍这个函数
+- [ ] 707    3 0001EA50 GXExportConfigFileW  ?This function is not mentioned in the development document
 - [x] 602    4 0001E920 GXFlushEvent
 - [x] 505    5 0001E6E0 GXFlushQueue
 - [x] 201    6 0001BDE0 GXGetAllDeviceBaseInfo
@@ -34,7 +33,7 @@
 - [ ] 704   1C 0001ECC0 GXGigEIpConfiguration
 - [ ] 706   1D 0001F170 GXGigEResetDevice
 - [x] 701   1E 0001EAC0 GXImportConfigFile
-- [ ] 708   1F 0001EB40 GXImportConfigFileW  ?在开发文档里面没介绍这个函数
+- [ ] 708   1F 0001EB40 GXImportConfigFileW  ?This function is not mentioned in the development document
 - [x] 100   20 0001BB70 GXInitLib
 - [x] 400   21 0001C260 GXIsImplemented
 - [x] 401   22 0001C370 GXIsReadable
@@ -63,7 +62,7 @@
 - [ ] 703   39 0001EC40 GXWriteRemoteDevicePort
 - [ ] 711   3A 0001F450 GXWriteRemoteDevicePortStacked (Windows Only)
 
-## HAL模块函数实现情况
+## HAL module function implementation status
 
 - base
   - [x] gxi_check()
@@ -118,7 +117,7 @@
   - [x] gxi_get_buffer_length()
   - [x] gxi_get_buffer()
   - [x] gxi_set_buffer()
-- control (这里只列出了函数的数量，这部分的列表太长了，所以请查看[ControlList](./control-list.md) markdown)
+- control (Here only the number of functions is listed, the list is too long, so please refer to the [ControlList](./control-list.md) markdown)
   - device             17
   - image_format       27+
   - acquisition        46+
@@ -126,8 +125,8 @@
   - analog             40+ 
   - transport_layer    1 
   - user_set           10 
-  - chunk_data         8 
+  - chunk_data         8
 - event
   - todo!()
 - network
-  - todo!()
+  - todo!() 

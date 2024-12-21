@@ -1,0 +1,12 @@
+[book]
+authors = ["HakoChest"]
+language = "en"
+multilingual = false
+src = "src"
+
+[preprocessor.pagetoc]
+[output.html]
+additional-css = ["theme/pagetoc.css"]
+additional-js  = ["theme/pagetoc.js"]
+site-url = "/gxci-cn/"
+use-site-url-as-root = true

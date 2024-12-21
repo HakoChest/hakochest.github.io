@@ -1,10 +1,10 @@
-# 控制函数列表
+# List of Control Functions
 
-这部分的列表太长了，所以我把它分成了这个文档。
+This part's list is too long, so I devided it into this document.
 
-某些枚举选择函数将在未来实现，但应该不是在0.3。
+The special enum selection functions will be implemented in the future, but not 0.3.
 
-并且很多FeatureID都缺失了，所以很多函数都没有实现。
+And lots of feature_id are missing, so lots of functions are not implemented.
 
 - control 
   - device

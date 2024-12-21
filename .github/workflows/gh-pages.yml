@@ -25,18 +25,28 @@ jobs:
       - name: Build default book
         run: mdbook build
         
-      # Build GXCI book
-      - name: Build GXCI book
+      # Build GXCI Chinese book
+      - name: Build GXCI Chinese book
         working-directory: ./gxci-book-cn
         run: mdbook build
         
-      # Combine books
+      # Build GXCI English book
+      - name: Build GXCI English book
+        working-directory: ./gxci-book-en
+        run: mdbook build
+        
+      # Combine all books
       - name: Prepare combined output
         run: |
           mkdir -p ./combined-output
+          # Copy default book
           cp -r ./book/* ./combined-output/
-          mkdir -p ./combined-output/gxci-cn
+          # Copy Chinese version
+          mkdir -p ./combined-output/gxci/zh
           cp -r ./gxci-book-cn/book/* ./combined-output/gxci-cn/
+          # Copy English version
+          mkdir -p ./combined-output/gxci/en
+          cp -r ./gxci-book-en/book/* ./combined-output/gxci-en/
 
       # Deploy
       - name: Deploy
