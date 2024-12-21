@@ -2,6 +2,7 @@
 
 - [Introduction](./introduction.md)
 - [Getting Started](./getting-started/index.md)
+  - [Migration](./getting-started/migration.md)
   - [Prerequisites](./getting-started/prerequisites.md)
   - [Installation](./getting-started/installation.md)
   - [List Your Devices](./getting-started/list-your-devices.md)
