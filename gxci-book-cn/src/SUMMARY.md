@@ -14,5 +14,6 @@
 - [路线图](./roadmap.md)
 - [附录](./appendix.md)
 - [控制列表](./control-list.md)
+- [问题反馈](./troubleshooting.md)
 - [后记](./ending.md)
 - [参考](./reference.md)

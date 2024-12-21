@@ -12,5 +12,6 @@
 - [Roadmap](./roadmap.md)
 - [Appendix](./appendix.md)
 - [ControlList](./control-list.md)
+- [Troubleshooting](./troubleshooting.md)
 - [Ending](./ending.md)
 - [Reference](./reference.md)
