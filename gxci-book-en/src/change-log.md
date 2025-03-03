@@ -50,12 +50,12 @@
 
 ### 0.3.6
 
-- Upgraded to OpenCV 4.10.0, dependent on `opencv` and upgraded to the latest `0.93.5`
-- Built a Chinese and English document site based on `mdbook`, providing a quick start tutorial, the URL is [https://hakochest.github.io/gxci/](https://hakochest.github.io/gxci-en/)
+- Upgraded to OpenCV 4.10.0, dependency `opencv` upgraded to the latest `0.93.5`
+- Built a Chinese and English document site based on `mdbook`, providing a quick start tutorial, the URL is [https://hakochest.github.io/gxci-en/](https://hakochest.github.io/gxci-en/)
 
 ### 0.3.7
 
-- Upgraded to OpenCV 4.11.0, dependent on `opencv` and upgraded to the latest `0.94.2`
+- Upgraded to OpenCV 4.11.0, dependency `opencv` upgraded to the latest `0.94.2`
 - Fixed an error in the hal_use_stream example
 
 ## What's this? It seems like it was written before, but let's keep it
