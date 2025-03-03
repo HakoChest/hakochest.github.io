@@ -1,11 +1,9 @@
 # Change Log
 
-
 ## 0.1
 
 - The `raw` module is migrated from the `gxi_hako` library, and then the `gxi_hako` library enters the `deprecated` state
 - The `hal` module is initially implemented for basic camera operations
-
 
 ## 0.2
 
@@ -25,7 +23,6 @@
 
 - `gxi_get_device_handle()` is used to obtain the device handle
 - The `config` module is initialized, but no functions are implemented
-
 
 ## 0.3
 
@@ -56,6 +53,10 @@
 - Upgraded to OpenCV 4.10.0, dependent on `opencv` and upgraded to the latest `0.93.5`
 - Built a Chinese and English document site based on `mdbook`, providing a quick start tutorial, the URL is [https://hakochest.github.io/gxci/](https://hakochest.github.io/gxci-en/)
 
+### 0.3.7
+
+- Upgraded to OpenCV 4.11.0, dependent on `opencv` and upgraded to the latest `0.94.2`
+- Fixed an error in the hal_use_stream example
 
 ## What's this? It seems like it was written before, but let's keep it
 

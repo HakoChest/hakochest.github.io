@@ -2,7 +2,9 @@
 
 If you are using GXCI for the first time, you can skip this section. This section is mainly to help GXCI users before 0.3.6 migrate to the new version.
 
-GXCI has been using version 4.9.0 of OpenCV since 0.3.5 and earlier versions, but GXCI has been using version 4.10.0 of OpenCV since 0.3.6. So users also need to upgrade their OpenCV version accordingly.
+GXCI has been using version 4.9.0 of OpenCV before 0.3.5, but GXCI has been using version 4.10.0 of OpenCV since 0.3.6. As of 0.3.7, the latest supported version of OpenCV is 4.11.0,
+
+If users need to upgrade their OpenCV version, they can use the following command
 
 ## Upgrade OpenCV through Choco
 

@@ -23,7 +23,6 @@
 - `gxi_get_device_handle()`用于获取设备句柄
 - 初始化配置了`config`模块，但是没有实现任何功能
 
-
 ## 0.3
 
 ### 0.3.0
@@ -53,6 +52,10 @@
 - 升级到OpenCV 4.10.0，依赖`opencv`和升级到最新的`0.93.5`
 - 基于`mdbook`搭建了中文与英文的文档站，提供了快速上手的教程，网址为[https://hakochest.github.io/gxci/](https://hakochest.github.io/gxci/)
 
+### 0.3.7
+
+- 升级到OpenCV 4.11.0，依赖`opencv`和升级到最新的`0.94.2`
+- 修复了hal_use_stream例子的错误
 
 ## 这啥，好像是之前写的，不过还是留着吧
 
