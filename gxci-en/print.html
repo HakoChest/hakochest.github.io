@@ -178,7 +178,8 @@
 <p>These seven parts, combined with examples, quickly get started with GXCI</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="migration"><a class="header" href="#migration">Migration</a></h1>
 <p>If you are using GXCI for the first time, you can skip this section. This section is mainly to help GXCI users before 0.3.6 migrate to the new version.</p>
-<p>GXCI has been using version 4.9.0 of OpenCV since 0.3.5 and earlier versions, but GXCI has been using version 4.10.0 of OpenCV since 0.3.6. So users also need to upgrade their OpenCV version accordingly.</p>
+<p>GXCI has been using version 4.9.0 of OpenCV before 0.3.5, but GXCI has been using version 4.10.0 of OpenCV since 0.3.6. As of 0.3.7, the latest supported version of OpenCV is 4.11.0,</p>
+<p>If users need to upgrade their OpenCV version, they can use the following command</p>
 <h2 id="upgrade-opencv-through-choco"><a class="header" href="#upgrade-opencv-through-choco">Upgrade OpenCV through Choco</a></h2>
 <pre><code class="language-powershell">choco upgrade chocolatey
 choco upgrade opencv
@@ -872,6 +873,11 @@ fn main()-&gt;Result&lt;()&gt; {
 <ul>
 <li>Upgraded to OpenCV 4.10.0, dependent on <code>opencv</code> and upgraded to the latest <code>0.93.5</code></li>
 <li>Built a Chinese and English document site based on <code>mdbook</code>, providing a quick start tutorial, the URL is <a href="https://hakochest.github.io/gxci-en/">https://hakochest.github.io/gxci/</a></li>
+</ul>
+<h3 id="037"><a class="header" href="#037">0.3.7</a></h3>
+<ul>
+<li>Upgraded to OpenCV 4.11.0, dependent on <code>opencv</code> and upgraded to the latest <code>0.94.2</code></li>
+<li>Fixed an error in the hal_use_stream example</li>
 </ul>
 <h2 id="whats-this-it-seems-like-it-was-written-before-but-lets-keep-it"><a class="header" href="#whats-this-it-seems-like-it-was-written-before-but-lets-keep-it">What's this? It seems like it was written before, but let's keep it</a></h2>
 <p>The old version is a crate library called <a href="https://crates.io/crates/gxi_hako">gxi_hako</a>, which is not completely implemented in the raw and utils parts, and is now temporarily abandoned;</p>
