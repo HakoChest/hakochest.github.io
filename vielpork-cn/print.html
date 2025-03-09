@@ -1,0 +1,1007 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title></title>
+                <meta name="robots" content="noindex" />
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="favicon.svg">
+                        <link rel="shortcut icon" href="favicon.png">
+                <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+                <link rel="stylesheet" href="css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+                <link rel="stylesheet" href="theme/pagetoc.css">
+        
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> 简介</a></li><li class="chapter-item expanded "><a href="getting-started/index.html"><strong aria-hidden="true">2.</strong> 快速开始</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="getting-started/initial-example.html"><strong aria-hidden="true">2.1.</strong> 初始例程</a></li><li class="chapter-item expanded "><a href="getting-started/flow-control.html"><strong aria-hidden="true">2.2.</strong> 流程控制</a></li><li class="chapter-item expanded "><a href="getting-started/osynic-downloader.html"><strong aria-hidden="true">2.3.</strong> 使用实例：OsynicDownloader</a></li></ol></li><li class="chapter-item expanded "><a href="custom-reporter/index.html"><strong aria-hidden="true">3.</strong> 自定义Reporter</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="custom-reporter/tui-reporter.html"><strong aria-hidden="true">3.1.</strong> 内置TuiReporter</a></li><li class="chapter-item expanded "><a href="custom-reporter/cli-reporter-boardcast-mpsc.html"><strong aria-hidden="true">3.2.</strong> 内置CliReporterBoardcastMpsc</a></li></ol></li><li class="chapter-item expanded "><a href="custom-resolver/index.html"><strong aria-hidden="true">4.</strong> 自定义Resolver</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="custom-resolver/url-resolver.html"><strong aria-hidden="true">4.1.</strong> 内置UrlResolver</a></li><li class="chapter-item expanded "><a href="custom-resolver/osu-beatmap-resolver.html"><strong aria-hidden="true">4.2.</strong> OsuBeatmapResolver</a></li></ol></li><li class="chapter-item expanded "><a href="change-log.html"><strong aria-hidden="true">5.</strong> 更改日志</a></li><li class="chapter-item expanded "><a href="roadmap.html"><strong aria-hidden="true">6.</strong> 路线图</a></li><li class="chapter-item expanded "><a href="appendix.html"><strong aria-hidden="true">7.</strong> 附录</a></li><li class="chapter-item expanded "><a href="troubleshooting.html"><strong aria-hidden="true">8.</strong> 问题反馈</a></li><li class="chapter-item expanded "><a href="ending.html"><strong aria-hidden="true">9.</strong> 后记</a></li><li class="chapter-item expanded "><a href="reference.html"><strong aria-hidden="true">10.</strong> 参考</a></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                                                <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                        
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="简介"><a class="header" href="#简介">简介</a></h1>
+<p>Vielpork是一个高性能的多线程HTTP下载器，由Rust编写,具有可自定义的报告器和解析策略。它提供：</p>
+<ul>
+<li>🚀 多线程下载以获得最大速度</li>
+<li>📊 多种内置选项的灵活报告系统</li>
+<li>🔧 为不同网络场景提供可定制的解析策略</li>
+<li>⏯️ 支持检查点的暂停/恢复功能</li>
+</ul>
+<pre><code class="language-mermaid">stateDiagram-v2
+    [*] --&gt; GlobalInit
+    GlobalInit --&gt; GlobalRunning: start_all()
+    GlobalRunning --&gt; GlobalSuspended: pause_all()
+    GlobalSuspended --&gt; GlobalRunning: resume_all()
+    GlobalRunning --&gt; GlobalStopped: cancel_all()
+    GlobalStopped --&gt; [*]
+    
+    state TaskStates {
+        [*] --&gt; TaskPending
+        TaskPending --&gt; TaskDownloading: start_task()
+        TaskDownloading --&gt; TaskPaused: pause_task()
+        TaskPaused --&gt; TaskDownloading: resume_task()
+        TaskDownloading --&gt; TaskCanceled: cancel_task()
+        TaskDownloading --&gt; TaskCompleted: finish()
+        TaskPaused --&gt; TaskCanceled: cancel_task()
+        TaskCanceled --&gt; [*]
+        TaskCompleted --&gt; [*]
+    }
+    
+    GlobalSuspended --&gt; TaskPaused : propagate
+    GlobalStopped --&gt; TaskCanceled : propagate
+</code></pre>
+<h2 id="相关项目"><a class="header" href="#相关项目">相关项目</a></h2>
+<ul>
+<li><a href="https://crates.io/crates/osynic_downloader">osynic_downloader</a>: 基于vielpork的osu!谱面下载器，包含工具库和TUI应用</li>
+</ul>
+<h2 id="核心特性"><a class="header" href="#核心特性">核心特性</a></h2>
+<ul>
+<li><strong>多线程架构</strong>：利用Rust的异步运行时进行并发的分块下载</li>
+<li><strong>可扩展的报告系统</strong>：
+<ul>
+<li>内置报告器：TUI进度条，CLI广播mpsc通道</li>
+<li>通过trait实现自定义报告器</li>
+</ul>
+</li>
+<li><strong>智能解析</strong>：
+<ul>
+<li>通过Resolver trait进行自定义解析逻辑</li>
+</ul>
+</li>
+<li><strong>恢复与韧性</strong>：
+<ul>
+<li>继续上次中断的下载</li>
+</ul>
+</li>
+<li><strong>进度跟踪</strong>：
+<ul>
+<li>实时速度计算</li>
+<li>ETA估算</li>
+<li>详细的传输统计</li>
+</ul>
+</li>
+</ul>
+<h2 id="内置选项"><a class="header" href="#内置选项">内置选项</a></h2>
+<h3 id="报告器"><a class="header" href="#报告器">报告器</a></h3>
+<ul>
+<li><strong>TuiReporter</strong>：基于<code>indicatif</code>库的终端进度条</li>
+<li><strong>CliReporterBoardcastMpsc</strong>：一个广播进度更新到多个通道并用单个通道完成的报告器（使用示例：在Tonic gRPC服务器流中，rx类型只能是mpsc，因此我们需要将进度广播到mpsc通道，然后通过服务器将其发送到客户端）</li>
+</ul>
+<h3 id="解析器"><a class="header" href="#解析器">解析器</a></h3>
+<ul>
+<li><strong>UrlResolver</strong>：一个从URL下载资源的解析器，只是reqwest的简单包装</li>
+</ul>
+<h2 id="自定义组件"><a class="header" href="#自定义组件">自定义组件</a></h2>
+<p>您可以在<code>vielpork::base::traits</code>中查看所有trait并实现自己的组件。</p>
+<h3 id="自定义报告器"><a class="header" href="#自定义报告器">自定义报告器</a></h3>
+<ul>
+<li>这里有2个需要使用async_trait实现的trait：
+<ul>
+<li><code>ProgressReporter</code>：允许报告器处理进度更新的trait</li>
+<li><code>ResultReporter</code>：允许报告器处理操作或任务的结果的trait</li>
+</ul>
+</li>
+</ul>
+<h3 id="自定义解析器"><a class="header" href="#自定义解析器">自定义解析器</a></h3>
+<ul>
+<li>这里只有1个需要使用async_trait实现的trait：
+<ul>
+<li><code>ResourceResolver</code>：允许解析器从特定来源下载资源的trait</li>
+</ul>
+</li>
+</ul>
+<h2 id="后记或者说最开始的序章"><a class="header" href="#后记或者说最开始的序章">后记（或者说最开始的序章）</a></h2>
+<p>最开始找到了viel这个词，后面想了下rufen、ekstase、reichen</p>
+<p>但是正在我还在犹豫不决的时候，好朋友来寝室送了我一纸杯的熏猪肉丝</p>
+<p>所以我就直接取名叫做vielpork了，这个名字的意思是很多猪肉丝</p>
+<p>但如果是功能描述的话，这个下载器主打的是多报道通道下载，所以也是很多报道</p>
+<p>report的vielpork很接近，也还不错</p>
+<p>对于连续吃了一个星期免费粥的我来说，这个名字已经很好了</p>
+<p>哦对了，水煮肉片也可以算是VielPork了</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="快速开始"><a class="header" href="#快速开始">快速开始</a></h1>
+<p>主要分为如下几个部分</p>
+<ul>
+<li>初始例程</li>
+<li>自定义Reporter</li>
+<li>自定义Resolver</li>
+</ul>
+<p>在阅读完初始例程后，您可以尝试运行示例代码，下载您需要的资源。</p>
+<p>然后，您可以尝试自定义Reporter和Resolver。</p>
+<ul>
+<li>流程控制</li>
+<li>使用实例：OsynicDownloader</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="初始例程"><a class="header" href="#初始例程">初始例程</a></h1>
+<h2 id="安装"><a class="header" href="#安装">安装</a></h2>
+<p>在你的<code>Cargo.toml</code>中添加：</p>
+<pre><code class="language-toml">[dependencies]
+vielpork = &quot;0.1.0&quot;
+</code></pre>
+<h2 id="快速开始-1"><a class="header" href="#快速开始-1">快速开始</a></h2>
+<pre><pre class="playground"><code class="language-rust">
+use vielpork::downloader::Downloader;
+use vielpork::reporters::tui::TuiReporter;
+use vielpork::resolvers::url::UrlResolver;
+use vielpork::base::structs::DownloadOptions;
+use vielpork::base::enums::DownloadResource;
+use vielpork::error::Result;
+
+use std::sync::Arc;
+use tokio::sync::Mutex;
+
+#[tokio::main]
+async fn main() -&gt; Result&lt;()&gt; {
+    let options: DownloadOptions = DownloadOptions::default()
+        .with_save_path(&quot;fetch&quot;.to_string())
+        .with_concurrency(3);
+
+    let downloader = Downloader::new(options, Box::new(UrlResolver::new()), Box::new(TuiReporter::new()));
+
+    let resources = vec![
+        DownloadResource::Url(&quot;https://example.com&quot;.to_string()),
+        DownloadResource::Url(&quot;https://example.com&quot;.to_string()),
+        DownloadResource::Url(&quot;https://example.com&quot;.to_string()),
+        DownloadResource::Url(&quot;https://example.com&quot;.to_string()),
+        DownloadResource::Url(&quot;https://example.com&quot;.to_string()),
+        DownloadResource::Url(&quot;https://example.com&quot;.to_string()),
+        DownloadResource::Url(&quot;https://example.com&quot;.to_string()),
+        DownloadResource::Url(&quot;https://example.com&quot;.to_string()),
+        DownloadResource::Url(&quot;https://example.com&quot;.to_string()),
+    ];
+
+    downloader.start(resources).await?;
+
+    loop {
+        tokio::time::sleep(std::time::Duration::from_secs(1)).await;
+        // Because of the async nature of the downloader, we need to keep the main thread alive
+    }
+
+    Ok(())
+}
+</code></pre></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="流程控制"><a class="header" href="#流程控制">流程控制</a></h1>
+<p><code>vielpork</code>提供了完整的流程控制方法，以便于您在编写异步代码时更加方便地控制流程。</p>
+<ul>
+<li>
+<p>全局控制</p>
+<ul>
+<li><code>downloader.lock().await.start(resources).await?;</code></li>
+<li><code>downloader.lock().await.pause().await?;</code></li>
+<li><code>downloader.lock().await.resume().await?;</code></li>
+<li><code>downloader.lock().await.cancel().await?;</code></li>
+</ul>
+</li>
+<li>
+<p>任务控制</p>
+<ul>
+<li><code>downloader.lock().await.pause_task(resource).await?;</code></li>
+<li><code>downloader.lock().await.resume_task(resource).await?;</code></li>
+<li><code>downloader.lock().await.cancel_task(resource).await?;</code></li>
+</ul>
+</li>
+</ul>
+<p>直接在代码中使用即可，<code>vielpork</code>会自动处理任务的状态转换。</p>
+<h2 id="状态转移图"><a class="header" href="#状态转移图">状态转移图</a></h2>
+<pre><code class="language-mermaid">stateDiagram-v2
+    [*] --&gt; GlobalInit
+    GlobalInit --&gt; GlobalRunning: start_all()
+    GlobalRunning --&gt; GlobalSuspended: pause_all()
+    GlobalSuspended --&gt; GlobalRunning: resume_all()
+    GlobalRunning --&gt; GlobalStopped: cancel_all()
+    GlobalStopped --&gt; [*]
+    
+    state TaskStates {
+        [*] --&gt; TaskPending
+        TaskPending --&gt; TaskDownloading: start_task()
+        TaskDownloading --&gt; TaskPaused: pause_task()
+        TaskPaused --&gt; TaskDownloading: resume_task()
+        TaskDownloading --&gt; TaskCanceled: cancel_task()
+        TaskDownloading --&gt; TaskCompleted: finish()
+        TaskPaused --&gt; TaskCanceled: cancel_task()
+        TaskCanceled --&gt; [*]
+        TaskCompleted --&gt; [*]
+    }
+    
+    GlobalSuspended --&gt; TaskPaused : propagate
+    GlobalStopped --&gt; TaskCanceled : propagate
+</code></pre>
+<h2 id="合理的状态转换"><a class="header" href="#合理的状态转换">合理的状态转换</a></h2>
+<p><code>vielpork</code>的状态转换是有限状态机的形式，每个任务都有一个状态，每个任务的状态转换都是有限的。这样可以保证任务的状态转换是合理的，不会出现不合理的状态转换。</p>
+<h3 id="合理全局状态转换"><a class="header" href="#合理全局状态转换">合理全局状态转换</a></h3>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let valid = match (*current, new_state) {
+    (DownloaderState::Idle, DownloaderState::Running) =&gt; true,
+    (DownloaderState::Running, DownloaderState::Suspended) =&gt; true,
+    (DownloaderState::Suspended, DownloaderState::Running) =&gt; true,
+    (DownloaderState::Running, DownloaderState::Stopped) =&gt; true,
+    (DownloaderState::Suspended, DownloaderState::Stopped) =&gt; true,
+    _ =&gt; false,
+};
+<span class="boring">}
+</span></code></pre></pre>
+<h3 id="合理任务状态转换"><a class="header" href="#合理任务状态转换">合理任务状态转换</a></h3>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let valid = match (*current, new_state) {
+    (TaskState::Pending, TaskState::Paused) =&gt; true,
+    (TaskState::Paused, TaskState::Pending) =&gt; true,
+    (TaskState::Paused, TaskState::Paused) =&gt; true,
+    (TaskState::Pending, TaskState::Downloading) =&gt; true,
+    (TaskState::Downloading, TaskState::Paused) =&gt; true,
+    (TaskState::Paused, TaskState::Downloading) =&gt; true,
+    (TaskState::Downloading, TaskState::Completed) =&gt; true,
+    (TaskState::Downloading, TaskState::Failed) =&gt; true,
+    (TaskState::Failed,_) =&gt; true,
+    (_, TaskState::Canceled) =&gt; true,
+    _ =&gt; false,
+};
+<span class="boring">}
+</span></code></pre></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="使用实例osynicdownloader"><a class="header" href="#使用实例osynicdownloader">使用实例：OsynicDownloader</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="自定义reporter"><a class="header" href="#自定义reporter">自定义Reporter</a></h1>
+<p>在<code>vielpork</code>中，Reporter是一个用于向外部报告下载任务进度和结果的接口。Reporter由两个trait构成，他们定义了一系列的方法，用于向外部报告下载任务的进度和结果。Reporter的实现可以是任何类型，只要它实现了这两个Reporter trait即可。</p>
+<p>在<code>vielport::base::traits</code>中定义的这两个trait是<code>ProgressReporter</code>和<code>ResultReporter</code>。<code>ProgressReporter</code>定义了三个方法，用于报告下载任务的开始、进度更新和结束。<code>ResultReporter</code>定义了一个方法，用于报告下载任务的结果。</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[async_trait]
+pub trait ProgressReporter
+{
+    async fn start_task(&amp;self, task_id: u32, total: u64) -&gt; Result&lt;()&gt;;
+    async fn update_progress(&amp;self, task_id: u32, progress: &amp;DownloadProgress) -&gt; Result&lt;()&gt;;
+    async fn finish_task(&amp;self, task_id: u32, result: DownloadResult) -&gt; Result&lt;()&gt;;
+}
+
+#[async_trait]
+pub trait ResultReporter
+{
+    async fn operation_result(&amp;self, operation: OperationType, code: u32, message: String) -&gt; Result&lt;()&gt;;
+}
+
+pub trait CombinedReporter: ProgressReporter + ResultReporter + Send + Sync {}
+impl&lt;T: ProgressReporter + ResultReporter + Send + Sync&gt; CombinedReporter for T {}
+
+<span class="boring">}
+</span></code></pre></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="内置使用实例一tuireporter"><a class="header" href="#内置使用实例一tuireporter">内置使用实例一：TuiReporter</a></h1>
+<p><code>vielpork</code>提供了一个内置的TUI报告器<code>TuiReporter</code>，用于在终端中显示下载任务的进度。<code>TuiReporter</code>实现了<code>ProgressReporter</code>和<code>ResultReporter</code>两个trait，用于向外部报告下载任务的进度和结果。</p>
+<p><code>TuiReporter</code>使用<code>indicatif</code>库来显示下载任务的进度。在下载任务开始时，<code>TuiReporter</code>会创建一个新的进度条，并在下载任务结束时更新进度条的状态。<code>TuiReporter</code>还会在下载任务结束时向外部报告下载任务的结果。</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span>
+<span class="boring">fn main() {
+</span>use crate::error::Result;
+use crate::base::structs::DownloadProgress;
+use crate::base::enums::{DownloadResult, OperationType};
+use crate::base::traits::{ProgressReporter, ResultReporter};
+use async_trait::async_trait;
+
+
+#[cfg(feature = &quot;tui&quot;)]
+use indicatif::{ProgressBar, ProgressStyle,ProgressDrawTarget,MultiProgress};
+use std::collections::HashMap;
+use std::sync::Arc;
+use tokio::sync::Mutex;
+
+const MAX_CONCURRENT_BARS: usize = 10 ;
+
+// TUI 实现
+#[cfg(feature = &quot;tui&quot;)]
+#[derive(Debug)]
+pub struct TuiReporter {
+    mp: MultiProgress,
+    bars: Arc&lt;Mutex&lt;HashMap&lt;u32, ProgressBar&gt;&gt;&gt;,
+}
+
+impl TuiReporter {
+    pub fn new() -&gt; Self {
+        let mp = Self::setup_global_progress();
+        Self {
+            mp,
+            bars: Arc::new(Mutex::new(HashMap::new())),
+        }
+    }
+    fn setup_global_progress() -&gt; MultiProgress {
+        let mp = MultiProgress::new();
+        mp.set_draw_target(ProgressDrawTarget::stdout());
+        mp
+    }
+
+    // 私有方法用于获取或创建进度条
+    async fn get_or_create_bar(&amp;self, task_id: u32, total: u64) -&gt; ProgressBar {
+        let mut bars = self.bars.lock().await;
+        
+        if bars.len() &gt;= MAX_CONCURRENT_BARS {
+            bars.retain(|_, bar| !bar.is_finished());
+        }
+
+        bars.entry(task_id)
+            .or_insert_with(|| {
+                let bar = ProgressBar::new(total);
+                // 关键修改：将进度条添加到 MultiProgress 系统
+                let bar = self.mp.add(bar); // 这行是核心修改
+                bar.set_style(ProgressStyle::with_template(&amp;format!(
+                    &quot;{{spinner:.green}} [{{bar:.cyan/blue}}] {{bytes}}/{{total_bytes}} ({}) {{msg}}&quot;,
+                    task_id
+                ))
+                .unwrap_or(ProgressStyle::default_bar())
+                .progress_chars(&quot;#&gt;-&quot;));
+                bar
+            });
+        
+        bars.get(&amp;task_id).unwrap_or(&amp;ProgressBar::hidden()).clone()
+    }
+}
+
+
+#[async_trait]
+impl ProgressReporter for TuiReporter {
+    async fn start_task(&amp;self, task_id: u32, total: u64) -&gt; Result&lt;()&gt; {
+        let bar = self.get_or_create_bar(task_id, total).await;
+        bar.set_message(&quot;Downloading...&quot;);
+        Ok(())
+    }
+
+    async fn update_progress(&amp;self, task_id: u32, progress: &amp;DownloadProgress) -&gt; Result&lt;()&gt; {
+        let bar = self.get_or_create_bar(task_id, progress.total_bytes).await;
+        bar.set_position(progress.bytes_downloaded);
+
+        let speed = if progress.rate &gt; 1_000_000.0 {
+            format!(&quot;{:.2} MB/s&quot;, progress.rate / 1_000_000.0)
+        } else if progress.rate &gt; 1_000.0 {
+            format!(&quot;{:.2} KB/s&quot;, progress.rate / 1_000.0)
+        } else {
+            format!(&quot;{:.0} B/s&quot;, progress.rate)
+        };
+
+        // 格式化剩余时间
+        let eta = if progress.remaining_time.as_secs() &gt; 60 {
+            format!(&quot;{}m {}s&quot;, 
+                progress.remaining_time.as_secs() / 60,
+                progress.remaining_time.as_secs() % 60)
+        } else {
+            format!(&quot;{}s&quot;, progress.remaining_time.as_secs())
+        };
+        
+        bar.set_message(format!(&quot;Speed: {} | ETA: {}&quot;, speed,eta));
+
+        
+        Ok(())
+    }
+
+    async fn finish_task(&amp;self, task_id: u32,result: DownloadResult) -&gt; Result&lt;()&gt; {
+        let mut bars = self.bars.lock().await;
+        if let Some(bar) = bars.remove(&amp;task_id) {
+            match result {
+                DownloadResult::Success { path ,duration ,.. } =&gt; {
+                    // 条的颜色变成绿色，还是#&gt;-
+                    bar.set_style(ProgressStyle::with_template(&amp;format!(
+                        &quot;{{spinner:.green}} [{{bar:.green/blue}}] {{bytes}}/{{total_bytes}} ({}): {{msg}}&quot;,
+                        task_id
+                    ))?.progress_chars(&quot;#&gt;-&quot;));
+                    let success_message = format!(&quot;✅ Done in {}s, saved to {}&quot;,duration.as_secs(),path.display());
+                    bar.finish_with_message(success_message)
+                },
+                DownloadResult::Failed { error,.. } =&gt; {
+                    // 条变成红色
+                    bar.set_style(ProgressStyle::default_bar().template(&amp;format!(
+                        &quot;{{spinner:.red}} [{{bar:.red/blue}}] {{bytes}}/{{total_bytes}} ({}): {{msg}}&quot;,
+                        task_id
+                    ))?.progress_chars(&quot;#&gt;-&quot;));
+                    let error_message = format!(&quot;❌ Error: {}&quot;, error);
+                    bar.abandon_with_message(error_message)
+                },
+                DownloadResult::Canceled =&gt; {
+                    // 条变成黄色
+                    bar.set_style(ProgressStyle::default_bar().template(&amp;format!(
+                        &quot;{{spinner:.red}} [{{bar:.yellow/blue}}] {{bytes}}/{{total_bytes}} ({}): {{msg}}&quot;,
+                        task_id
+                    ))?.progress_chars(&quot;#&gt;-&quot;));
+                    bar.abandon_with_message(&quot;⛔ Canceled&quot;)
+                },
+            }
+        }
+        Ok(())
+    }
+}
+
+#[async_trait]
+impl ResultReporter for TuiReporter {
+    async fn operation_result(&amp;self, operation: OperationType, code: u32, message: String) -&gt; Result&lt;()&gt; {
+        if code == 200 {
+            println!(&quot;{}: {}&quot;, operation, message);
+        } else {
+            eprintln!(&quot;{}: {}&quot;, operation, message);
+        }
+        Ok(())
+    }
+}
+
+<span class="boring">}
+</span></code></pre></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="内置使用实例二clireporterboardcastmpsc"><a class="header" href="#内置使用实例二clireporterboardcastmpsc">内置使用实例二：CliReporterBoardcastMpsc</a></h1>
+<p><code>vielpork</code>提供了一个内置的CLI广播报告器<code>CliReporterBoardcastMpsc</code>，用于将下载任务的进度广播到多个mpsc通道。<code>CliReporterBoardcastMpsc</code>实现了<code>ProgressReporter</code>和<code>ResultReporter</code>两个trait，用于向外部报告下载任务的进度和结果。</p>
+<p><code>CliReporterBoardcastMpsc</code>使用<code>tokio::sync::mpsc</code>来广播下载任务的进度。在下载任务开始时，<code>CliReporterBoardcastMpsc</code>会向多个mpsc通道发送进度更新消息，并在下载任务结束时向外部报告下载任务的结果。</p>
+<p>这个Reporter的实现比较简单，只需要在<code>ProgressReporter</code>和<code>ResultReporter</code>的方法中向多个mpsc通道发送消息即可。最开始是用来解决在Tonic gRPC服务器流中，rx类型只能是mpsc，因此我们需要将进度广播到mpsc通道，然后通过服务器将其发送到客户端。</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use crate::error::Result;
+use crate::base::traits::{ProgressReporter, ResultReporter};
+use crate::base::structs::DownloadProgress;
+use crate::base::enums::{ProgressEvent, DownloadResult, OperationType};
+use async_trait::async_trait;
+
+#[derive(Debug,Clone)]
+pub struct CliReporterBoardcastMpsc{
+    inner_tx: tokio::sync::broadcast::Sender&lt;ProgressEvent&gt;,
+    buffer_size: usize,
+}
+impl CliReporterBoardcastMpsc {
+    pub fn new(buffer_size: usize) -&gt; Self {
+        let (inner_tx, _) = tokio::sync::broadcast::channel(buffer_size);
+        Self { inner_tx, buffer_size }
+    }
+
+    pub fn subscribe_mpsc(&amp;self) -&gt; tokio::sync::mpsc::Receiver&lt;ProgressEvent&gt; {
+        let (tx, rx) = tokio::sync::mpsc::channel(self.buffer_size);
+        let mut inner_rx = self.inner_tx.subscribe();
+        
+        tokio::spawn(async move {
+            loop {
+                match inner_rx.recv().await {
+                    Ok(event) =&gt; {
+                        if tx.send(event).await.is_err() {
+                            break;
+                        }
+                    }
+                    Err(_) =&gt; {
+                        tokio::time::sleep(tokio::time::Duration::from_millis(100)).await;
+                    }
+                }
+            }
+        });
+        
+        rx
+    }
+
+    // 发送事件的方法
+    pub async fn send(&amp;self, event: ProgressEvent) -&gt; Result&lt;usize&gt; {
+        self.inner_tx.send(event)?;
+        Ok(self.inner_tx.receiver_count())
+    }
+
+    // 创建新订阅者
+    pub fn subscribe(&amp;self) -&gt; tokio::sync::broadcast::Receiver&lt;ProgressEvent&gt; {
+        self.inner_tx.subscribe()
+    }
+}
+
+#[async_trait]
+impl ProgressReporter for CliReporterBoardcastMpsc {
+    async fn start_task(&amp;self, task_id: u32, total: u64) -&gt;Result&lt;()&gt; {
+        self.send(ProgressEvent::Start { task_id, total }).await?;
+        Ok(())
+    }
+
+    async fn update_progress(&amp;self, task_id: u32, progress: &amp;DownloadProgress)-&gt;Result&lt;()&gt; {
+        self.send(ProgressEvent::Update { task_id, progress: progress.clone() }).await?;
+        Ok(())
+    }
+
+    async fn finish_task(&amp;self, task_id: u32,finish: DownloadResult) -&gt;Result&lt;()&gt;{
+        self.send(ProgressEvent::Finish { task_id ,finish}).await?;
+        Ok(())
+    }
+}
+
+#[async_trait]
+impl ResultReporter for CliReporterBoardcastMpsc {
+    async fn operation_result(&amp;self, operation: OperationType, code: u32, message: String) -&gt;Result&lt;()&gt; {
+        self.send(ProgressEvent::OperationResult { operation, code, message }).await?;
+        Ok(())
+    }
+}
+<span class="boring">}
+</span></code></pre></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="自定义resolver"><a class="header" href="#自定义resolver">自定义Resolver</a></h1>
+<p>在<code>vielpork</code>中，<code>Resolver</code>是一个trait，用于解析资源的来源。<code>vielpork</code>提供了一个内置的<code>UrlResolver</code>，用于从URL下载资源。您可以通过实现<code>Resolver</code> trait来自定义解析逻辑。</p>
+<p>在<code>vielport::base::traits</code>中定义的这个trait是<code>ResourceResolver</code>。<code>ResourceResolver</code>定义了一个方法，用于解析资源的来源。</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[async_trait]
+pub trait ResourceResolver: Send + Sync {
+    async fn resolve(&amp;self, resource: &amp;DownloadResource) -&gt; Result&lt;ResolvedResource&gt;;
+}
+<span class="boring">}
+</span></code></pre></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="内置使用实例一urlresolver"><a class="header" href="#内置使用实例一urlresolver">内置使用实例一：UrlResolver</a></h1>
+<p><code>UrlResolver</code>是一个简单的解析器，用于从URL下载资源。</p>
+<p>实际上，<code>UrlResolver</code>只是一个简单的reqwest包装器，它将URL转换为<code>ResolvedResource</code>。</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span>
+<span class="boring">fn main() {
+</span>use crate::error::Result;
+use crate::base::traits::ResourceResolver;
+use crate::base::structs::ResolvedResource;
+use crate::base::enums::DownloadResource;
+use async_trait::async_trait;
+
+#[derive(Debug,Clone)]
+pub struct UrlResolver {}
+
+impl UrlResolver {
+    pub fn new() -&gt; Self {
+        Self {}
+    }
+}
+
+#[async_trait]
+impl ResourceResolver for UrlResolver {
+    async fn resolve(&amp;self, resource: &amp;DownloadResource) -&gt; Result&lt;ResolvedResource&gt; {
+        match resource {
+            DownloadResource::Url(url) =&gt; {
+                Ok(ResolvedResource{
+                    url: url.clone(),
+                    headers: vec![],
+                    auth: None,
+                })
+            }
+            DownloadResource::Resolved(resolved) =&gt; {
+                Ok(resolved.clone())
+            }
+            _ =&gt; {
+                Err(&quot;Unsupported resource type&quot;.into())
+            }
+        }
+    }
+}
+<span class="boring">}
+</span></code></pre></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="外部使用实例一osubeatmapresolver"><a class="header" href="#外部使用实例一osubeatmapresolver">外部使用实例一：OsuBeatmapResolver</a></h1>
+<p>这一部分可以详见<a href="https://crates.io/crates/osynic_downloader">osynic_downloader</a>的源码。</p>
+<p><code>osynic_downloader</code>是一个基于<code>vielpork</code>的osu!谱面下载器，包含工具库和TUI应用。</p>
+<p>它使用的Resolver是<code>OsuBeatmapResolver</code>，这个Resolver是一个从osu!官网、API以及各打镜像站下载谱面的资源解析器。</p>
+<p>例如：</p>
+<ul>
+<li>对于Url类型的资源，直接返回Url；</li>
+<li>对于Id类型的资源，根据Id生成Url，使用默认的下载源；</li>
+<li>对于Params类型的资源，根据参数生成Url，使用参数指定的下载源；</li>
+<li>对于HashMap类型的资源，根据HashMap生成Url，使用参数指定的下载源。</li>
+</ul>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use vielpork::base::traits::ResourceResolver;
+use vielpork::base::structs::ResolvedResource;
+use vielpork::base::enums::{DownloadResource,AuthMethod};
+use async_trait::async_trait;
+
+use crate::sources::{DownloadSource, DownloadSourceType};
+use crate::url::form_url;
+
+#[derive(Debug,Clone)]
+pub struct OsuBeatmapsetResolver {}
+
+impl OsuBeatmapsetResolver {
+    pub fn new() -&gt; Self {
+        Self {}
+    }
+}
+
+#[async_trait]
+impl ResourceResolver for OsuBeatmapsetResolver {
+    async fn resolve(&amp;self, resource: &amp;DownloadResource) -&gt; vielpork::error::Result&lt;ResolvedResource&gt; {
+        match resource {
+            DownloadResource::Url(url) =&gt; {
+                Ok(ResolvedResource{
+                    url: url.clone(),
+                    headers: vec![],
+                    auth: None,
+                })
+            }
+            DownloadResource::Id(id) =&gt; {
+                let beatmapset_id: u32;
+                match id.parse::&lt;u32&gt;() {
+                    Ok(id) =&gt; {
+                        beatmapset_id = id;
+                    }
+                    Err(_) =&gt; {
+                        return Err(&quot;Invalid beatmapset id&quot;.into());
+                    }
+                }
+                let download_source = DownloadSource::from(DownloadSourceType::Default);
+                let base_url = download_source.base_url.clone();
+                let url = form_url(&amp;base_url, &amp;beatmapset_id, &quot;&quot;, &quot;&quot;).map_err(|e| e.to_string())?;
+                Ok(ResolvedResource{
+                    url: url.clone(),
+                    headers: vec![],
+                    auth: None,
+                })
+            }
+            DownloadResource::Params(params) =&gt; {
+                let beatmapset_id: u32;
+                let source: String;
+
+                match params.get(0) {
+                    Some(id) =&gt; {
+                        match id.parse::&lt;u32&gt;() {
+                            Ok(id) =&gt; {
+                                beatmapset_id = id;
+                            }
+                            Err(_) =&gt; {
+                                return Err(&quot;Invalid beatmapset id&quot;.into());
+                            }
+                        }
+                    }
+                    None =&gt; {
+                        return Err(&quot;Missing beatmapset_id&quot;.into());
+                    }
+                }
+                match params.get(1) {
+                    Some(src) =&gt; {
+                        source = src.clone();
+                    }
+                    None =&gt; {
+                        return Err(&quot;Missing source&quot;.into());
+                    }
+                }
+                let download_source = DownloadSource::from(DownloadSourceType::from(source));
+                let base_url = download_source.base_url.clone();
+
+                let username: String;
+                let password: String;
+
+                let url: String;
+                if download_source.requires_osu_login {
+                    match params.get(2) {
+                        Some(name) =&gt; {
+                            username = name.clone();
+                        }
+                        None =&gt; {
+                            return Err(&quot;Missing username&quot;.into());
+                        }
+                    }
+                    match params.get(3) {
+                        Some(pass) =&gt; {
+                            password = pass.clone();
+                        }
+                        None =&gt; {
+                            return Err(&quot;Missing password&quot;.into());
+                        }
+                    }
+                    url = form_url(&amp;base_url, &amp;beatmapset_id, &amp;username, &amp;password).map_err(|e| e.to_string())?;
+                    Ok(
+                        ResolvedResource{
+                            url: url.clone(),
+                            headers: vec![],
+                            auth: Some(AuthMethod::BasicAuth { username, password }),
+                        }
+                    )
+                } else {
+                    url = form_url(&amp;base_url, &amp;beatmapset_id, &quot;&quot;, &quot;&quot;).map_err(|e| e.to_string())?;
+                    Ok(
+                        ResolvedResource{
+                            url: url.clone(),
+                            headers: vec![],
+                            auth: None,
+                        }
+                    )
+                }
+
+            }
+            DownloadResource::HashMap(hashmap) =&gt; {
+                let beatmapset_id: u32;
+                let source: String;
+                match hashmap.get(&quot;beatmapset_id&quot;) {
+                    Some(id) =&gt; {
+                        match id.parse::&lt;u32&gt;() {
+                            Ok(id) =&gt; {
+                                beatmapset_id = id;
+                            }
+                            Err(_) =&gt; {
+                                return Err(&quot;Invalid beatmapset id&quot;.into());
+                            }
+                        }
+                    }
+                    None =&gt; {
+                        return Err(&quot;Missing beatmapset_id&quot;.into());
+                    }
+                }
+                match hashmap.get(&quot;source&quot;) {
+                    Some(src) =&gt; {
+                        source = src.clone();
+                    }
+                    None =&gt; {
+                        return Err(&quot;Missing source&quot;.into());
+                    }
+                }
+                let download_source = DownloadSource::from(DownloadSourceType::from(source));
+                let base_url = download_source.base_url.clone();
+
+                let username: String;
+                let password: String;
+
+                let url: String;
+                if download_source.requires_osu_login {
+                    match hashmap.get(&quot;username&quot;) {
+                        Some(name) =&gt; {
+                            username = name.clone();
+                        }
+                        None =&gt; {
+                            return Err(&quot;Missing username&quot;.into());
+                        }
+                    }
+                    match hashmap.get(&quot;password&quot;) {
+                        Some(pass) =&gt; {
+                            password = pass.clone();
+                        }
+                        None =&gt; {
+                            return Err(&quot;Missing password&quot;.into());
+                        }
+                    }
+                    url = form_url(&amp;base_url, &amp;beatmapset_id, &amp;username, &amp;password).map_err(|e| e.to_string())?;
+                    Ok(
+                        ResolvedResource{
+                            url: url.clone(),
+                            headers: vec![],
+                            auth: Some(AuthMethod::BasicAuth { username, password }),
+                        }
+                    )
+                } else {
+                    url = form_url(&amp;base_url, &amp;beatmapset_id, &quot;&quot;, &quot;&quot;).map_err(|e| e.to_string())?;
+                    Ok(
+                        ResolvedResource{
+                            url: url.clone(),
+                            headers: vec![],
+                            auth: None,
+                        }
+                    )
+                }                
+            }
+            DownloadResource::Resolved(resolved) =&gt; {
+                Ok(resolved.clone())
+            }
+        }
+    }
+}
+
+<span class="boring">}
+</span></code></pre></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="更改日志"><a class="header" href="#更改日志">更改日志</a></h1>
+<h2 id="01"><a class="header" href="#01">0.1</a></h2>
+<ul>
+<li>从<code>osynic_core</code>里面的<code>download</code>模块抽离出了通用化的HTTP下载器逻辑，并在支持了自定义Reporter和Resolver之后，将其独立为<code>vielpork</code>库</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="路线图"><a class="header" href="#路线图">路线图</a></h1>
+<p>暂无更多安排，敬请期待。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="附录"><a class="header" href="#附录">附录</a></h1>
+<h2 id="状态图"><a class="header" href="#状态图">状态图</a></h2>
+<pre><code class="language-mermaid">stateDiagram-v2
+    [*] --&gt; GlobalInit
+    GlobalInit --&gt; GlobalRunning: start_all()
+    GlobalRunning --&gt; GlobalSuspended: pause_all()
+    GlobalSuspended --&gt; GlobalRunning: resume_all()
+    GlobalRunning --&gt; GlobalStopped: cancel_all()
+    GlobalStopped --&gt; [*]
+    
+    state TaskStates {
+        [*] --&gt; TaskPending
+        TaskPending --&gt; TaskDownloading: start_task()
+        TaskDownloading --&gt; TaskPaused: pause_task()
+        TaskPaused --&gt; TaskDownloading: resume_task()
+        TaskDownloading --&gt; TaskCanceled: cancel_task()
+        TaskDownloading --&gt; TaskCompleted: finish()
+        TaskPaused --&gt; TaskCanceled: cancel_task()
+        TaskCanceled --&gt; [*]
+        TaskCompleted --&gt; [*]
+    }
+    
+    GlobalSuspended --&gt; TaskPaused : propagate
+    GlobalStopped --&gt; TaskCanceled : propagate
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="问题反馈"><a class="header" href="#问题反馈">问题反馈</a></h1>
+<p>有任何问题，直接提 issue 即可</p>
+<p>如果你想贡献，可以 fork 后提交 pull request</p>
+<p>如果你想联系我，可以发邮件到<code>zoneherobrine@gmail.com</code></p>
+<p>或者恰个 QQ：2212540603（好友请求中附带相关信息，比如说是vielpork问题~）</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ending"><a class="header" href="#ending">Ending</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="reference"><a class="header" href="#reference">Reference</a></h1>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+                <script type="text/javascript" src="theme/pagetoc.js"></script>
+                <script type="text/javascript" src="theme/mermaid.min.js"></script>
+                <script type="text/javascript" src="theme/mermaid-init.js"></script>
+        
+                        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+                
+    </body>
+</html>

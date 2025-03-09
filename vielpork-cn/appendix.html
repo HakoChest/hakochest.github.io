@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Troubleshooting</title>
+        <title>附录</title>
                 
 
         <!-- Custom HTML head -->
@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="getting-started/index.html"><strong aria-hidden="true">2.</strong> Getting Started</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="getting-started/migration.html"><strong aria-hidden="true">2.1.</strong> Migration</a></li><li class="chapter-item expanded "><a href="getting-started/prerequisites.html"><strong aria-hidden="true">2.2.</strong> Prerequisites</a></li><li class="chapter-item expanded "><a href="getting-started/installation.html"><strong aria-hidden="true">2.3.</strong> Installation</a></li><li class="chapter-item expanded "><a href="getting-started/list-your-devices.html"><strong aria-hidden="true">2.4.</strong> List Your Devices</a></li><li class="chapter-item expanded "><a href="getting-started/take-a-image.html"><strong aria-hidden="true">2.5.</strong> Take a Image</a></li><li class="chapter-item expanded "><a href="getting-started/streaming.html"><strong aria-hidden="true">2.6.</strong> Streaming</a></li><li class="chapter-item expanded "><a href="getting-started/adjusting-camera-settings.html"><strong aria-hidden="true">2.7.</strong> Adjusting Camera Settings</a></li></ol></li><li class="chapter-item expanded "><a href="change-log.html"><strong aria-hidden="true">3.</strong> Change Log</a></li><li class="chapter-item expanded "><a href="roadmap.html"><strong aria-hidden="true">4.</strong> Roadmap</a></li><li class="chapter-item expanded "><a href="appendix.html"><strong aria-hidden="true">5.</strong> Appendix</a></li><li class="chapter-item expanded "><a href="control-list.html"><strong aria-hidden="true">6.</strong> ControlList</a></li><li class="chapter-item expanded "><a href="troubleshooting.html" class="active"><strong aria-hidden="true">7.</strong> Troubleshooting</a></li><li class="chapter-item expanded "><a href="ending.html"><strong aria-hidden="true">8.</strong> Ending</a></li><li class="chapter-item expanded "><a href="reference.html"><strong aria-hidden="true">9.</strong> Reference</a></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> 简介</a></li><li class="chapter-item expanded "><a href="getting-started/index.html"><strong aria-hidden="true">2.</strong> 快速开始</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="getting-started/initial-example.html"><strong aria-hidden="true">2.1.</strong> 初始例程</a></li><li class="chapter-item expanded "><a href="getting-started/flow-control.html"><strong aria-hidden="true">2.2.</strong> 流程控制</a></li><li class="chapter-item expanded "><a href="getting-started/osynic-downloader.html"><strong aria-hidden="true">2.3.</strong> 使用实例：OsynicDownloader</a></li></ol></li><li class="chapter-item expanded "><a href="custom-reporter/index.html"><strong aria-hidden="true">3.</strong> 自定义Reporter</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="custom-reporter/tui-reporter.html"><strong aria-hidden="true">3.1.</strong> 内置TuiReporter</a></li><li class="chapter-item expanded "><a href="custom-reporter/cli-reporter-boardcast-mpsc.html"><strong aria-hidden="true">3.2.</strong> 内置CliReporterBoardcastMpsc</a></li></ol></li><li class="chapter-item expanded "><a href="custom-resolver/index.html"><strong aria-hidden="true">4.</strong> 自定义Resolver</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="custom-resolver/url-resolver.html"><strong aria-hidden="true">4.1.</strong> 内置UrlResolver</a></li><li class="chapter-item expanded "><a href="custom-resolver/osu-beatmap-resolver.html"><strong aria-hidden="true">4.2.</strong> OsuBeatmapResolver</a></li></ol></li><li class="chapter-item expanded "><a href="change-log.html"><strong aria-hidden="true">5.</strong> 更改日志</a></li><li class="chapter-item expanded "><a href="roadmap.html"><strong aria-hidden="true">6.</strong> 路线图</a></li><li class="chapter-item expanded "><a href="appendix.html" class="active"><strong aria-hidden="true">7.</strong> 附录</a></li><li class="chapter-item expanded "><a href="troubleshooting.html"><strong aria-hidden="true">8.</strong> 问题反馈</a></li><li class="chapter-item expanded "><a href="ending.html"><strong aria-hidden="true">9.</strong> 后记</a></li><li class="chapter-item expanded "><a href="reference.html"><strong aria-hidden="true">10.</strong> 参考</a></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -144,21 +144,41 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="troubleshoting"><a class="header" href="#troubleshoting">Troubleshoting</a></h1>
-<p>If you have any questions, please issue it.</p>
-<p>If you want to contribute, please fork it and pull request.</p>
-<p>If you want to contact me, you can email me: <code>zoneherobrine@gmail.com</code>;</p>
-<p>or by Tencent QQ: 2212540603 (with related information in the friend request)</p>
+                        <h1 id="附录"><a class="header" href="#附录">附录</a></h1>
+<h2 id="状态图"><a class="header" href="#状态图">状态图</a></h2>
+<pre><code class="language-mermaid">stateDiagram-v2
+    [*] --&gt; GlobalInit
+    GlobalInit --&gt; GlobalRunning: start_all()
+    GlobalRunning --&gt; GlobalSuspended: pause_all()
+    GlobalSuspended --&gt; GlobalRunning: resume_all()
+    GlobalRunning --&gt; GlobalStopped: cancel_all()
+    GlobalStopped --&gt; [*]
+    
+    state TaskStates {
+        [*] --&gt; TaskPending
+        TaskPending --&gt; TaskDownloading: start_task()
+        TaskDownloading --&gt; TaskPaused: pause_task()
+        TaskPaused --&gt; TaskDownloading: resume_task()
+        TaskDownloading --&gt; TaskCanceled: cancel_task()
+        TaskDownloading --&gt; TaskCompleted: finish()
+        TaskPaused --&gt; TaskCanceled: cancel_task()
+        TaskCanceled --&gt; [*]
+        TaskCompleted --&gt; [*]
+    }
+    
+    GlobalSuspended --&gt; TaskPaused : propagate
+    GlobalStopped --&gt; TaskCanceled : propagate
+</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                                                    <a rel="prev" href="control-list.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                                    <a rel="prev" href="roadmap.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
-                                                    <a rel="next" href="ending.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                                    <a rel="next" href="troubleshooting.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -168,11 +188,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                                    <a rel="prev" href="control-list.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                    <a rel="prev" href="roadmap.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
-                                    <a rel="next" href="ending.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                    <a rel="next" href="troubleshooting.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                             </nav>
@@ -197,6 +217,8 @@
 
         <!-- Custom JS scripts -->
                 <script type="text/javascript" src="theme/pagetoc.js"></script>
+                <script type="text/javascript" src="theme/mermaid.min.js"></script>
+                <script type="text/javascript" src="theme/mermaid-init.js"></script>
         
         
     </body>

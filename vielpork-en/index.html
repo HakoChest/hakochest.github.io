@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Troubleshooting</title>
+        <title>Introduction</title>
                 
 
         <!-- Custom HTML head -->
@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="getting-started/index.html"><strong aria-hidden="true">2.</strong> Getting Started</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="getting-started/migration.html"><strong aria-hidden="true">2.1.</strong> Migration</a></li><li class="chapter-item expanded "><a href="getting-started/prerequisites.html"><strong aria-hidden="true">2.2.</strong> Prerequisites</a></li><li class="chapter-item expanded "><a href="getting-started/installation.html"><strong aria-hidden="true">2.3.</strong> Installation</a></li><li class="chapter-item expanded "><a href="getting-started/list-your-devices.html"><strong aria-hidden="true">2.4.</strong> List Your Devices</a></li><li class="chapter-item expanded "><a href="getting-started/take-a-image.html"><strong aria-hidden="true">2.5.</strong> Take a Image</a></li><li class="chapter-item expanded "><a href="getting-started/streaming.html"><strong aria-hidden="true">2.6.</strong> Streaming</a></li><li class="chapter-item expanded "><a href="getting-started/adjusting-camera-settings.html"><strong aria-hidden="true">2.7.</strong> Adjusting Camera Settings</a></li></ol></li><li class="chapter-item expanded "><a href="change-log.html"><strong aria-hidden="true">3.</strong> Change Log</a></li><li class="chapter-item expanded "><a href="roadmap.html"><strong aria-hidden="true">4.</strong> Roadmap</a></li><li class="chapter-item expanded "><a href="appendix.html"><strong aria-hidden="true">5.</strong> Appendix</a></li><li class="chapter-item expanded "><a href="control-list.html"><strong aria-hidden="true">6.</strong> ControlList</a></li><li class="chapter-item expanded "><a href="troubleshooting.html" class="active"><strong aria-hidden="true">7.</strong> Troubleshooting</a></li><li class="chapter-item expanded "><a href="ending.html"><strong aria-hidden="true">8.</strong> Ending</a></li><li class="chapter-item expanded "><a href="reference.html"><strong aria-hidden="true">9.</strong> Reference</a></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="getting-started/index.html"><strong aria-hidden="true">2.</strong> Getting Started</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="getting-started/initial-example.html"><strong aria-hidden="true">2.1.</strong> Initial Example</a></li><li class="chapter-item expanded "><a href="getting-started/flow-control.html"><strong aria-hidden="true">2.2.</strong> Flow Control</a></li><li class="chapter-item expanded "><a href="getting-started/osynic-downloader.html"><strong aria-hidden="true">2.3.</strong> Usage Example: OsynicDownloader</a></li></ol></li><li class="chapter-item expanded "><a href="custom-reporter/index.html"><strong aria-hidden="true">3.</strong> Custom Reporter</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="custom-reporter/tui-reporter.html"><strong aria-hidden="true">3.1.</strong> Built-in TuiReporter</a></li><li class="chapter-item expanded "><a href="custom-reporter/cli-reporter-boardcast-mpsc.html"><strong aria-hidden="true">3.2.</strong> Built-in CliReporterBoardcastMpsc</a></li></ol></li><li class="chapter-item expanded "><a href="custom-resolver/index.html"><strong aria-hidden="true">4.</strong> Custom Resolver</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="custom-resolver/url-resolver.html"><strong aria-hidden="true">4.1.</strong> Built-in UrlResolver</a></li><li class="chapter-item expanded "><a href="custom-resolver/osu-beatmap-resolver.html"><strong aria-hidden="true">4.2.</strong> OsuBeatmapResolver</a></li></ol></li><li class="chapter-item expanded "><a href="change-log.html"><strong aria-hidden="true">5.</strong> Change Log</a></li><li class="chapter-item expanded "><a href="roadmap.html"><strong aria-hidden="true">6.</strong> Roadmap</a></li><li class="chapter-item expanded "><a href="appendix.html"><strong aria-hidden="true">7.</strong> Appendix</a></li><li class="chapter-item expanded "><a href="troubleshooting.html"><strong aria-hidden="true">8.</strong> Troubleshooting</a></li><li class="chapter-item expanded "><a href="ending.html"><strong aria-hidden="true">9.</strong> Ending</a></li><li class="chapter-item expanded "><a href="reference.html"><strong aria-hidden="true">10.</strong> Reference</a></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -144,21 +144,112 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="troubleshoting"><a class="header" href="#troubleshoting">Troubleshoting</a></h1>
-<p>If you have any questions, please issue it.</p>
-<p>If you want to contribute, please fork it and pull request.</p>
-<p>If you want to contact me, you can email me: <code>zoneherobrine@gmail.com</code>;</p>
-<p>or by Tencent QQ: 2212540603 (with related information in the friend request)</p>
+                        <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+<p><strong>Vielpork</strong> is a Rust-powered HTTP downloader designed for performance and extensibility. It offers:</p>
+<ul>
+<li>🚀 Multi-threaded downloading for maximum speed</li>
+<li>📊 Flexible reporting system with multiple built-in options</li>
+<li>🔧 Customizable resolution strategies for different network scenarios</li>
+<li>⏯️ Pause/resume functionality with checkpoint support</li>
+</ul>
+<pre><code class="language-mermaid">stateDiagram-v2
+    [*] --&gt; GlobalInit
+    GlobalInit --&gt; GlobalRunning: start_all()
+    GlobalRunning --&gt; GlobalSuspended: pause_all()
+    GlobalSuspended --&gt; GlobalRunning: resume_all()
+    GlobalRunning --&gt; GlobalStopped: cancel_all()
+    GlobalStopped --&gt; [*]
+    
+    state TaskStates {
+        [*] --&gt; TaskPending
+        TaskPending --&gt; TaskDownloading: start_task()
+        TaskDownloading --&gt; TaskPaused: pause_task()
+        TaskPaused --&gt; TaskDownloading: resume_task()
+        TaskDownloading --&gt; TaskCanceled: cancel_task()
+        TaskDownloading --&gt; TaskCompleted: finish()
+        TaskPaused --&gt; TaskCanceled: cancel_task()
+        TaskCanceled --&gt; [*]
+        TaskCompleted --&gt; [*]
+    }
+    
+    GlobalSuspended --&gt; TaskPaused : propagate
+    GlobalStopped --&gt; TaskCanceled : propagate
+</code></pre>
+<h2 id="related-projects"><a class="header" href="#related-projects">Related Projects</a></h2>
+<ul>
+<li><a href="https://crates.io/crates/osynic_downloader">osynic_downloader</a>: A osu beatmapsets downloader lib &amp; TUI application based on vielpork.</li>
+</ul>
+<h2 id="core-capabilities"><a class="header" href="#core-capabilities">Core Capabilities</a></h2>
+<ul>
+<li><strong>Multi-threaded Architecture</strong>: Leverage Rust's async runtime for concurrent chunk downloads</li>
+<li><strong>Extensible Reporting</strong>:
+<ul>
+<li>Built-in reporters: TUI progress bar, CLI broadcast mpsc channel</li>
+<li>Custom reporter implementation via trait</li>
+</ul>
+</li>
+<li><strong>Smart Resolution</strong>:
+<ul>
+<li>Custom resolution logic through Resolver trait</li>
+</ul>
+</li>
+<li><strong>Recovery &amp; Resilience</strong>:
+<ul>
+<li>Resume interrupted downloads</li>
+</ul>
+</li>
+<li><strong>Progress Tracking</strong>:
+<ul>
+<li>Real-time speed calculations</li>
+<li>ETA estimation</li>
+<li>Detailed transfer statistics</li>
+</ul>
+</li>
+</ul>
+<h2 id="built-in-options"><a class="header" href="#built-in-options">Built-in Options</a></h2>
+<h3 id="reporters"><a class="header" href="#reporters">Reporters</a></h3>
+<ul>
+<li><strong>TuiReporter</strong>: A terminal-based progress bar based on the <code>indicatif</code> library</li>
+<li><strong>CliReporterBoardcastMpsc</strong>: A reporter that broadcasts progress updates to multiple channels and finalizes them with a single channel ( Usage Example: In Tonic gRPC server streaming, the rx type can only be mpsc, so we need to broadcast the progress to a mpsc channel, then send it to the client through the server)</li>
+</ul>
+<h3 id="resolvers"><a class="header" href="#resolvers">Resolvers</a></h3>
+<ul>
+<li><strong>UrlResolver</strong>: A resolver that downloads resources from a URL, just a simple wrapper around reqwest</li>
+</ul>
+<h2 id="custom-components"><a class="header" href="#custom-components">Custom Components</a></h2>
+<p>You can see all traits at <code>vielpork::base::traits</code> and implement your own components.</p>
+<h3 id="custom-reporter"><a class="header" href="#custom-reporter">Custom Reporter</a></h3>
+<ul>
+<li>Here are 2 traits that you need to implement with async_trait:
+<ul>
+<li><code>ProgressReporter</code>: A trait that allows the reporter to handle progress updates</li>
+<li><code>ResultReporter</code>: A trait that allows the reporter to handle the results of operations or tasks</li>
+</ul>
+</li>
+</ul>
+<h3 id="custom-resolver"><a class="header" href="#custom-resolver">Custom Resolver</a></h3>
+<ul>
+<li>Here is only 1 trait that you need to implement with async_trait:
+<ul>
+<li><code>ResourceResolver</code>: A trait that allows the resolver to download resources from a specific source</li>
+</ul>
+</li>
+</ul>
+<h2 id="afterword-or-the-prologue"><a class="header" href="#afterword-or-the-prologue">Afterword (or the prologue)</a></h2>
+<p>I found the word &quot;viel&quot; and then thought about &quot;rufen&quot;, &quot;ekstase&quot;, &quot;reichen&quot;.</p>
+<p>But when I was still hesitating, a good friend came to my dorm and brought me a cup of smoked pork shreds.</p>
+<p>So I named it &quot;vielpork&quot;, which means a lot of pork shreds.</p>
+<p>But in terms of functionality, this downloader is mainly about multi-reporting channel downloads, so it's also a lot of reporting.</p>
+<p>&quot;report&quot; is very close to &quot;vielpork&quot;, which is also good.</p>
+<p>For me, who has been eating free porridge for a week, this name is already very good.</p>
+<p>Oh, by the way, boiled pork slices can also be called VielPork.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                                                    <a rel="prev" href="control-list.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                                <i class="fa fa-angle-left"></i>
-                            </a>
                         
-                                                    <a rel="next" href="ending.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                                    <a rel="next" href="getting-started/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -168,11 +259,8 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                                    <a rel="prev" href="control-list.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                        <i class="fa fa-angle-left"></i>
-                    </a>
                 
-                                    <a rel="next" href="ending.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                    <a rel="next" href="getting-started/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                             </nav>
@@ -197,6 +285,8 @@
 
         <!-- Custom JS scripts -->
                 <script type="text/javascript" src="theme/pagetoc.js"></script>
+                <script type="text/javascript" src="theme/mermaid.min.js"></script>
+                <script type="text/javascript" src="theme/mermaid-init.js"></script>
         
         
     </body>
