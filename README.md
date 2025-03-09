@@ -1,3 +1,3 @@
 # hakochest.github.io
-Hakora
 
+Books of HakoChest

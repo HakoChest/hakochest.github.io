@@ -1,0 +1,16 @@
+[book]
+authors = ["HakoChest"]
+language = "en"
+multilingual = false
+src = "src"
+
+[preprocessor.mermaid]
+command = "mdbook-mermaid"
+
+[preprocessor.pagetoc]
+[output.html]
+additional-css = ["theme/pagetoc.css"]
+additional-js  = ["theme/pagetoc.js","theme/mermaid.min.js", "theme/mermaid-init.js"]
+site-url = "/vielpork-cn/"
+use-site-url-as-root = true
+

@@ -35,6 +35,16 @@ jobs:
         working-directory: ./gxci-book-en
         run: mdbook build
         
+      # Build GXCI Chinese book
+      - name: Build Vielpork Chinese book
+        working-directory: ./vielpork-book-cn
+        run: mdbook build
+      
+      # Build GXCI English book
+      - name: Build Vielpork English book
+        working-directory: ./vielpork-book-en
+        run: mdbook build
+      
       # Combine all books
       - name: Prepare combined output
         run: |
@@ -47,6 +57,12 @@ jobs:
           # Copy English version
           mkdir -p ./combined-output/gxci-en
           cp -r ./gxci-book-en/book/* ./combined-output/gxci-en/
+          # Copy Chinese version
+          mkdir -p ./combined-output/vielpork-cn
+          cp -r ./vielpork-book-cn/book/* ./combined-output/vielpork-cn/
+          # Copy English version
+          mkdir -p ./combined-output/vielpork-en
+          cp -r ./vielpork-book-en/book/* ./combined-output/vielpork-en/
 
       # Deploy
       - name: Deploy
