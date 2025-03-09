@@ -144,7 +144,91 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="example-osynicdownloader"><a class="header" href="#example-osynicdownloader">Example: OsynicDownloader</a></h1>
+                        <h1 id="usage-example-osynicdownloader"><a class="header" href="#usage-example-osynicdownloader">Usage Example: OsynicDownloader</a></h1>
+<p><a href="https://crates.io/crates/osynic_downloader">osynic_downloader</a> is an efficient osu! beatmap downloader tool based on <code>vielpork</code>, supporting two input formats and parallel downloading, designed for rhythm game players and beatmap managers.</p>
+<h2 id="-features"><a class="header" href="#-features">✨ Features</a></h2>
+<ul>
+<li><strong>Dual-mode input</strong>: Supports native osu! beatmap set ID list and custom Osynic serialization generated format</li>
+<li><strong>Multiple download sources</strong>: Currently supports four download sources: OsuDirect, OsuApiV2, SayoApi, and ChimuApi</li>
+<li><strong>Concurrency support</strong>: Multi-threaded concurrent downloading acceleration (default 4 threads) (please note the concurrency limit of various osu! mirror site APIs! Use it properly!)</li>
+<li><strong>Intelligent management</strong>: Automatically create directory structure, custom save path</li>
+<li><strong>Visual progress</strong>: Real-time TUI progress display (supports terminal 256 colors)</li>
+<li><strong>Error recovery</strong>: State recovery mechanism ensures download integrity</li>
+</ul>
+<h2 id="-installation"><a class="header" href="#-installation">📦 Installation</a></h2>
+<h3 id="precompiled-version"><a class="header" href="#precompiled-version">Precompiled version</a></h3>
+<pre><code class="language-bash">cargo install osynic_downloader
+</code></pre>
+<h3 id="source-code-compilation"><a class="header" href="#source-code-compilation">Source code compilation</a></h3>
+<pre><code class="language-bash">git clone https://github.com/osynicite/osynic_downloader
+cd osynic_downloader
+cargo build --release
+</code></pre>
+<h2 id="-quick-start"><a class="header" href="#-quick-start">🚀 Quick Start</a></h2>
+<h3 id="basic-usage"><a class="header" href="#basic-usage">Basic usage</a></h3>
+<pre><code class="language-bash"># Native mode (ID list)
+osynic-dl --beatmapsets json/sets.json -o ./osu_maps -c 8
+# Osynic mode (song metadata)
+osynic-dl --osynic-songs json/songs.json --output ./music
+</code></pre>
+<h3 id="configuration-file-example"><a class="header" href="#configuration-file-example">Configuration file example</a></h3>
+<p><strong>sets.json</strong> (native mode):</p>
+<pre><code class="language-json">{
+    &quot;beatmapset_ids&quot;: [&quot;114514&quot;, &quot;1919810&quot;, &quot;1538879&quot;]
+}
+</code></pre>
+<p><strong>songs.json</strong> (Osynic mode):</p>
+<pre><code class="language-json">[
+  {
+    &quot;song_id&quot;: 1985060,
+    &quot;artist_name&quot;: &quot;ヒトリエ&quot;,
+    &quot;mapper_name&quot;: &quot;flake&quot;,
+    &quot;song_name&quot;: &quot;日常と地球の額縁 (wowaka x 初音ミク Edit)&quot;,
+    &quot;no_video&quot;: false
+  },
+    {
+    &quot;song_id&quot;: 1997071,
+    &quot;artist_name&quot;: &quot;ナブナ&quot;,
+    &quot;mapper_name&quot;: &quot;Ryuusei Aika&quot;,
+    &quot;song_name&quot;: &quot;始発とカフカ&quot;,
+    &quot;no_video&quot;: false
+  }
+]
+</code></pre>
+<h2 id="-command-line-options"><a class="header" href="#-command-line-options">📜 Command Line Options</a></h2>
+<table><thead><tr><th>Option</th><th>Short</th><th>Default</th><th>Description</th></tr></thead><tbody>
+<tr><td>--beatmapsets</td><td>-b</td><td>-</td><td>Path to native mode JSON file</td></tr>
+<tr><td>--osynic-songs</td><td>-n</td><td>-</td><td>Path to Osynic mode JSON file</td></tr>
+<tr><td>--source</td><td>-s</td><td>SayoApi</td><td>osu! beatmap download source</td></tr>
+<tr><td>--username</td><td>-u</td><td>-</td><td>osu! account (only for OsuDirect/OsuApiV2)</td></tr>
+<tr><td>--password</td><td>-p</td><td>-</td><td>osu! password (only for OsuDirect/OsuApiV2)</td></tr>
+<tr><td>--output</td><td>-o</td><td>beatmapsets</td><td>Download directory (auto-created)</td></tr>
+<tr><td>--concurrency</td><td>-c</td><td>4</td><td>Download concurrency (1-16)</td></tr>
+<tr><td>--help</td><td>-h</td><td>-</td><td>Display help information</td></tr>
+</tbody></table>
+<h2 id="supported-osu-download-sources"><a class="header" href="#supported-osu-download-sources">Supported osu! Download Sources</a></h2>
+<ol>
+<li><strong>OsuDirect</strong>: Official osu! beatmap download source (osu username and password required)</li>
+<li><strong>OsuApiV2</strong>: osu!lazer beatmap download source (osu username and password required, Basic authentication)</li>
+<li><strong>SayoApi</strong> (default): Sayobot beatmap download source (no login required)</li>
+<li><strong>ChimuApi</strong>: Chimu.moe beatmap download source (no login required)</li>
+</ol>
+<h2 id="-notes"><a class="header" href="#-notes">📌 Notes</a></h2>
+<ol>
+<li>Video download adaptation (no_video) is not yet implemented, and related options will be ignored</li>
+<li>Download file naming follows the <code>{{filename}}</code> naming rule</li>
+<li>Interrupting the download process with <code>Ctrl+C</code> and then rerunning will resume the download</li>
+<li>It is recommended to use a stable network connection for the best experience</li>
+</ol>
+<h2 id="-contributing"><a class="header" href="#-contributing">🤝 Contributing</a></h2>
+<p>Contributions are welcome! Please follow these guidelines:</p>
+<ul>
+<li>Follow the official Rust coding style</li>
+<li>Add test cases for new features</li>
+<li>Run <code>cargo fmt</code> and <code>cargo clippy</code> before submitting</li>
+</ul>
+<h2 id="-license"><a class="header" href="#-license">📜 License</a></h2>
+<p>This project is open-sourced under the <a href="LICENSE">MIT License</a>. Please respect the original author's copyright. When using osu! related resources, please follow the <a href="https://osu.ppy.sh/wiki/zh/Legal">osu! community guidelines</a>.</p>
 
                     </main>
 

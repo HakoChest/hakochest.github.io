@@ -248,14 +248,14 @@
 <p>主要分为如下几个部分</p>
 <ul>
 <li>初始例程</li>
-<li>自定义Reporter</li>
-<li>自定义Resolver</li>
+<li>流程控制</li>
+<li>使用实例：OsynicDownloader</li>
 </ul>
 <p>在阅读完初始例程后，您可以尝试运行示例代码，下载您需要的资源。</p>
 <p>然后，您可以尝试自定义Reporter和Resolver。</p>
 <ul>
-<li>流程控制</li>
-<li>使用实例：OsynicDownloader</li>
+<li>自定义Reporter</li>
+<li>自定义Resolver</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="初始例程"><a class="header" href="#初始例程">初始例程</a></h1>
 <h2 id="安装"><a class="header" href="#安装">安装</a></h2>
@@ -387,6 +387,91 @@ async fn main() -&gt; Result&lt;()&gt; {
 <span class="boring">}
 </span></code></pre></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="使用实例osynicdownloader"><a class="header" href="#使用实例osynicdownloader">使用实例：OsynicDownloader</a></h1>
+<p><a href="https://crates.io/crates/osynic_downloader">osynic_downloader</a> 是一款高效的osu!谱面下载工具，基于<code>vielpork</code>开发，支持两种输入格式和并行下载，专为音游玩家和谱面管理者打造。</p>
+<h2 id="-特性"><a class="header" href="#-特性">✨ 特性</a></h2>
+<ul>
+<li><strong>双模式输入</strong>：支持原生osu!谱面集ID列表和Osynic序列化生成的定制格式</li>
+<li><strong>多下载源</strong>：目前支持OsuDirect、OsuApiV2、SayoApi和ChimuApi共四种种下载源</li>
+<li><strong>并发支持</strong>：多线程并发下载加速（默认4线程）（请注意各osu!镜像站API的并发限制！文明使用！）</li>
+<li><strong>智能管理</strong>：自动创建目录结构，自定义保存路径</li>
+<li><strong>可视化进度</strong>：实时TUI进度显示（支持终端256色）</li>
+<li><strong>错误恢复</strong>：状态恢复机制保障下载完整性</li>
+</ul>
+<h2 id="-安装"><a class="header" href="#-安装">📦 安装</a></h2>
+<h3 id="预编译版本"><a class="header" href="#预编译版本">预编译版本</a></h3>
+<pre><code class="language-bash">cargo install osynic_downloader
+</code></pre>
+<h3 id="源码编译"><a class="header" href="#源码编译">源码编译</a></h3>
+<pre><code class="language-bash">git clone https://github.com/osynicite/osynic_downloader
+cd osynic_downloader
+cargo build --release
+</code></pre>
+<h2 id="-快速开始"><a class="header" href="#-快速开始">🚀 快速开始</a></h2>
+<h3 id="基本使用"><a class="header" href="#基本使用">基本使用</a></h3>
+<pre><code class="language-bash"># 原生模式（ID列表）
+osynic-dl --beatmapsets json/sets.json -o ./osu_maps -c 8
+
+# Osynic模式（歌曲元数据）
+osynic-dl --osynic-songs json/songs.json --output ./music
+</code></pre>
+<h3 id="配置文件示例"><a class="header" href="#配置文件示例">配置文件示例</a></h3>
+<p><strong>sets.json</strong>（原生模式）:</p>
+<pre><code class="language-json">{
+    &quot;beatmapset_ids&quot;: [&quot;114514&quot;, &quot;1919810&quot;, &quot;1538879&quot;]
+}
+</code></pre>
+<p><strong>songs.json</strong>（Osynic模式）:</p>
+<pre><code class="language-json">[
+  {
+    &quot;song_id&quot;: 1985060,
+    &quot;artist_name&quot;: &quot;ヒトリエ&quot;,
+    &quot;mapper_name&quot;: &quot;flake&quot;,
+    &quot;song_name&quot;: &quot;日常と地球の額縁 (wowaka x 初音ミク Edit)&quot;,
+    &quot;no_video&quot;: false
+  },
+    {
+    &quot;song_id&quot;: 1997071,
+    &quot;artist_name&quot;: &quot;ナブナ&quot;,
+    &quot;mapper_name&quot;: &quot;Ryuusei Aika&quot;,
+    &quot;song_name&quot;: &quot;始発とカフカ&quot;,
+    &quot;no_video&quot;: false
+  }
+]
+</code></pre>
+<h2 id="-参数详解"><a class="header" href="#-参数详解">⚙️ 参数详解</a></h2>
+<table><thead><tr><th>参数</th><th>简写</th><th>默认值</th><th>说明</th></tr></thead><tbody>
+<tr><td>--beatmapsets</td><td>-b</td><td>-</td><td>原生模式JSON文件路径</td></tr>
+<tr><td>--osynic-songs</td><td>-n</td><td>-</td><td>Osynic模式JSON文件路径</td></tr>
+<tr><td>--source</td><td>-s</td><td>SayoApi</td><td>osu!谱面下载源</td></tr>
+<tr><td>--username</td><td>-u</td><td>-</td><td>osu!账号（仅OsuDirect/OsuApiV2需要）</td></tr>
+<tr><td>--password</td><td>-p</td><td>-</td><td>osu!密码（仅OsuDirect/OsuApiV2需要）</td></tr>
+<tr><td>--output</td><td>-o</td><td>beatmapsets</td><td>下载目录（自动创建）</td></tr>
+<tr><td>--concurrency</td><td>-c</td><td>4</td><td>下载并发数（1-16）</td></tr>
+<tr><td>--help</td><td>-h</td><td>-</td><td>显示帮助信息</td></tr>
+</tbody></table>
+<h2 id="支持的osu下载源"><a class="header" href="#支持的osu下载源">支持的osu!下载源</a></h2>
+<ol>
+<li><strong>OsuDirect</strong>：osu!官方谱面下载源（需osu账号密码）</li>
+<li><strong>OsuApiV2</strong>: osu!lazer的谱面下载源（需osu账号密码，做Basic认证）</li>
+<li><strong>SayoApi</strong>（默认）：Sayobot谱面下载源（无需登录）</li>
+<li><strong>ChimuApi</strong>：Chimu.moe谱面下载源（无需登录）</li>
+</ol>
+<h2 id="-注意事项"><a class="header" href="#-注意事项">📌 注意事项</a></h2>
+<ol>
+<li>视频下载适配（no_video）暂未实现，相关选项会被忽略</li>
+<li>下载文件命名遵循<code>{{filename}}</code>命名规则</li>
+<li>使用<code>Ctrl+C</code>中断下载进程后，可重新运行恢复下载</li>
+<li>建议使用稳定的网络连接以获得最佳体验</li>
+</ol>
+<h2 id="-贡献指南"><a class="header" href="#-贡献指南">🤝 贡献指南</a></h2>
+<p>欢迎通过Issue提交建议或Pull Request参与开发！请确保：</p>
+<ul>
+<li>遵循Rust官方编码规范</li>
+<li>新增功能需附带测试用例</li>
+<li>提交前运行<code>cargo fmt</code>和<code>cargo clippy</code></li>
+</ul>
+<h2 id="-开源协议"><a class="header" href="#-开源协议">📜 开源协议</a></h2>
+<p>本项目基于 <a href="getting-started/LICENSE">MIT License</a> 开源，请尊重原作者的著作权。使用osu!相关资源时请遵守<a href="https://osu.ppy.sh/wiki/zh/Legal">osu!社区准则</a>。</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="自定义reporter"><a class="header" href="#自定义reporter">自定义Reporter</a></h1>
 <p>在<code>vielpork</code>中，Reporter是一个用于向外部报告下载任务进度和结果的接口。Reporter由两个trait构成，他们定义了一系列的方法，用于向外部报告下载任务的进度和结果。Reporter的实现可以是任何类型，只要它实现了这两个Reporter trait即可。</p>
 <p>在<code>vielport::base::traits</code>中定义的这两个trait是<code>ProgressReporter</code>和<code>ResultReporter</code>。<code>ProgressReporter</code>定义了三个方法，用于报告下载任务的开始、进度更新和结束。<code>ResultReporter</code>定义了一个方法，用于报告下载任务的结果。</p>
