@@ -146,7 +146,7 @@
                     <main>
                         <h1 id="appendix"><a class="header" href="#appendix">Appendix</a></h1>
 <h2 id="state-diagrams"><a class="header" href="#state-diagrams">State Diagrams</a></h2>
-<pre><code class="language-mermaid">stateDiagram-v2
+<pre class="mermaid">stateDiagram-v2
     [*] --&gt; GlobalInit
     GlobalInit --&gt; GlobalRunning: start_all()
     GlobalRunning --&gt; GlobalSuspended: pause_all()
@@ -168,7 +168,7 @@
     
     GlobalSuspended --&gt; TaskPaused : propagate
     GlobalStopped --&gt; TaskCanceled : propagate
-</code></pre>
+</pre>
 
                     </main>
 

@@ -152,7 +152,7 @@
 <li>🔧 Customizable resolution strategies for different network scenarios</li>
 <li>⏯️ Pause/resume functionality with checkpoint support</li>
 </ul>
-<pre><code class="language-mermaid">stateDiagram-v2
+<pre class="mermaid">stateDiagram-v2
     [*] --&gt; GlobalInit
     GlobalInit --&gt; GlobalRunning: start_all()
     GlobalRunning --&gt; GlobalSuspended: pause_all()
@@ -174,7 +174,7 @@
     
     GlobalSuspended --&gt; TaskPaused : propagate
     GlobalStopped --&gt; TaskCanceled : propagate
-</code></pre>
+</pre>
 <h2 id="related-projects"><a class="header" href="#related-projects">Related Projects</a></h2>
 <ul>
 <li><a href="https://crates.io/crates/osynic_downloader">osynic_downloader</a>: A osu beatmapsets downloader lib &amp; TUI application based on vielpork.</li>

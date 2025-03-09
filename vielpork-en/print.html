@@ -153,7 +153,7 @@
 <li>🔧 Customizable resolution strategies for different network scenarios</li>
 <li>⏯️ Pause/resume functionality with checkpoint support</li>
 </ul>
-<pre><code class="language-mermaid">stateDiagram-v2
+<pre class="mermaid">stateDiagram-v2
     [*] --&gt; GlobalInit
     GlobalInit --&gt; GlobalRunning: start_all()
     GlobalRunning --&gt; GlobalSuspended: pause_all()
@@ -175,7 +175,7 @@
     
     GlobalSuspended --&gt; TaskPaused : propagate
     GlobalStopped --&gt; TaskCanceled : propagate
-</code></pre>
+</pre>
 <h2 id="related-projects"><a class="header" href="#related-projects">Related Projects</a></h2>
 <ul>
 <li><a href="https://crates.io/crates/osynic_downloader">osynic_downloader</a>: A osu beatmapsets downloader lib &amp; TUI application based on vielpork.</li>
@@ -327,7 +327,7 @@ async fn main() -&gt; Result&lt;()&gt; {
 </ul>
 <p>Just use it directly in the code, and <code>vielpork</code> will automatically handle the state transitions of the tasks.</p>
 <h2 id="state-transition-diagram"><a class="header" href="#state-transition-diagram">State Transition Diagram</a></h2>
-<pre><code class="language-mermaid">stateDiagram-v2
+<pre class="mermaid">stateDiagram-v2
     [*] --&gt; GlobalInit
     GlobalInit --&gt; GlobalRunning: start_all()
     GlobalRunning --&gt; GlobalSuspended: pause_all()
@@ -349,7 +349,7 @@ async fn main() -&gt; Result&lt;()&gt; {
     
     GlobalSuspended --&gt; TaskPaused : propagate
     GlobalStopped --&gt; TaskCanceled : propagate
-</code></pre>
+</pre>
 <h2 id="reasonable-state-transition"><a class="header" href="#reasonable-state-transition">Reasonable State Transition</a></h2>
 <p><code>vielpork</code>'s state transition is in the form of a finite state machine, with each task having a state, and each task's state transition is finite. This ensures that the task's state transition is reasonable and that unreasonable state transitions do not occur.</p>
 <h3 id="reasonable-global-state-transition"><a class="header" href="#reasonable-global-state-transition">Reasonable Global State Transition</a></h3>
@@ -927,7 +927,7 @@ impl ResourceResolver for OsuBeatmapsetResolver {
 <p>暂无更多安排，敬请期待。</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="appendix"><a class="header" href="#appendix">Appendix</a></h1>
 <h2 id="state-diagrams"><a class="header" href="#state-diagrams">State Diagrams</a></h2>
-<pre><code class="language-mermaid">stateDiagram-v2
+<pre class="mermaid">stateDiagram-v2
     [*] --&gt; GlobalInit
     GlobalInit --&gt; GlobalRunning: start_all()
     GlobalRunning --&gt; GlobalSuspended: pause_all()
@@ -949,7 +949,7 @@ impl ResourceResolver for OsuBeatmapsetResolver {
     
     GlobalSuspended --&gt; TaskPaused : propagate
     GlobalStopped --&gt; TaskCanceled : propagate
-</code></pre>
+</pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="troubleshoting"><a class="header" href="#troubleshoting">Troubleshoting</a></h1>
 <p>If you have any questions, please issue it.</p>
 <p>If you want to contribute, please fork it and pull request.</p>

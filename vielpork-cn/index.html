@@ -152,7 +152,7 @@
 <li>🔧 为不同网络场景提供可定制的解析策略</li>
 <li>⏯️ 支持检查点的暂停/恢复功能</li>
 </ul>
-<pre><code class="language-mermaid">stateDiagram-v2
+<pre class="mermaid">stateDiagram-v2
     [*] --&gt; GlobalInit
     GlobalInit --&gt; GlobalRunning: start_all()
     GlobalRunning --&gt; GlobalSuspended: pause_all()
@@ -174,7 +174,7 @@
     
     GlobalSuspended --&gt; TaskPaused : propagate
     GlobalStopped --&gt; TaskCanceled : propagate
-</code></pre>
+</pre>
 <h2 id="相关项目"><a class="header" href="#相关项目">相关项目</a></h2>
 <ul>
 <li><a href="https://crates.io/crates/osynic_downloader">osynic_downloader</a>: 基于vielpork的osu!谱面下载器，包含工具库和TUI应用</li>

@@ -153,7 +153,7 @@
 <li>🔧 为不同网络场景提供可定制的解析策略</li>
 <li>⏯️ 支持检查点的暂停/恢复功能</li>
 </ul>
-<pre><code class="language-mermaid">stateDiagram-v2
+<pre class="mermaid">stateDiagram-v2
     [*] --&gt; GlobalInit
     GlobalInit --&gt; GlobalRunning: start_all()
     GlobalRunning --&gt; GlobalSuspended: pause_all()
@@ -175,7 +175,7 @@
     
     GlobalSuspended --&gt; TaskPaused : propagate
     GlobalStopped --&gt; TaskCanceled : propagate
-</code></pre>
+</pre>
 <h2 id="相关项目"><a class="header" href="#相关项目">相关项目</a></h2>
 <ul>
 <li><a href="https://crates.io/crates/osynic_downloader">osynic_downloader</a>: 基于vielpork的osu!谱面下载器，包含工具库和TUI应用</li>
@@ -328,7 +328,7 @@ async fn main() -&gt; Result&lt;()&gt; {
 </ul>
 <p>直接在代码中使用即可，<code>vielpork</code>会自动处理任务的状态转换。</p>
 <h2 id="状态转移图"><a class="header" href="#状态转移图">状态转移图</a></h2>
-<pre><code class="language-mermaid">stateDiagram-v2
+<pre class="mermaid">stateDiagram-v2
     [*] --&gt; GlobalInit
     GlobalInit --&gt; GlobalRunning: start_all()
     GlobalRunning --&gt; GlobalSuspended: pause_all()
@@ -350,7 +350,7 @@ async fn main() -&gt; Result&lt;()&gt; {
     
     GlobalSuspended --&gt; TaskPaused : propagate
     GlobalStopped --&gt; TaskCanceled : propagate
-</code></pre>
+</pre>
 <h2 id="合理的状态转换"><a class="header" href="#合理的状态转换">合理的状态转换</a></h2>
 <p><code>vielpork</code>的状态转换是有限状态机的形式，每个任务都有一个状态，每个任务的状态转换都是有限的。这样可以保证任务的状态转换是合理的，不会出现不合理的状态转换。</p>
 <h3 id="合理全局状态转换"><a class="header" href="#合理全局状态转换">合理全局状态转换</a></h3>
@@ -928,7 +928,7 @@ impl ResourceResolver for OsuBeatmapsetResolver {
 <p>暂无更多安排，敬请期待。</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="附录"><a class="header" href="#附录">附录</a></h1>
 <h2 id="状态图"><a class="header" href="#状态图">状态图</a></h2>
-<pre><code class="language-mermaid">stateDiagram-v2
+<pre class="mermaid">stateDiagram-v2
     [*] --&gt; GlobalInit
     GlobalInit --&gt; GlobalRunning: start_all()
     GlobalRunning --&gt; GlobalSuspended: pause_all()
@@ -950,7 +950,7 @@ impl ResourceResolver for OsuBeatmapsetResolver {
     
     GlobalSuspended --&gt; TaskPaused : propagate
     GlobalStopped --&gt; TaskCanceled : propagate
-</code></pre>
+</pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="问题反馈"><a class="header" href="#问题反馈">问题反馈</a></h1>
 <p>有任何问题，直接提 issue 即可</p>
 <p>如果你想贡献，可以 fork 后提交 pull request</p>

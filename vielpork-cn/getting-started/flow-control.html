@@ -167,7 +167,7 @@
 </ul>
 <p>直接在代码中使用即可，<code>vielpork</code>会自动处理任务的状态转换。</p>
 <h2 id="状态转移图"><a class="header" href="#状态转移图">状态转移图</a></h2>
-<pre><code class="language-mermaid">stateDiagram-v2
+<pre class="mermaid">stateDiagram-v2
     [*] --&gt; GlobalInit
     GlobalInit --&gt; GlobalRunning: start_all()
     GlobalRunning --&gt; GlobalSuspended: pause_all()
@@ -189,7 +189,7 @@
     
     GlobalSuspended --&gt; TaskPaused : propagate
     GlobalStopped --&gt; TaskCanceled : propagate
-</code></pre>
+</pre>
 <h2 id="合理的状态转换"><a class="header" href="#合理的状态转换">合理的状态转换</a></h2>
 <p><code>vielpork</code>的状态转换是有限状态机的形式，每个任务都有一个状态，每个任务的状态转换都是有限的。这样可以保证任务的状态转换是合理的，不会出现不合理的状态转换。</p>
 <h3 id="合理全局状态转换"><a class="header" href="#合理全局状态转换">合理全局状态转换</a></h3>

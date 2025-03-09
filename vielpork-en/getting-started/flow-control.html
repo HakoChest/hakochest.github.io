@@ -167,7 +167,7 @@
 </ul>
 <p>Just use it directly in the code, and <code>vielpork</code> will automatically handle the state transitions of the tasks.</p>
 <h2 id="state-transition-diagram"><a class="header" href="#state-transition-diagram">State Transition Diagram</a></h2>
-<pre><code class="language-mermaid">stateDiagram-v2
+<pre class="mermaid">stateDiagram-v2
     [*] --&gt; GlobalInit
     GlobalInit --&gt; GlobalRunning: start_all()
     GlobalRunning --&gt; GlobalSuspended: pause_all()
@@ -189,7 +189,7 @@
     
     GlobalSuspended --&gt; TaskPaused : propagate
     GlobalStopped --&gt; TaskCanceled : propagate
-</code></pre>
+</pre>
 <h2 id="reasonable-state-transition"><a class="header" href="#reasonable-state-transition">Reasonable State Transition</a></h2>
 <p><code>vielpork</code>'s state transition is in the form of a finite state machine, with each task having a state, and each task's state transition is finite. This ensures that the task's state transition is reasonable and that unreasonable state transitions do not occur.</p>
 <h3 id="reasonable-global-state-transition"><a class="header" href="#reasonable-global-state-transition">Reasonable Global State Transition</a></h3>
