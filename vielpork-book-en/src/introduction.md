@@ -35,7 +35,7 @@ stateDiagram-v2
 
 ## Related Projects
 
-- [osynic_downloader](https://crates.io/crates/osynic_downloader): A osu beatmapsets downloader lib & TUI application based on vielpork.
+- [osynic_downloader](https://github.com/osynicite/osynic_downloader): A osu beatmapsets downloader lib & TUI application based on vielpork.
 
 ## Core Capabilities
 

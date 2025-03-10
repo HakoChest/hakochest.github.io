@@ -35,7 +35,7 @@ stateDiagram-v2
 
 ## 相关项目
 
-- [osynic_downloader](https://crates.io/crates/osynic_downloader): 基于vielpork的osu!谱面下载器，包含工具库和TUI应用
+- [osynic_downloader](https://github.com/osynicite/osynic_downloader): 基于vielpork的osu!谱面下载器，包含工具库和TUI应用
 
 ## 核心特性
 
