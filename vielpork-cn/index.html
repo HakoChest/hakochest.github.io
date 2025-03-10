@@ -145,12 +145,13 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="简介"><a class="header" href="#简介">简介</a></h1>
-<p>Vielpork是一个高性能的多线程HTTP下载器，由Rust编写,具有可自定义的报告器和解析策略。它提供：</p>
+<p>Vielpork是一个高性能的多线程HTTP下载器，由Rust编写,具有可自定义的报告器和资源解析策略。它提供：</p>
 <ul>
 <li>🚀 多线程下载以获得最大速度</li>
-<li>📊 多种内置选项的灵活报告系统</li>
-<li>🔧 为不同网络场景提供可定制的解析策略</li>
-<li>⏯️ 支持检查点的暂停/恢复功能</li>
+<li>📊 多种内置报告器适配大部分场景</li>
+<li>📦 丰富的路径策略选项与模板命名支持</li>
+<li>🔧 为不同下载场景提供可定制的资源解析策略</li>
+<li>⏯️ 支持全局与单个任务的暂停/恢复功能</li>
 </ul>
 <pre class="mermaid">stateDiagram-v2
     [*] --&gt; GlobalInit

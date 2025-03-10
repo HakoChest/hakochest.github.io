@@ -146,12 +146,13 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="简介"><a class="header" href="#简介">简介</a></h1>
-<p>Vielpork是一个高性能的多线程HTTP下载器，由Rust编写,具有可自定义的报告器和解析策略。它提供：</p>
+<p>Vielpork是一个高性能的多线程HTTP下载器，由Rust编写,具有可自定义的报告器和资源解析策略。它提供：</p>
 <ul>
 <li>🚀 多线程下载以获得最大速度</li>
-<li>📊 多种内置选项的灵活报告系统</li>
-<li>🔧 为不同网络场景提供可定制的解析策略</li>
-<li>⏯️ 支持检查点的暂停/恢复功能</li>
+<li>📊 多种内置报告器适配大部分场景</li>
+<li>📦 丰富的路径策略选项与模板命名支持</li>
+<li>🔧 为不同下载场景提供可定制的资源解析策略</li>
+<li>⏯️ 支持全局与单个任务的暂停/恢复功能</li>
 </ul>
 <pre class="mermaid">stateDiagram-v2
     [*] --&gt; GlobalInit
@@ -387,15 +388,17 @@ async fn main() -&gt; Result&lt;()&gt; {
 <span class="boring">}
 </span></code></pre></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="使用实例osynicdownloader"><a class="header" href="#使用实例osynicdownloader">使用实例：OsynicDownloader</a></h1>
-<p><a href="https://crates.io/crates/osynic_downloader">osynic_downloader</a> 是一款高效的osu!谱面下载工具，基于<code>vielpork</code>开发，支持两种输入格式和并行下载，专为音游玩家和谱面管理者打造。</p>
+<p><a href="https://crates.io/crates/osynic_downloader">osynic_downloader</a> 是一款高效的osu!谱面下载工具，基于<a href="https://crates.io/crates/vielpork">vielpork</a>开发，支持两种输入格式和并行下载，专为音游玩家和多设备谱面同步打造。</p>
+<p>推荐搭配<a href="https://crates.io/crates/osynic_serializer">osynic_serializer</a>使用，实现osu!谱面的快速序列化。</p>
+<p><img src="https://s2.loli.net/2025/03/10/hasqOmgctyG4TWd.gif" alt="osynic_downloader.gif" /></p>
 <h2 id="-特性"><a class="header" href="#-特性">✨ 特性</a></h2>
 <ul>
-<li><strong>双模式输入</strong>：支持原生osu!谱面集ID列表和Osynic序列化生成的定制格式</li>
-<li><strong>多下载源</strong>：目前支持OsuDirect、OsuApiV2、SayoApi和ChimuApi共四种种下载源</li>
+<li><strong>双模式输入</strong>：支持osu!谱面集ID列表和Osynic序列化生成的JSON格式</li>
+<li><strong>多下载源</strong>：目前支持OsuDirect、OsuApiV2、SayoApi和ChimuApi共四种下载源</li>
 <li><strong>并发支持</strong>：多线程并发下载加速（默认4线程）（请注意各osu!镜像站API的并发限制！文明使用！）</li>
 <li><strong>智能管理</strong>：自动创建目录结构，自定义保存路径</li>
 <li><strong>可视化进度</strong>：实时TUI进度显示（支持终端256色）</li>
-<li><strong>错误恢复</strong>：状态恢复机制保障下载完整性</li>
+<li><strong>错误恢复</strong>：无畏中断，自动断点续传</li>
 </ul>
 <h2 id="-安装"><a class="header" href="#-安装">📦 安装</a></h2>
 <h3 id="预编译版本"><a class="header" href="#预编译版本">预编译版本</a></h3>
@@ -414,13 +417,13 @@ osynic-dl --beatmapsets json/sets.json -o ./osu_maps -c 8
 # Osynic模式（歌曲元数据）
 osynic-dl --osynic-songs json/songs.json --output ./music
 </code></pre>
-<h3 id="配置文件示例"><a class="header" href="#配置文件示例">配置文件示例</a></h3>
-<p><strong>sets.json</strong>（原生模式）:</p>
+<h3 id="输入json示例"><a class="header" href="#输入json示例">输入JSON示例</a></h3>
+<p><strong>sets.json</strong>（Beatmapsets模式）:</p>
 <pre><code class="language-json">{
     &quot;beatmapset_ids&quot;: [&quot;114514&quot;, &quot;1919810&quot;, &quot;1538879&quot;]
 }
 </code></pre>
-<p><strong>songs.json</strong>（Osynic模式）:</p>
+<p><strong>songs.json</strong>（Songs模式）（Osynic）:</p>
 <pre><code class="language-json">[
   {
     &quot;song_id&quot;: 1985060,
@@ -451,7 +454,7 @@ osynic-dl --osynic-songs json/songs.json --output ./music
 </tbody></table>
 <h2 id="支持的osu下载源"><a class="header" href="#支持的osu下载源">支持的osu!下载源</a></h2>
 <ol>
-<li><strong>OsuDirect</strong>：osu!官方谱面下载源（需osu账号密码）</li>
+<li><strong>OsuDirect</strong>：osu!官方谱面下载源（需osu账号密码，做URL传参）</li>
 <li><strong>OsuApiV2</strong>: osu!lazer的谱面下载源（需osu账号密码，做Basic认证）</li>
 <li><strong>SayoApi</strong>（默认）：Sayobot谱面下载源（无需登录）</li>
 <li><strong>ChimuApi</strong>：Chimu.moe谱面下载源（无需登录）</li>
@@ -750,6 +753,51 @@ pub trait ResourceResolver: Send + Sync {
 }
 <span class="boring">}
 </span></code></pre></pre>
+<h2 id="resolver何为"><a class="header" href="#resolver何为">Resolver何为？</a></h2>
+<p><code>Resolver</code>用来将<code>DownloadResource</code>转换为<code>ResolvedResource</code>。<code>DownloadResource</code>是一个枚举类型，它包含了资源的不同类型。<code>ResolvedResource</code>是一个结构体，它包含了HTTP请求所需的详细信息。</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// `vielpork::base::enums`中定义的`DownloadResource`枚举类型
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub enum DownloadResource {
+    Url(String),
+    Id(String), 
+    Params(Vec&lt;String&gt;),
+    HashMap(HashMap&lt;String, String&gt;),
+    Resolved(ResolvedResource),
+}
+<span class="boring">}
+</span></code></pre></pre>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// `vielpork::base::structs`中定义的`ResolvedResource`结构体
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ResolvedResource {
+    pub id: u32,
+    pub url: String,
+    pub headers: Vec&lt;(String, String)&gt;,
+    pub auth: Option&lt;AuthMethod&gt;,
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>其中，<code>AuthMethod</code>支持<code>Basic</code>、<code>Bearer</code>以及<code>ApiKey</code>三种认证方式。</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// `vielpork::base::enums`中定义的`AuthMethod`枚举类型
+
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub enum AuthMethod {
+    None,
+    Basic { username: String, password: String },
+    Bearer { token: String },
+    ApiKey { key: String, header: String },
+}
+<span class="boring">}
+</span></code></pre></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="内置使用实例一urlresolver"><a class="header" href="#内置使用实例一urlresolver">内置使用实例一：UrlResolver</a></h1>
 <p><code>UrlResolver</code>是一个简单的解析器，用于从URL下载资源。</p>
 <p>实际上，<code>UrlResolver</code>只是一个简单的reqwest包装器，它将URL转换为<code>ResolvedResource</code>。</p>
@@ -761,6 +809,7 @@ pub trait ResourceResolver: Send + Sync {
 use crate::base::traits::ResourceResolver;
 use crate::base::structs::ResolvedResource;
 use crate::base::enums::DownloadResource;
+use crate::base::algorithms::generate_task_id;
 use async_trait::async_trait;
 
 #[derive(Debug,Clone)]
@@ -778,6 +827,7 @@ impl ResourceResolver for UrlResolver {
         match resource {
             DownloadResource::Url(url) =&gt; {
                 Ok(ResolvedResource{
+                    id: generate_task_id(url),
                     url: url.clone(),
                     headers: vec![],
                     auth: None,
@@ -811,6 +861,7 @@ impl ResourceResolver for UrlResolver {
 </span>use vielpork::base::traits::ResourceResolver;
 use vielpork::base::structs::ResolvedResource;
 use vielpork::base::enums::{DownloadResource,AuthMethod};
+use vielpork::base::algorithms::generate_task_id;
 use async_trait::async_trait;
 
 use crate::sources::{DownloadSource, DownloadSourceType};
@@ -831,6 +882,7 @@ impl ResourceResolver for OsuBeatmapsetResolver {
         match resource {
             DownloadResource::Url(url) =&gt; {
                 Ok(ResolvedResource{
+                    id: generate_task_id(url),
                     url: url.clone(),
                     headers: vec![],
                     auth: None,
@@ -850,6 +902,7 @@ impl ResourceResolver for OsuBeatmapsetResolver {
                 let base_url = download_source.base_url.clone();
                 let url = form_url(&amp;base_url, &amp;beatmapset_id, &quot;&quot;, &quot;&quot;).map_err(|e| e.to_string())?;
                 Ok(ResolvedResource{
+                    id: beatmapset_id,
                     url: url.clone(),
                     headers: vec![],
                     auth: None,
@@ -889,7 +942,7 @@ impl ResourceResolver for OsuBeatmapsetResolver {
                 let password: String;
 
                 let url: String;
-                if download_source.requires_osu_login {
+                if download_source.requires_osu_credentials {
                     match params.get(2) {
                         Some(name) =&gt; {
                             username = name.clone();
@@ -906,18 +959,33 @@ impl ResourceResolver for OsuBeatmapsetResolver {
                             return Err(&quot;Missing password&quot;.into());
                         }
                     }
-                    url = form_url(&amp;base_url, &amp;beatmapset_id, &amp;username, &amp;password).map_err(|e| e.to_string())?;
-                    Ok(
-                        ResolvedResource{
-                            url: url.clone(),
-                            headers: vec![],
-                            auth: Some(AuthMethod::BasicAuth { username, password }),
-                        }
-                    )
+                    if download_source.requires_basic_auth{
+                        url = form_url(&amp;base_url, &amp;beatmapset_id, &quot;&quot;,&quot;&quot;).map_err(|e| e.to_string())?;
+                        Ok(
+                            ResolvedResource{
+                                id:beatmapset_id,
+                                url: url.clone(),
+                                headers: vec![],
+                                auth: Some(AuthMethod::Basic { username, password }),
+                            }
+                        )
+                    } else {
+                        let hashed_password = format!(&quot;{:x}&quot;, md5::compute(password));
+                        url = form_url(&amp;base_url, &amp;beatmapset_id, &amp;username, &amp;hashed_password).map_err(|e| e.to_string())?;
+                        Ok(
+                            ResolvedResource{
+                                id:beatmapset_id,
+                                url: url.clone(),
+                                headers: vec![],
+                                auth: None,
+                            }
+                        )
+                    }
                 } else {
                     url = form_url(&amp;base_url, &amp;beatmapset_id, &quot;&quot;, &quot;&quot;).map_err(|e| e.to_string())?;
                     Ok(
                         ResolvedResource{
+                            id:beatmapset_id,
                             url: url.clone(),
                             headers: vec![],
                             auth: None,
@@ -959,7 +1027,7 @@ impl ResourceResolver for OsuBeatmapsetResolver {
                 let password: String;
 
                 let url: String;
-                if download_source.requires_osu_login {
+                if download_source.requires_osu_credentials {
                     match hashmap.get(&quot;username&quot;) {
                         Some(name) =&gt; {
                             username = name.clone();
@@ -976,18 +1044,33 @@ impl ResourceResolver for OsuBeatmapsetResolver {
                             return Err(&quot;Missing password&quot;.into());
                         }
                     }
-                    url = form_url(&amp;base_url, &amp;beatmapset_id, &amp;username, &amp;password).map_err(|e| e.to_string())?;
-                    Ok(
-                        ResolvedResource{
-                            url: url.clone(),
-                            headers: vec![],
-                            auth: Some(AuthMethod::BasicAuth { username, password }),
-                        }
-                    )
+                    if download_source.requires_basic_auth{
+                        url = form_url(&amp;base_url, &amp;beatmapset_id, &quot;&quot;,&quot;&quot;).map_err(|e| e.to_string())?;
+                        Ok(
+                            ResolvedResource{
+                                id:beatmapset_id,
+                                url: url.clone(),
+                                headers: vec![],
+                                auth: Some(AuthMethod::Basic { username, password }),
+                            }
+                        )
+                    } else {
+                        let hashed_password = format!(&quot;{:x}&quot;, md5::compute(password));
+                        url = form_url(&amp;base_url, &amp;beatmapset_id, &amp;username, &amp;hashed_password).map_err(|e| e.to_string())?;
+                        Ok(
+                            ResolvedResource{
+                                id:beatmapset_id,
+                                url: url.clone(),
+                                headers: vec![],
+                                auth: None,
+                            }
+                        )
+                    }
                 } else {
                     url = form_url(&amp;base_url, &amp;beatmapset_id, &quot;&quot;, &quot;&quot;).map_err(|e| e.to_string())?;
                     Ok(
                         ResolvedResource{
+                            id:beatmapset_id,
                             url: url.clone(),
                             headers: vec![],
                             auth: None,

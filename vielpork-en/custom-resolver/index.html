@@ -156,6 +156,51 @@ pub trait ResourceResolver: Send + Sync {
 }
 <span class="boring">}
 </span></code></pre></pre>
+<h2 id="what-are-resolvers-for"><a class="header" href="#what-are-resolvers-for">What Are Resolvers For?</a></h2>
+<p><code>Resolver</code> is used to convert <code>DownloadResource</code> to <code>ResolvedResource</code>. <code>DownloadResource</code> is an enum type that contains different types of resources. <code>ResolvedResource</code> is a struct that contains detailed information required for an HTTP request.</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// The `DownloadResource` enum type defined in `vielpork::base::enums`
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub enum DownloadResource {
+    Url(String),
+    Id(String), 
+    Params(Vec&lt;String&gt;),
+    HashMap(HashMap&lt;String, String&gt;),
+    Resolved(ResolvedResource),
+}
+<span class="boring">}
+</span></code></pre></pre>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// The `ResolvedResource` struct defined in `vielpork::base::structs`
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ResolvedResource {
+    pub id: u32,
+    pub url: String,
+    pub headers: Vec&lt;(String, String)&gt;,
+    pub auth: Option&lt;AuthMethod&gt;,
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>In this context, <code>AuthMethod</code> supports three authentication methods: <code>Basic</code>, <code>Bearer</code>, and<code>ApiKey</code>.</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// The `AuthMethod` enum type defined in `vielpork::base::enums`
+
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub enum AuthMethod {
+    None,
+    Basic { username: String, password: String },
+    Bearer { token: String },
+    ApiKey { key: String, header: String },
+}
+<span class="boring">}
+</span></code></pre></pre>
 
                     </main>
 

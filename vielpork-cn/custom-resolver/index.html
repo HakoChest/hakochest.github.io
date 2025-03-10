@@ -156,6 +156,51 @@ pub trait ResourceResolver: Send + Sync {
 }
 <span class="boring">}
 </span></code></pre></pre>
+<h2 id="resolver何为"><a class="header" href="#resolver何为">Resolver何为？</a></h2>
+<p><code>Resolver</code>用来将<code>DownloadResource</code>转换为<code>ResolvedResource</code>。<code>DownloadResource</code>是一个枚举类型，它包含了资源的不同类型。<code>ResolvedResource</code>是一个结构体，它包含了HTTP请求所需的详细信息。</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// `vielpork::base::enums`中定义的`DownloadResource`枚举类型
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub enum DownloadResource {
+    Url(String),
+    Id(String), 
+    Params(Vec&lt;String&gt;),
+    HashMap(HashMap&lt;String, String&gt;),
+    Resolved(ResolvedResource),
+}
+<span class="boring">}
+</span></code></pre></pre>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// `vielpork::base::structs`中定义的`ResolvedResource`结构体
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ResolvedResource {
+    pub id: u32,
+    pub url: String,
+    pub headers: Vec&lt;(String, String)&gt;,
+    pub auth: Option&lt;AuthMethod&gt;,
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>其中，<code>AuthMethod</code>支持<code>Basic</code>、<code>Bearer</code>以及<code>ApiKey</code>三种认证方式。</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// `vielpork::base::enums`中定义的`AuthMethod`枚举类型
+
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub enum AuthMethod {
+    None,
+    Basic { username: String, password: String },
+    Bearer { token: String },
+    ApiKey { key: String, header: String },
+}
+<span class="boring">}
+</span></code></pre></pre>
 
                     </main>
 
