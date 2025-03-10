@@ -1,9 +1,11 @@
 # Troubleshoting
 
-If you have any questions, please issue it.
+This library was written in about a morning, so there are definitely many areas that need improvement. At present, it only meets the requirements of my own project and cannot guarantee that it will fully meet everyone's requirements.
 
-If you want to contribute, please fork it and pull request.
+So, if there are any problems with the code, or if you have any suggestions, please feel free to submit a PR or Issue, and I will handle it as soon as possible~
 
-If you want to contact me, you can email me: `zoneherobrine@gmail.com`;
+If you want to contribute code, please follow these rules:
 
-or by Tencent QQ: 2212540603 (with related information in the friend request)
+- Follow the official Rust coding style
+- Include test cases for new features
+- Run `cargo fmt` and `cargo clippy` before submitting
