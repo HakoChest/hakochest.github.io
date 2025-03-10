@@ -1,6 +1,10 @@
 # Usage Example: OsynicDownloader
 
-[osynic_downloader](https://crates.io/crates/osynic_downloader) is an efficient osu! beatmap downloader tool based on `vielpork`, supporting two input formats and parallel downloading, designed for rhythm game players and beatmap managers.
+[osynic_downloader](https://crates.io/crates/osynic_downloader) is an efficient osu! beatmap downloader tool based on [vielpork](https://crates.io/crates/vielpork), supporting two input formats and parallel downloading, designed for rhythm game players and beatmap managers.
+
+Recommended to use with [osynic_serializer](https://crates.io/crates/osynic_serializer) to achieve fast serialization of osu! beatmaps.
+
+![osynic_downloader.gif](https://s2.loli.net/2025/03/10/hasqOmgctyG4TWd.gif)
 
 ## ✨ Features
 

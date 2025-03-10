@@ -2,10 +2,11 @@
 
 **Vielpork** is a Rust-powered HTTP downloader designed for performance and extensibility. It offers:
 
-- 🚀 Multi-threaded downloading for maximum speed
-- 📊 Flexible reporting system with multiple built-in options
-- 🔧 Customizable resolution strategies for different network scenarios
-- ⏯️ Pause/resume functionality with checkpoint support
+- 🚀 Multi-threaded downloads for maximum speed
+- 📊 Multiple built-in reporters to adapt to most scenarios
+- 📦 Rich path policy options and template naming support
+- 🔧 Customizable resource resolution strategies for different download scenarios
+- ⏯️ Support for pausing/resuming both global and individual tasks
 
 ```mermaid
 stateDiagram-v2
@@ -91,4 +92,4 @@ But in terms of functionality, this downloader is mainly about multi-reporting c
 
 For me, who has been eating free porridge for a week, this name is already very good.
 
-Oh, by the way, boiled pork slices can also be called VielPork.
+Oh, by the way, spicy boiled pork slices can also be called VielPork. I love it.

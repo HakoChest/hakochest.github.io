@@ -1,15 +1,19 @@
 # 使用实例：OsynicDownloader
 
-[osynic_downloader](https://crates.io/crates/osynic_downloader) 是一款高效的osu!谱面下载工具，基于`vielpork`开发，支持两种输入格式和并行下载，专为音游玩家和谱面管理者打造。
+[osynic_downloader](https://crates.io/crates/osynic_downloader) 是一款高效的osu!谱面下载工具，基于[vielpork](https://crates.io/crates/vielpork)开发，支持两种输入格式和并行下载，专为音游玩家和多设备谱面同步打造。
+
+推荐搭配[osynic_serializer](https://crates.io/crates/osynic_serializer)使用，实现osu!谱面的快速序列化。
+
+![osynic_downloader.gif](https://s2.loli.net/2025/03/10/hasqOmgctyG4TWd.gif)
 
 ## ✨ 特性
 
-- **双模式输入**：支持原生osu!谱面集ID列表和Osynic序列化生成的定制格式
-- **多下载源**：目前支持OsuDirect、OsuApiV2、SayoApi和ChimuApi共四种种下载源
+- **双模式输入**：支持osu!谱面集ID列表和Osynic序列化生成的JSON格式
+- **多下载源**：目前支持OsuDirect、OsuApiV2、SayoApi和ChimuApi共四种下载源
 - **并发支持**：多线程并发下载加速（默认4线程）（请注意各osu!镜像站API的并发限制！文明使用！）
 - **智能管理**：自动创建目录结构，自定义保存路径
 - **可视化进度**：实时TUI进度显示（支持终端256色）
-- **错误恢复**：状态恢复机制保障下载完整性
+- **错误恢复**：无畏中断，自动断点续传
 
 ## 📦 安装
 
@@ -39,9 +43,9 @@ osynic-dl --beatmapsets json/sets.json -o ./osu_maps -c 8
 osynic-dl --osynic-songs json/songs.json --output ./music
 ```
 
-### 配置文件示例
+### 输入JSON示例
 
-**sets.json**（原生模式）:
+**sets.json**（Beatmapsets模式）:
 
 ```json
 {
@@ -49,7 +53,7 @@ osynic-dl --osynic-songs json/songs.json --output ./music
 }
 ```
 
-**songs.json**（Osynic模式）:
+**songs.json**（Songs模式）（Osynic）:
 
 ```json
 [
@@ -72,20 +76,20 @@ osynic-dl --osynic-songs json/songs.json --output ./music
 
 ## ⚙️ 参数详解
 
-| 参数           | 简写 | 默认值      | 说明                           |
-| -------------- | ---- | ----------- | ------------------------------ |
-| --beatmapsets  | -b   | -           | 原生模式JSON文件路径           |
-| --osynic-songs | -n   | -           | Osynic模式JSON文件路径         |
-| --source       | -s   | SayoApi     | osu!谱面下载源                 |
+| 参数           | 简写 | 默认值      | 说明                                 |
+| -------------- | ---- | ----------- | ------------------------------------ |
+| --beatmapsets  | -b   | -           | 原生模式JSON文件路径                 |
+| --osynic-songs | -n   | -           | Osynic模式JSON文件路径               |
+| --source       | -s   | SayoApi     | osu!谱面下载源                       |
 | --username     | -u   | -           | osu!账号（仅OsuDirect/OsuApiV2需要） |
 | --password     | -p   | -           | osu!密码（仅OsuDirect/OsuApiV2需要） |
-| --output       | -o   | beatmapsets | 下载目录（自动创建）           |
-| --concurrency  | -c   | 4           | 下载并发数（1-16）             |
-| --help         | -h   | -           | 显示帮助信息                   |
+| --output       | -o   | beatmapsets | 下载目录（自动创建）                 |
+| --concurrency  | -c   | 4           | 下载并发数（1-16）                   |
+| --help         | -h   | -           | 显示帮助信息                         |
 
 ## 支持的osu!下载源
 
-1. **OsuDirect**：osu!官方谱面下载源（需osu账号密码）
+1. **OsuDirect**：osu!官方谱面下载源（需osu账号密码，做URL传参）
 2. **OsuApiV2**: osu!lazer的谱面下载源（需osu账号密码，做Basic认证）
 3. **SayoApi**（默认）：Sayobot谱面下载源（无需登录）
 4. **ChimuApi**：Chimu.moe谱面下载源（无需登录）

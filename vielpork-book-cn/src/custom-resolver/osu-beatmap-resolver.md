@@ -17,6 +17,7 @@
 use vielpork::base::traits::ResourceResolver;
 use vielpork::base::structs::ResolvedResource;
 use vielpork::base::enums::{DownloadResource,AuthMethod};
+use vielpork::base::algorithms::generate_task_id;
 use async_trait::async_trait;
 
 use crate::sources::{DownloadSource, DownloadSourceType};
@@ -37,6 +38,7 @@ impl ResourceResolver for OsuBeatmapsetResolver {
         match resource {
             DownloadResource::Url(url) => {
                 Ok(ResolvedResource{
+                    id: generate_task_id(url),
                     url: url.clone(),
                     headers: vec![],
                     auth: None,
@@ -56,6 +58,7 @@ impl ResourceResolver for OsuBeatmapsetResolver {
                 let base_url = download_source.base_url.clone();
                 let url = form_url(&base_url, &beatmapset_id, "", "").map_err(|e| e.to_string())?;
                 Ok(ResolvedResource{
+                    id: beatmapset_id,
                     url: url.clone(),
                     headers: vec![],
                     auth: None,
@@ -95,7 +98,7 @@ impl ResourceResolver for OsuBeatmapsetResolver {
                 let password: String;
 
                 let url: String;
-                if download_source.requires_osu_login {
+                if download_source.requires_osu_credentials {
                     match params.get(2) {
                         Some(name) => {
                             username = name.clone();
@@ -112,18 +115,33 @@ impl ResourceResolver for OsuBeatmapsetResolver {
                             return Err("Missing password".into());
                         }
                     }
-                    url = form_url(&base_url, &beatmapset_id, &username, &password).map_err(|e| e.to_string())?;
-                    Ok(
-                        ResolvedResource{
-                            url: url.clone(),
-                            headers: vec![],
-                            auth: Some(AuthMethod::BasicAuth { username, password }),
-                        }
-                    )
+                    if download_source.requires_basic_auth{
+                        url = form_url(&base_url, &beatmapset_id, "","").map_err(|e| e.to_string())?;
+                        Ok(
+                            ResolvedResource{
+                                id:beatmapset_id,
+                                url: url.clone(),
+                                headers: vec![],
+                                auth: Some(AuthMethod::Basic { username, password }),
+                            }
+                        )
+                    } else {
+                        let hashed_password = format!("{:x}", md5::compute(password));
+                        url = form_url(&base_url, &beatmapset_id, &username, &hashed_password).map_err(|e| e.to_string())?;
+                        Ok(
+                            ResolvedResource{
+                                id:beatmapset_id,
+                                url: url.clone(),
+                                headers: vec![],
+                                auth: None,
+                            }
+                        )
+                    }
                 } else {
                     url = form_url(&base_url, &beatmapset_id, "", "").map_err(|e| e.to_string())?;
                     Ok(
                         ResolvedResource{
+                            id:beatmapset_id,
                             url: url.clone(),
                             headers: vec![],
                             auth: None,
@@ -165,7 +183,7 @@ impl ResourceResolver for OsuBeatmapsetResolver {
                 let password: String;
 
                 let url: String;
-                if download_source.requires_osu_login {
+                if download_source.requires_osu_credentials {
                     match hashmap.get("username") {
                         Some(name) => {
                             username = name.clone();
@@ -182,18 +200,33 @@ impl ResourceResolver for OsuBeatmapsetResolver {
                             return Err("Missing password".into());
                         }
                     }
-                    url = form_url(&base_url, &beatmapset_id, &username, &password).map_err(|e| e.to_string())?;
-                    Ok(
-                        ResolvedResource{
-                            url: url.clone(),
-                            headers: vec![],
-                            auth: Some(AuthMethod::BasicAuth { username, password }),
-                        }
-                    )
+                    if download_source.requires_basic_auth{
+                        url = form_url(&base_url, &beatmapset_id, "","").map_err(|e| e.to_string())?;
+                        Ok(
+                            ResolvedResource{
+                                id:beatmapset_id,
+                                url: url.clone(),
+                                headers: vec![],
+                                auth: Some(AuthMethod::Basic { username, password }),
+                            }
+                        )
+                    } else {
+                        let hashed_password = format!("{:x}", md5::compute(password));
+                        url = form_url(&base_url, &beatmapset_id, &username, &hashed_password).map_err(|e| e.to_string())?;
+                        Ok(
+                            ResolvedResource{
+                                id:beatmapset_id,
+                                url: url.clone(),
+                                headers: vec![],
+                                auth: None,
+                            }
+                        )
+                    }
                 } else {
                     url = form_url(&base_url, &beatmapset_id, "", "").map_err(|e| e.to_string())?;
                     Ok(
                         ResolvedResource{
+                            id:beatmapset_id,
                             url: url.clone(),
                             headers: vec![],
                             auth: None,

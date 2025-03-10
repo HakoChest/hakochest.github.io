@@ -10,6 +10,7 @@ use crate::error::Result;
 use crate::base::traits::ResourceResolver;
 use crate::base::structs::ResolvedResource;
 use crate::base::enums::DownloadResource;
+use crate::base::algorithms::generate_task_id;
 use async_trait::async_trait;
 
 #[derive(Debug,Clone)]
@@ -27,6 +28,7 @@ impl ResourceResolver for UrlResolver {
         match resource {
             DownloadResource::Url(url) => {
                 Ok(ResolvedResource{
+                    id: generate_task_id(url),
                     url: url.clone(),
                     headers: vec![],
                     auth: None,
