@@ -2,9 +2,11 @@
 
 [osynic_downloader](https://github.com/osynicite/osynic_downloader) is an efficient osu! beatmap downloader tool based on [vielpork](https://github.com/islatri/vielpork), supporting two input formats and parallel downloading, designed for rhythm game players and beatmap managers.
 
+![osynic_downloader.gif](https://s2.loli.net/2025/03/10/hasqOmgctyG4TWd.gif)
+
 Recommended to use with [osynic_serializer](https://github.com/osynicite/osynic_serializer) to achieve fast serialization of osu! beatmaps.
 
-![osynic_downloader.gif](https://s2.loli.net/2025/03/10/hasqOmgctyG4TWd.gif)
+![osynic_serializer.gif](https://s2.loli.net/2025/03/10/cwsgFnTEa76xiWQ.gif)
 
 ## ✨ Features
 

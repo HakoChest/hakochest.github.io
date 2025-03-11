@@ -2,9 +2,11 @@
 
 [osynic_downloader](https://github.com/osynicite/osynic_downloader) 是一款高效的osu!谱面下载工具，基于[vielpork](https://github.com/islatri/vielpork)开发，支持两种输入格式和并行下载，专为音游玩家和多设备谱面同步打造。
 
+![osynic_downloader.gif](https://s2.loli.net/2025/03/10/hasqOmgctyG4TWd.gif)
+
 推荐搭配[osynic_serializer](https://github.com/osynicite/osynic_serializer)使用，实现osu!谱面的快速序列化。
 
-![osynic_downloader.gif](https://s2.loli.net/2025/03/10/hasqOmgctyG4TWd.gif)
+![osynic_serializer.gif](https://s2.loli.net/2025/03/10/cwsgFnTEa76xiWQ.gif)
 
 ## ✨ 特性
 

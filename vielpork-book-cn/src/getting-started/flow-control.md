@@ -50,11 +50,12 @@ stateDiagram-v2
 
 ```rust
 let valid = match (*current, new_state) {
+    (DownloaderState::Idle, DownloaderState::Idle) => true,
     (DownloaderState::Idle, DownloaderState::Running) => true,
     (DownloaderState::Running, DownloaderState::Suspended) => true,
     (DownloaderState::Suspended, DownloaderState::Running) => true,
-    (DownloaderState::Running, DownloaderState::Stopped) => true,
-    (DownloaderState::Suspended, DownloaderState::Stopped) => true,
+    (DownloaderState::Stopped, DownloaderState::Idle) => true,
+    (_, DownloaderState::Stopped) => true,
     _ => false,
 };
 ```
@@ -63,15 +64,15 @@ let valid = match (*current, new_state) {
 
 ```rust
 let valid = match (*current, new_state) {
-    (TaskState::Pending, TaskState::Paused) => true,
-    (TaskState::Paused, TaskState::Pending) => true,
+    (TaskState::Paused, TaskState::Downloading) => true,
     (TaskState::Paused, TaskState::Paused) => true,
+    (TaskState::Paused, TaskState::Pending) => true,
+    (TaskState::Pending, TaskState::Paused) => true,
     (TaskState::Pending, TaskState::Downloading) => true,
     (TaskState::Downloading, TaskState::Paused) => true,
-    (TaskState::Paused, TaskState::Downloading) => true,
     (TaskState::Downloading, TaskState::Completed) => true,
-    (TaskState::Downloading, TaskState::Failed) => true,
-    (TaskState::Failed,_) => true,
+    (TaskState::Failed, _) => true,
+    (_, TaskState::Failed) => true,
     (_, TaskState::Canceled) => true,
     _ => false,
 };
