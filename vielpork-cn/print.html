@@ -359,11 +359,12 @@ async fn main() -&gt; Result&lt;()&gt; {
 <span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let valid = match (*current, new_state) {
+    (DownloaderState::Idle, DownloaderState::Idle) =&gt; true,
     (DownloaderState::Idle, DownloaderState::Running) =&gt; true,
     (DownloaderState::Running, DownloaderState::Suspended) =&gt; true,
     (DownloaderState::Suspended, DownloaderState::Running) =&gt; true,
-    (DownloaderState::Running, DownloaderState::Stopped) =&gt; true,
-    (DownloaderState::Suspended, DownloaderState::Stopped) =&gt; true,
+    (DownloaderState::Stopped, DownloaderState::Idle) =&gt; true,
+    (_, DownloaderState::Stopped) =&gt; true,
     _ =&gt; false,
 };
 <span class="boring">}
@@ -373,15 +374,15 @@ async fn main() -&gt; Result&lt;()&gt; {
 <span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let valid = match (*current, new_state) {
-    (TaskState::Pending, TaskState::Paused) =&gt; true,
-    (TaskState::Paused, TaskState::Pending) =&gt; true,
+    (TaskState::Paused, TaskState::Downloading) =&gt; true,
     (TaskState::Paused, TaskState::Paused) =&gt; true,
+    (TaskState::Paused, TaskState::Pending) =&gt; true,
+    (TaskState::Pending, TaskState::Paused) =&gt; true,
     (TaskState::Pending, TaskState::Downloading) =&gt; true,
     (TaskState::Downloading, TaskState::Paused) =&gt; true,
-    (TaskState::Paused, TaskState::Downloading) =&gt; true,
     (TaskState::Downloading, TaskState::Completed) =&gt; true,
-    (TaskState::Downloading, TaskState::Failed) =&gt; true,
-    (TaskState::Failed,_) =&gt; true,
+    (TaskState::Failed, _) =&gt; true,
+    (_, TaskState::Failed) =&gt; true,
     (_, TaskState::Canceled) =&gt; true,
     _ =&gt; false,
 };
@@ -389,8 +390,9 @@ async fn main() -&gt; Result&lt;()&gt; {
 </span></code></pre></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="使用实例osynicdownloader"><a class="header" href="#使用实例osynicdownloader">使用实例：OsynicDownloader</a></h1>
 <p><a href="https://github.com/osynicite/osynic_downloader">osynic_downloader</a> 是一款高效的osu!谱面下载工具，基于<a href="https://github.com/islatri/vielpork">vielpork</a>开发，支持两种输入格式和并行下载，专为音游玩家和多设备谱面同步打造。</p>
-<p>推荐搭配<a href="https://github.com/osynicite/osynic_serializer">osynic_serializer</a>使用，实现osu!谱面的快速序列化。</p>
 <p><img src="https://s2.loli.net/2025/03/10/hasqOmgctyG4TWd.gif" alt="osynic_downloader.gif" /></p>
+<p>推荐搭配<a href="https://github.com/osynicite/osynic_serializer">osynic_serializer</a>使用，实现osu!谱面的快速序列化。</p>
+<p><img src="https://s2.loli.net/2025/03/10/cwsgFnTEa76xiWQ.gif" alt="osynic_serializer.gif" /></p>
 <h2 id="-特性"><a class="header" href="#-特性">✨ 特性</a></h2>
 <ul>
 <li><strong>双模式输入</strong>：支持osu!谱面集ID列表和Osynic序列化生成的JSON格式</li>

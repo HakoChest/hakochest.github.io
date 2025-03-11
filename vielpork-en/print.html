@@ -358,11 +358,12 @@ async fn main() -&gt; Result&lt;()&gt; {
 <span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let valid = match (*current, new_state) {
+    (DownloaderState::Idle, DownloaderState::Idle) =&gt; true,
     (DownloaderState::Idle, DownloaderState::Running) =&gt; true,
     (DownloaderState::Running, DownloaderState::Suspended) =&gt; true,
     (DownloaderState::Suspended, DownloaderState::Running) =&gt; true,
-    (DownloaderState::Running, DownloaderState::Stopped) =&gt; true,
-    (DownloaderState::Suspended, DownloaderState::Stopped) =&gt; true,
+    (DownloaderState::Stopped, DownloaderState::Idle) =&gt; true,
+    (_, DownloaderState::Stopped) =&gt; true,
     _ =&gt; false,
 };
 <span class="boring">}
@@ -372,15 +373,15 @@ async fn main() -&gt; Result&lt;()&gt; {
 <span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let valid = match (*current, new_state) {
-    (TaskState::Pending, TaskState::Paused) =&gt; true,
-    (TaskState::Paused, TaskState::Pending) =&gt; true,
+    (TaskState::Paused, TaskState::Downloading) =&gt; true,
     (TaskState::Paused, TaskState::Paused) =&gt; true,
+    (TaskState::Paused, TaskState::Pending) =&gt; true,
+    (TaskState::Pending, TaskState::Paused) =&gt; true,
     (TaskState::Pending, TaskState::Downloading) =&gt; true,
     (TaskState::Downloading, TaskState::Paused) =&gt; true,
-    (TaskState::Paused, TaskState::Downloading) =&gt; true,
     (TaskState::Downloading, TaskState::Completed) =&gt; true,
-    (TaskState::Downloading, TaskState::Failed) =&gt; true,
-    (TaskState::Failed,_) =&gt; true,
+    (TaskState::Failed, _) =&gt; true,
+    (_, TaskState::Failed) =&gt; true,
     (_, TaskState::Canceled) =&gt; true,
     _ =&gt; false,
 };
@@ -388,8 +389,9 @@ async fn main() -&gt; Result&lt;()&gt; {
 </span></code></pre></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="usage-example-osynicdownloader"><a class="header" href="#usage-example-osynicdownloader">Usage Example: OsynicDownloader</a></h1>
 <p><a href="https://github.com/osynicite/osynic_downloader">osynic_downloader</a> is an efficient osu! beatmap downloader tool based on <a href="https://github.com/islatri/vielpork">vielpork</a>, supporting two input formats and parallel downloading, designed for rhythm game players and beatmap managers.</p>
-<p>Recommended to use with <a href="https://github.com/osynicite/osynic_serializer">osynic_serializer</a> to achieve fast serialization of osu! beatmaps.</p>
 <p><img src="https://s2.loli.net/2025/03/10/hasqOmgctyG4TWd.gif" alt="osynic_downloader.gif" /></p>
+<p>Recommended to use with <a href="https://github.com/osynicite/osynic_serializer">osynic_serializer</a> to achieve fast serialization of osu! beatmaps.</p>
+<p><img src="https://s2.loli.net/2025/03/10/cwsgFnTEa76xiWQ.gif" alt="osynic_serializer.gif" /></p>
 <h2 id="-features"><a class="header" href="#-features">✨ Features</a></h2>
 <ul>
 <li><strong>Dual-mode input</strong>: Supports native osu! beatmap set ID list and custom Osynic serialization generated format</li>
