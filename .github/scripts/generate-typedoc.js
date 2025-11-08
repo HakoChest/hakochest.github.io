@@ -69,18 +69,19 @@ for (const [index, item] of config.entries()) {
       typedocConfig.readme = readmePath;
     }
 
-    // 写入配置文件
-    const configPath = path.join(buildDir, 'typedoc.json');
+    // 写入配置文件到临时目录
+    const configPath = path.join(pkgPath, 'typedoc.json');
     fs.writeFileSync(configPath, JSON.stringify(typedocConfig, null, 2));
 
     // 生成文档
     console.log(`📚 Generating TypeDoc...`);
-    const entryPointRelative = path.relative(pkgPath, fullEntryPath);
-    const outDirAbsolute = path.resolve(outputDir);
-    execSync(`typedoc "${entryPointRelative}" --out "${outDirAbsolute}" --excludeExternals false --skipErrorChecking`, { 
+    execSync(`typedoc --options ${configPath}`, { 
       stdio: 'inherit',
       cwd: pkgPath,
     });
+
+    // 清理配置文件
+    fs.unlinkSync(configPath);
 
     console.log(`✅ Successfully generated at /${item.deployPath}`);
   } catch (error) {
