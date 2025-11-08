@@ -75,7 +75,12 @@ for (const [index, item] of config.entries()) {
 
     // 生成文档
     console.log(`📚 Generating TypeDoc...`);
-    execSync(`typedoc --config ${configPath}`, { stdio: 'inherit' });
+    const entryPointRelative = path.relative(pkgPath, fullEntryPath);
+    const outDirAbsolute = path.resolve(outputDir);
+    execSync(`typedoc "${entryPointRelative}" --out "${outDirAbsolute}" --excludeExternals false --skipErrorChecking`, { 
+      stdio: 'inherit',
+      cwd: pkgPath,
+    });
 
     console.log(`✅ Successfully generated at /${item.deployPath}`);
   } catch (error) {
