@@ -7,9 +7,9 @@
   "readme": "./README.md",
   "skipErrorChecking": true,
   "visibilityFilters": {
+    "protected": false,
     "inherited": false,
-    "external": false,
-    "protected": true,
+    "external": true
   },
   "commentStyle": "jsdoc"
 }
