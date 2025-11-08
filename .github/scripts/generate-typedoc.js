@@ -4,9 +4,12 @@
  * 从 typedoc-config.json 读取配置，自动生成 TypeDoc 文档
  */
 
-const fs = require('fs');
-const path = require('path');
-const { execSync } = require('child_process');
+import fs from 'node:fs';
+import path from 'node:path';
+import { execSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const config = JSON.parse(fs.readFileSync('typedoc-config.json', 'utf8'));
 const combinedOutputDir = path.join(process.cwd(), 'combined-output');
@@ -16,7 +19,7 @@ if (!fs.existsSync(combinedOutputDir)) {
   fs.mkdirSync(combinedOutputDir, { recursive: true });
 }
 
-config.forEach((item, index) => {
+for (const [index, item] of config.entries()) {
   console.log(`\n=== [${index + 1}/${config.length}] Generating TypeDoc for ${item.package} ===`);
 
   const buildDir = path.join('/tmp', `typedoc-build-${index}`);
@@ -76,18 +79,14 @@ config.forEach((item, index) => {
 
     console.log(`✅ Successfully generated at /${item.deployPath}`);
   } catch (error) {
-    console.error(`❌ Error:`, error.message);
+    console.error(`❌ Error:`, error instanceof Error ? error.message : String(error));
     process.exit(1);
   } finally {
     // 清理临时文件
     if (fs.existsSync(buildDir)) {
-      try {
-        execSync(`rm -rf ${buildDir}`, { stdio: 'pipe' });
-      } catch (e) {
-        // 忽略清理错误
-      }
+      execSync(`rm -rf ${buildDir}`, { stdio: 'pipe', encoding: 'utf-8' });
     }
   }
-});
+}
 
 console.log('\n✨ All TypeDoc documentation generated successfully!');
