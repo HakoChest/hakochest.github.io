@@ -30,12 +30,14 @@
           <div class="space-y-2">
             <a
               href="/gxci-cn/"
+              target="_blank"
               class="block px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded transition-colors text-center"
             >
               中文文档 (Chinese)
             </a>
             <a
               href="/gxci-en/"
+              target="_blank"
               class="block px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded transition-colors text-center"
             >
               English Documentation
@@ -50,33 +52,21 @@
           <div class="space-y-2">
             <a
               href="/vielpork-cn/"
+              target="_blank"
               class="block px-4 py-2 bg-cyan-600 hover:bg-cyan-700 text-white rounded transition-colors text-center"
             >
               中文文档 (Chinese)
             </a>
             <a
               href="/vielpork-en/"
+              target="_blank"
               class="block px-4 py-2 bg-cyan-600 hover:bg-cyan-700 text-white rounded transition-colors text-center"
             >
               English Documentation
             </a>
           </div>
         </div>
-
-        <!-- Default Book -->
-        <div class="bg-slate-800 rounded-lg border border-slate-700 hover:border-purple-500 transition-colors p-6">
-          <h3 class="text-2xl font-bold text-purple-400 mb-4">Main Book</h3>
-          <p class="text-slate-300 mb-6">Primary documentation and reference materials</p>
-          <div class="space-y-2">
-            <a
-              href="/book/"
-              class="block px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded transition-colors text-center"
-            >
-              View Documentation
-            </a>
-          </div>
-        </div>
-
+        
         <!-- OSU API TypeDoc -->
         <div class="bg-slate-800 rounded-lg border border-slate-700 hover:border-pink-500 transition-colors p-6">
           <h3 class="text-2xl font-bold text-pink-400 mb-4">Osynic OSU API</h3>
@@ -84,6 +74,7 @@
           <div class="space-y-2">
             <a
               href="/osynic-osuapi/"
+              target="_blank"
               class="block px-4 py-2 bg-pink-600 hover:bg-pink-700 text-white rounded transition-colors text-center"
             >
               TypeDoc Reference
