@@ -34,16 +34,16 @@ jobs:
         
       - name: Build mdbooks
         run: |
-          for dir in . gxci-book-cn gxci-book-en vielpork-book-cn vielpork-book-en; do
-            [ "$dir" = "." ] && mdbook build || mdbook build "$dir"
-          done
+          mdbook build gxci-book-cn
+          mdbook build gxci-book-en
+          mdbook build vielpork-book-cn
+          mdbook build vielpork-book-en
 
       - name: Prepare combined output
         run: |
           mkdir -p combined-output
           cp -r dist/* combined-output/
-          mkdir -p combined-output/{book,gxci-cn,gxci-en,vielpork-cn,vielpork-en}
-          cp -r book/* combined-output/book/
+          mkdir -p combined-output/{gxci-cn,gxci-en,vielpork-cn,vielpork-en}
           cp -r gxci-book-cn/book/* combined-output/gxci-cn/
           cp -r gxci-book-en/book/* combined-output/gxci-en/
           cp -r vielpork-book-cn/book/* combined-output/vielpork-cn/
