@@ -4,185 +4,58 @@ on:
   push:
     branches:
       - main
-  pull_request:
 
 jobs:
   deploy:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
-      # Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
           cache: 'npm'
 
-      # Install dependencies
-      - name: Install dependencies
-        run: npm install
-
-      # Build Vue app
-      - name: Build Vue app
-        run: npm run build
+      - name: Install dependencies and build Vue
+        run: npm ci && npm run build
 
       - name: Setup mdBook
         uses: peaceiris/actions-mdbook@v2
         with:
           mdbook-version: '0.4.10'
         
-      # Install Mdbook Mermaid
       - name: Install Mdbook Mermaid
         run: cargo install mdbook-mermaid
         
-      # Build default book
-      - name: Build default book
-        run: mdbook build
-        
-      # Build GXCI Chinese book
-      - name: Build GXCI Chinese book
-        working-directory: ./gxci-book-cn
-        run: mdbook build
-        
-      # Build GXCI English book
-      - name: Build GXCI English book
-        working-directory: ./gxci-book-en
-        run: mdbook build
-        
-      # Build Vielpork Chinese book
-      - name: Build Vielpork Chinese book
-        working-directory: ./vielpork-book-cn
-        run: mdbook build
-      
-      # Build Vielpork English book
-      - name: Build Vielpork English book
-        working-directory: ./vielpork-book-en
-        run: mdbook build
-      
-      # Combine all books, Vue app and TypeDoc
+      - name: Build mdbooks
+        run: |
+          for dir in . gxci-book-cn gxci-book-en vielpork-book-cn vielpork-book-en; do
+            [ "$dir" = "." ] && mdbook build || mdbook build "$dir"
+          done
+
       - name: Prepare combined output
         run: |
-          mkdir -p ./combined-output
-          # Copy Vue app to root
-          cp -r ./dist/* ./combined-output/
-          # Copy default book
-          mkdir -p ./combined-output/book
-          cp -r ./book/* ./combined-output/book/
-          # Copy Chinese version
-          mkdir -p ./combined-output/gxci-cn
-          cp -r ./gxci-book-cn/book/* ./combined-output/gxci-cn/
-          # Copy English version
-          mkdir -p ./combined-output/gxci-en
-          cp -r ./gxci-book-en/book/* ./combined-output/gxci-en/
-          # Copy Vielpork Chinese version
-          mkdir -p ./combined-output/vielpork-cn
-          cp -r ./vielpork-book-cn/book/* ./combined-output/vielpork-cn/
-          # Copy Vielpork English version
-          mkdir -p ./combined-output/vielpork-en
-          cp -r ./vielpork-book-en/book/* ./combined-output/vielpork-en/
+          mkdir -p combined-output
+          cp -r dist/* combined-output/
+          mkdir -p combined-output/{book,gxci-cn,gxci-en,vielpork-cn,vielpork-en}
+          cp -r book/* combined-output/book/
+          cp -r gxci-book-cn/book/* combined-output/gxci-cn/
+          cp -r gxci-book-en/book/* combined-output/gxci-en/
+          cp -r vielpork-book-cn/book/* combined-output/vielpork-cn/
+          cp -r vielpork-book-en/book/* combined-output/vielpork-en/
 
-      - name: Generate TypeDoc documentation
+      - name: Generate TypeDoc and deploy
         run: |
           npm install -g typedoc
-          node << 'SCRIPT'
-          const fs = require('fs');
-          const path = require('path');
-          const { execSync } = require('child_process');
-          
-          const config = JSON.parse(fs.readFileSync('typedoc-config.json', 'utf8'));
-          const combinedOutputDir = path.join(process.cwd(), 'combined-output');
-          
-          config.forEach((item, index) => {
-            console.log(`\n=== Generating TypeDoc for ${item.package} ===`);
-            
-            const buildDir = path.join('/tmp', `typedoc-build-${index}`);
-            const outputDir = path.join(combinedOutputDir, item.deployPath);
-            
-            try {
-              // 创建构建目录
-              if (!fs.existsSync(buildDir)) {
-                fs.mkdirSync(buildDir, { recursive: true });
-              }
-              
-              // 初始化 npm 并下载包
-              console.log(`📦 Downloading ${item.package}...`);
-              execSync(`npm init -y`, { cwd: buildDir, stdio: 'pipe' });
-              execSync(`npm install ${item.package}`, { 
-                cwd: buildDir,
-                stdio: 'inherit'
-              });
-              
-              const pkgPath = path.join(buildDir, 'node_modules', item.package);
-              const entryPoint = item.entryPoints[0];
-              const fullEntryPath = path.join(pkgPath, entryPoint);
-              
-              // 检查入口点
-              if (!fs.existsSync(fullEntryPath)) {
-                console.warn(`⚠️  Entry point not found: ${fullEntryPath}`);
-                console.log(`📂 Available files in ${pkgPath}:`);
-                const files = fs.readdirSync(pkgPath);
-                files.forEach(f => console.log(`  - ${f}`));
-                throw new Error(`Entry point not found: ${entryPoint}`);
-              }
-              
-              // 创建输出目录
-              if (!fs.existsSync(outputDir)) {
-                fs.mkdirSync(outputDir, { recursive: true });
-              }
-              
-              // 创建 typedoc 配置
-              const typedocConfig = {
-                out: outputDir,
-                entryPoints: [fullEntryPath],
-                excludeExternals: false,
-                treatWarningsAsErrors: false,
-                highlightLanguages: ["typescript", "bash", "json", "vue", "javascript"],
-                skipErrorChecking: true
-              };
-              
-              // 尝试包含 README
-              const readmePath = path.join(pkgPath, 'README.md');
-              if (fs.existsSync(readmePath)) {
-                typedocConfig.readme = readmePath;
-              }
-              
-              const configPath = path.join(buildDir, 'typedoc.json');
-              fs.writeFileSync(configPath, JSON.stringify(typedocConfig, null, 2));
-              
-              // 生成文档
-              console.log(`📚 Generating TypeDoc documentation...`);
-              execSync(`typedoc --config ${configPath}`, { 
-                stdio: 'inherit'
-              });
-              
-              console.log(`✅ Successfully generated ${item.package} at /${item.deployPath}`);
-              
-            } catch (error) {
-              console.error(`❌ Error processing ${item.package}:`, error.message);
-              process.exit(1);
-            } finally {
-              // 清理临时文件
-              if (fs.existsSync(buildDir)) {
-                require('child_process').execSync(`rm -rf ${buildDir}`, { stdio: 'pipe' });
-              }
-            }
-          });
-          SCRIPT
+          node .github/scripts/generate-typedoc.js
 
-      - name: Verify combined output structure
-        run: |
-          echo "📊 Combined output structure:"
-          find ./combined-output -maxdepth 2 -type d | head -20
-
-      # Deploy
-      - name: Deploy
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
-        if: ${{ github.ref == 'refs/heads/main' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./combined-output
