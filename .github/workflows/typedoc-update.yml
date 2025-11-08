@@ -1,0 +1,145 @@
+name: Update TypeDoc Documentation
+
+on:
+  # 手动触发
+  workflow_dispatch:
+  # 定期更新 - 每天早上 8 点 (UTC)
+  schedule:
+    - cron: '0 8 * * *'
+
+jobs:
+  update-typedoc:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install TypeDoc globally
+        run: npm install -g typedoc
+
+      - name: Read TypeDoc configuration
+        id: config
+        run: |
+          echo "config=$(cat typedoc-config.json | tr '\n' ' ')" >> $GITHUB_OUTPUT
+
+      - name: Process each package
+        run: |
+          # 使用 Node.js 脚本处理配置文件
+          node << 'SCRIPT'
+          const fs = require('fs');
+          const path = require('path');
+          const { execSync } = require('child_process');
+          
+          const config = JSON.parse(fs.readFileSync('typedoc-config.json', 'utf8'));
+          
+          config.forEach(async (item, index) => {
+            console.log(`\n=== Processing ${item.package} (${index + 1}/${config.length}) ===`);
+            
+            const tempDir = path.join('/tmp', `typedoc-${index}`);
+            const buildDir = path.join(process.cwd(), 'typedoc-build-temp');
+            const outputDir = path.join(process.cwd(), 'combined-output', item.deployPath);
+            
+            try {
+              // 创建临时构建目录
+              if (!fs.existsSync(buildDir)) {
+                fs.mkdirSync(buildDir, { recursive: true });
+              }
+              
+              // 下载包
+              console.log(`📦 Downloading ${item.package}...`);
+              execSync(`npm install ${item.package}`, { 
+                cwd: buildDir,
+                stdio: 'inherit'
+              });
+              
+              const pkgPath = path.join(buildDir, 'node_modules', item.package);
+              
+              // 检查必要的文件
+              const entryPoint = item.entryPoints[0];
+              const fullEntryPath = path.join(pkgPath, entryPoint);
+              
+              if (!fs.existsSync(fullEntryPath)) {
+                console.warn(`⚠️  Entry point not found: ${fullEntryPath}`);
+                console.log(`📂 Files in package root:`);
+                execSync(`ls -la`, { cwd: pkgPath, stdio: 'inherit' });
+                return;
+              }
+              
+              // 创建 typedoc.json
+              const typedocConfig = {
+                out: outputDir,
+                entryPoints: [fullEntryPath],
+                excludeExternals: false,
+                treatWarningsAsErrors: false,
+                highlightLanguages: ["typescript", "bash", "json", "vue", "javascript"],
+                skipErrorChecking: true
+              };
+              
+              // 尝试包含 README
+              const readmePath = path.join(pkgPath, 'README.md');
+              if (fs.existsSync(readmePath)) {
+                typedocConfig.readme = readmePath;
+              }
+              
+              const configPath = path.join(buildDir, 'typedoc.json');
+              fs.writeFileSync(configPath, JSON.stringify(typedocConfig, null, 2));
+              
+              // 确保输出目录存在
+              if (!fs.existsSync(outputDir)) {
+                fs.mkdirSync(outputDir, { recursive: true });
+              }
+              
+              // 生成文档
+              console.log(`📚 Generating TypeDoc for ${item.package}...`);
+              execSync(`typedoc --config ${configPath}`, { 
+                stdio: 'inherit'
+              });
+              
+              console.log(`✅ Successfully generated docs for ${item.package} at /${item.deployPath}`);
+              
+            } catch (error) {
+              console.error(`❌ Error processing ${item.package}:`, error.message);
+              process.exit(1);
+            }
+          });
+          SCRIPT
+
+      - name: Clean up build artifacts
+        if: always()
+        run: rm -rf /tmp/typedoc-* typedoc-build-temp
+
+      - name: Check if combined-output exists
+        id: check-output
+        run: |
+          if [ -d "combined-output" ]; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+            du -sh combined-output
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: List generated documentation
+        if: steps.check-output.outputs.exists == 'true'
+        run: find combined-output -type f -name "*.html" | head -20
+
+      - name: Upload documentation artifact
+        if: steps.check-output.outputs.exists == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: typedoc-docs
+          path: combined-output
+          retention-days: 30
+
+      - name: Prepare deployment
+        if: steps.check-output.outputs.exists == 'true'
+        run: |
+          echo "✅ TypeDoc documentation has been generated successfully!"
+          echo "📦 Documentation is ready for deployment in: combined-output/"
+          echo "📊 Documentation structure:"
+          find combined-output -maxdepth 2 -type d | sort

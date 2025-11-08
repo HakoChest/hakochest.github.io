@@ -1,0 +1,8 @@
+[
+  {
+    "package": "@osynicite/osynic-osuapi",
+    "deployPath": "osynic-osuapi",
+    "entryPoints": ["./osynic_osuapi.d.ts"],
+    "description": "Osynic OSU API TypeScript Definitions"
+  }
+]
