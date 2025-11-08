@@ -1,0 +1,9 @@
+{
+  "out": "./docs",
+  "entryPoints": ["./osynic_osuapi.d.ts"],
+  "excludeExternals": false,
+  "treatWarningsAsErrors": false,
+  "highlightLanguages": ["typescript", "bash", "json", "vue", "javascript"],
+  "readme": "./README.md",
+  "skipErrorChecking": true
+}

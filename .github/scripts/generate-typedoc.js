@@ -53,14 +53,25 @@ for (const [index, item] of config.entries()) {
     // 创建输出目录
     fs.mkdirSync(outputDir, { recursive: true });
 
-    // 构建 TypeDoc 配置
-    const typedocConfig = {
-      out: outputDir,
-      entryPoints: [fullEntryPath],
+    // 读取根目录的 typedoc.json 作为基础配置
+    let baseTypedocConfig = {
       excludeExternals: false,
       treatWarningsAsErrors: false,
       highlightLanguages: ['typescript', 'bash', 'json', 'vue', 'javascript'],
       skipErrorChecking: true,
+    };
+
+    const rootTypedocPath = path.join(process.cwd(), 'typedoc.json');
+    if (fs.existsSync(rootTypedocPath)) {
+      const rootConfig = JSON.parse(fs.readFileSync(rootTypedocPath, 'utf8'));
+      baseTypedocConfig = { ...baseTypedocConfig, ...rootConfig };
+    }
+
+    // 构建包特定的 TypeDoc 配置
+    const typedocConfig = {
+      ...baseTypedocConfig,
+      out: outputDir,
+      entryPoints: [fullEntryPath],
     };
 
     // 包含 README 如果存在
@@ -69,7 +80,7 @@ for (const [index, item] of config.entries()) {
       typedocConfig.readme = readmePath;
     }
 
-    // 写入配置文件到临时目录
+    // 写入配置文件到包目录
     const configPath = path.join(pkgPath, 'typedoc.json');
     fs.writeFileSync(configPath, JSON.stringify(typedocConfig, null, 2));
 
