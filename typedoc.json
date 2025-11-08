@@ -5,5 +5,11 @@
   "treatWarningsAsErrors": false,
   "highlightLanguages": ["typescript", "bash", "json", "vue", "javascript"],
   "readme": "./README.md",
-  "skipErrorChecking": true
+  "skipErrorChecking": true,
+  "visibilityFilters": {
+    "inherited": false,
+    "external": false,
+    "protected": true,
+  },
+  "commentStyle": "jsdoc"
 }

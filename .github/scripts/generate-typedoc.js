@@ -74,9 +74,24 @@ for (const [index, item] of config.entries()) {
       entryPoints: [fullEntryPath],
     };
 
-    // 包含 README 如果存在
+    // 处理 README 文件
     const readmePath = path.join(pkgPath, 'README.md');
     if (fs.existsSync(readmePath)) {
+      // 检查哪些 README 变体存在
+      const readmeVariants = fs.readdirSync(pkgPath).filter(file => 
+        file.match(/^README(_[A-Z]{2})?\.md$/)
+      );
+      
+      // 如果有其他 README 变体，将它们复制到输出目录
+      // 以便链接能够工作
+      if (readmeVariants.length > 1) {
+        for (const variant of readmeVariants) {
+          if (variant !== 'README.md') {
+            console.log(`   📄 Including ${variant} for documentation`);
+          }
+        }
+      }
+      
       typedocConfig.readme = readmePath;
     }
 
@@ -91,8 +106,26 @@ for (const [index, item] of config.entries()) {
       cwd: pkgPath,
     });
 
-    // 清理配置文件
+    // 复制 README 变体文件到输出目录（用于多语言支持）
+    const readmeVariants = fs.readdirSync(pkgPath).filter(file => 
+      file.match(/^README(_[A-Z]{2})?\.md$/) && file !== 'README.md'
+    );
+    
+    for (const variant of readmeVariants) {
+      const srcVariant = path.join(pkgPath, variant);
+      const dstVariant = path.join(outputDir, variant);
+      if (fs.existsSync(srcVariant)) {
+        fs.copyFileSync(srcVariant, dstVariant);
+        console.log(`   📄 Copied ${variant}`);
+      }
+    }
+
+    // 清理配置文件和临时 README
     fs.unlinkSync(configPath);
+    const cleanReadmePath = path.join(pkgPath, 'README_clean.md');
+    if (fs.existsSync(cleanReadmePath)) {
+      fs.unlinkSync(cleanReadmePath);
+    }
 
     console.log(`✅ Successfully generated at /${item.deployPath}`);
   } catch (error) {
