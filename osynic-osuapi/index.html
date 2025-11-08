@@ -1,0 +1,329 @@
+<!DOCTYPE html><html class="default" lang="en" data-base="./"><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>@osynicite/osynic-osuapi</title><meta name="description" content="Documentation for @osynicite/osynic-osuapi"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script defer src="assets/main.js"></script><script async src="assets/icons.js" id="tsd-icons-script"></script><script async src="assets/search.js" id="tsd-search-script"></script><script async src="assets/navigation.js" id="tsd-nav-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => window.app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><a href="index.html" class="title">@osynicite/osynic-osuapi</a><div id="tsd-toolbar-links"></div><button id="tsd-search-trigger" class="tsd-widget" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-search"></use></svg></button><dialog id="tsd-search" aria-label="Search"><input role="combobox" id="tsd-search-input" aria-controls="tsd-search-results" aria-autocomplete="list" aria-expanded="true" autocapitalize="off" autocomplete="off" placeholder="Search the docs" maxLength="100"/><ul role="listbox" id="tsd-search-results"></ul><div id="tsd-search-status" aria-live="polite" aria-atomic="true"><div>Preparing search index...</div></div></dialog><a href="#" class="tsd-widget menu" id="tsd-toolbar-menu-trigger" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-menu"></use></svg></a></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><h1>@osynicite/osynic-osuapi</h1></div><div class="tsd-panel tsd-typography"><!-- markdownlint-disable MD033 MD041 MD045 MD026 -->
+<p align="center" dir="auto">
+    <img width="128" height="128" src="https://s2.loli.net/2025/03/10/GSsjOcHqdtBkyu9.png" alt="Logo逃走啦~"/>
+</p>
+<h1 align="center" tabindex="-1" class="heading-element" dir="auto">OsynicOsuapi</h1>
+<p align="center">
+  <a href="https://www.npmjs.com/package/@osynicite/osynic-osuapi" target="_blank"><img src="https://img.shields.io/npm/v/@osynicite/osynic-osuapi"/></a>
+  <a href="https://www.npmjs.com/package/@osynicite/osynic-osuapi" target="_blank"><img src="https://img.shields.io/npm/dm/@osynicite/osynic-osuapi"/></a>
+  <a href="https://github.com/osynicite/osynic_osuapi" target="_blank"><img src="https://img.shields.io/badge/License-MIT-green.svg"/></a>
+  <a href="https://discord.gg/DRnZSES3BC" target="_blank"><img src="https://img.shields.io/badge/chat-discord-7289da.svg"/></a>
+</p>
+<p align="center">
+    🚀 高性能 WebAssembly · 📦 开箱即用 · 🎯 浏览器原生支持<br/>
+    功能完整的 osu! API 客户端库 WASM 绑定，为 Web 应用赋能
+</p>
+<p align="center">
+  <a href="./">🇨🇳 中文</a> ·
+  <a href="./README_EN.md">🇺🇸 English</a>
+</p>
+<hr />
+<h1 id="📚-目录" class="tsd-anchor-link">📚 目录<a href="#📚-目录" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h1><ul>
+<li><a href="#-%E7%89%B9%E6%80%A7">✨ 特性</a></li>
+<li><a href="#-%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B">🚀 快速开始</a></li>
+<li><a href="#-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97">📖 使用指南</a></li>
+<li><a href="#-api-%E6%94%AF%E6%8C%81">🎯 API 支持</a></li>
+<li><a href="#-%E6%80%A7%E8%83%BD%E7%89%B9%E6%80%A7">⚡ 性能特性</a></li>
+<li><a href="#-%E9%9B%86%E6%88%90%E7%A4%BA%E4%BE%8B">🔧 集成示例</a></li>
+<li><a href="#%EF%B8%8F-%E7%89%B9%E5%88%AB%E6%B3%A8%E6%84%8F">⚠️ 特别注意</a></li>
+<li><a href="#-%E8%B4%A1%E7%8C%AE%E6%8C%87%E5%8D%97">🤝 贡献指南</a></li>
+<li><a href="#-%E5%BC%80%E6%BA%90%E5%8D%8F%E8%AE%AE">📜 开源协议</a></li>
+</ul>
+<h1 id="🧻-api体验网站" class="tsd-anchor-link">🧻 <a href="https://osynic-osuapi.deno.dev/">API体验网站</a><a href="#🧻-api体验网站" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h1><p><a href="https://osynic-osuapi.deno.dev/"><img src="https://s2.loli.net/2025/11/05/ahR96WKd5u1UrVy.png" alt="OSUAPIV1CN.png"></a></p>
+<h1 id="✨-特性" class="tsd-anchor-link">✨ 特性<a href="#✨-特性" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h1><ul>
+<li><strong>🌐 WASM 原生支持</strong>: 编译为 WebAssembly，在浏览器中以接近原生的速度运行</li>
+<li><strong>📱 多框架支持</strong>: 支持 Vue、React、Svelte 等流行前端框架</li>
+<li><strong>🔄 完整 API 支持</strong>: V1 和 V2 API 的所有主要端点（除文档未归类接口）</li>
+<li><strong>🎨 TypeScript 友好</strong>: 完整的类型定义，提供最佳的开发体验</li>
+<li><strong>⚡ 零配置</strong>: 通过 npm 安装即可使用，集成简单快速</li>
+<li><strong>🌍 跨域处理</strong>: 内置 CORS 代理支持，处理浏览器跨域问题</li>
+<li><strong>📊 轻量级</strong>: WASM 包体积优化，快速加载和初始化</li>
+</ul>
+<h1 id="🚀-快速开始" class="tsd-anchor-link">🚀 快速开始<a href="#🚀-快速开始" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h1><h2 id="步骤一：安装依赖" class="tsd-anchor-link">步骤一：安装依赖<a href="#步骤一：安装依赖" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>使用 npm、yarn 或 pnpm 安装：</p>
+<pre><code class="bash"><span class="hl-0"># npm</span><br/><span class="hl-1">npm</span><span class="hl-2"> </span><span class="hl-3">install</span><span class="hl-2"> </span><span class="hl-3">@osynicite/osynic-osuapi</span><br/><br/><span class="hl-0"># yarn</span><br/><span class="hl-1">yarn</span><span class="hl-2"> </span><span class="hl-3">add</span><span class="hl-2"> </span><span class="hl-3">@osynicite/osynic-osuapi</span><br/><br/><span class="hl-0"># pnpm</span><br/><span class="hl-1">pnpm</span><span class="hl-2"> </span><span class="hl-3">add</span><span class="hl-2"> </span><span class="hl-3">@osynicite/osynic-osuapi</span>
+</code><button type="button">Copy</button></pre>
+
+<h2 id="步骤二：基础配置" class="tsd-anchor-link">步骤二：基础配置<a href="#步骤二：基础配置" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>确保您的项目配置支持 WebAssembly：</p>
+<h3 id="vite-配置" class="tsd-anchor-link">Vite 配置<a href="#vite-配置" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><pre><code class="typescript"><span class="hl-0">// vite.config.ts</span><br/><span class="hl-4">import</span><span class="hl-2"> { </span><span class="hl-5">defineConfig</span><span class="hl-2"> } </span><span class="hl-4">from</span><span class="hl-2"> </span><span class="hl-3">&#39;vite&#39;</span><br/><span class="hl-4">import</span><span class="hl-2"> </span><span class="hl-5">vue</span><span class="hl-2"> </span><span class="hl-4">from</span><span class="hl-2"> </span><span class="hl-3">&#39;@vitejs/plugin-vue&#39;</span><br/><span class="hl-4">import</span><span class="hl-2"> </span><span class="hl-5">wasm</span><span class="hl-2"> </span><span class="hl-4">from</span><span class="hl-2"> </span><span class="hl-3">&#39;vite-plugin-wasm&#39;</span><br/><span class="hl-4">import</span><span class="hl-2"> </span><span class="hl-5">topLevelAwait</span><span class="hl-2"> </span><span class="hl-4">from</span><span class="hl-2"> </span><span class="hl-3">&#39;vite-plugin-top-level-await&#39;</span><br/><br/><span class="hl-4">export</span><span class="hl-2"> </span><span class="hl-4">default</span><span class="hl-2"> </span><span class="hl-1">defineConfig</span><span class="hl-2">({</span><br/><span class="hl-2">  </span><span class="hl-5">plugins:</span><span class="hl-2"> [</span><br/><span class="hl-2">    </span><span class="hl-1">wasm</span><span class="hl-2">(),</span><br/><span class="hl-2">    </span><span class="hl-1">topLevelAwait</span><span class="hl-2">(),</span><br/><span class="hl-2">    </span><span class="hl-1">vue</span><span class="hl-2">(),</span><br/><span class="hl-2">  ],</span><br/><span class="hl-2">})</span>
+</code><button type="button">Copy</button></pre>
+
+<h2 id="步骤三：获取-api-授权" class="tsd-anchor-link">步骤三：获取 API 授权<a href="#步骤三：获取-api-授权" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>访问您的 <a href="https://osu.ppy.sh/home/account/edit">osu! 设置页面</a>，在以下位置申请相应的 API 授权：</p>
+<ul>
+<li><a href="https://osu.ppy.sh/docs/index.html"><strong>V2 API</strong></a>: 在 &quot;OAuth&quot; 或 &quot;开放授权&quot; 部分申请</li>
+<li><a href="https://github.com/ppy/osu-api/wiki"><strong>V1 API</strong></a>: 在 &quot;Legacy API&quot; 或 &quot;旧版本 API&quot; 部分申请</li>
+</ul>
+<h1 id="📖-使用指南" class="tsd-anchor-link">📖 使用指南<a href="#📖-使用指南" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h1><h2 id="v2-api-获取用户信息" class="tsd-anchor-link">V2 API - 获取用户信息<a href="#v2-api-获取用户信息" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="使用-client-credentials-grant-认证" class="tsd-anchor-link">使用 Client Credentials Grant 认证<a href="#使用-client-credentials-grant-认证" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><pre><code class="typescript"><span class="hl-4">import</span><span class="hl-2"> { </span><span class="hl-5">OsynicOsuApiV2GlooClient</span><span class="hl-2"> } </span><span class="hl-4">from</span><span class="hl-2"> </span><span class="hl-3">&#39;@osynicite/osynic-osuapi&#39;</span><br/><br/><span class="hl-6">async</span><span class="hl-2"> </span><span class="hl-6">function</span><span class="hl-2"> </span><span class="hl-1">getUserInfo</span><span class="hl-2">() {</span><br/><span class="hl-2">  </span><span class="hl-6">const</span><span class="hl-2"> </span><span class="hl-7">client</span><span class="hl-2"> = </span><span class="hl-6">new</span><span class="hl-2"> </span><span class="hl-1">OsynicOsuApiV2GlooClient</span><span class="hl-2">()</span><br/><span class="hl-2">  </span><span class="hl-5">client</span><span class="hl-2">.</span><span class="hl-1">set_proxy_url</span><span class="hl-2">(</span><span class="hl-3">&#39;YOUR_CORS_PROXY_URL&#39;</span><span class="hl-2">) </span><span class="hl-0">// You can see https://github.com/Islatri/deno_osynic_cors</span><br/><br/><span class="hl-2">  </span><span class="hl-6">const</span><span class="hl-2"> </span><span class="hl-7">token</span><span class="hl-2"> = </span><span class="hl-4">await</span><span class="hl-2"> </span><span class="hl-5">client</span><span class="hl-2">.</span><span class="hl-5">oauth</span><span class="hl-2">.</span><span class="hl-1">getTokenWithoutCode</span><span class="hl-2">(</span><br/><span class="hl-2">    </span><span class="hl-3">&#39;YOUR_CLIENT_ID_HERE&#39;</span><span class="hl-2">,</span><br/><span class="hl-2">    </span><span class="hl-3">&#39;YOUR_CLIENT_SECRET_HERE&#39;</span><br/><span class="hl-2">  )</span><br/><span class="hl-2">  </span><br/><span class="hl-2">  </span><span class="hl-0">// 获取用户信息</span><br/><span class="hl-2">  </span><span class="hl-6">const</span><span class="hl-2"> </span><span class="hl-7">user</span><span class="hl-2"> = </span><span class="hl-4">await</span><span class="hl-2"> </span><span class="hl-5">client</span><span class="hl-2">.</span><span class="hl-5">users</span><span class="hl-2">.</span><span class="hl-1">getUserByUsername</span><span class="hl-2">(</span><span class="hl-3">&#39;peppy&#39;</span><span class="hl-2">)</span><br/><span class="hl-2">  </span><span class="hl-5">console</span><span class="hl-2">.</span><span class="hl-1">log</span><span class="hl-2">(</span><span class="hl-5">user</span><span class="hl-2">)</span><br/><span class="hl-2">}</span><br/><br/><span class="hl-1">getUserInfo</span><span class="hl-2">().</span><span class="hl-1">catch</span><span class="hl-2">(</span><span class="hl-5">console</span><span class="hl-2">.</span><span class="hl-5">error</span><span class="hl-2">)</span>
+</code><button type="button">Copy</button></pre>
+
+<h3 id="使用-authorization-code-grant-认证" class="tsd-anchor-link">使用 Authorization Code Grant 认证<a href="#使用-authorization-code-grant-认证" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><p>这一部分应当在后端完成，以保护 <code>client_secret</code> 不被暴露在前端。服务端具体实现可以参考 <a href="https://github.com/Islatri/deno_osynic_oauth">osynic-oauth</a> 项目，部署例程可见 <a href="https://osynic-oauth.deno.dev">OsynicOauth</a>。</p>
+<p>前端部分可以参照examples中的实现。</p>
+<h2 id="v1-api-查询谱面信息" class="tsd-anchor-link">V1 API - 查询谱面信息<a href="#v1-api-查询谱面信息" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><pre><code class="typescript"><span class="hl-4">import</span><span class="hl-2"> { </span><span class="hl-5">OsynicOsuApiV1GlooClient</span><span class="hl-2"> } </span><span class="hl-4">from</span><span class="hl-2"> </span><span class="hl-3">&#39;@osynicite/osynic-osuapi&#39;</span><br/><br/><span class="hl-6">async</span><span class="hl-2"> </span><span class="hl-6">function</span><span class="hl-2"> </span><span class="hl-1">getBeatmapInfo</span><span class="hl-2">() {</span><br/><span class="hl-2">  </span><span class="hl-6">const</span><span class="hl-2"> </span><span class="hl-7">client</span><span class="hl-2"> = </span><span class="hl-6">new</span><span class="hl-2"> </span><span class="hl-1">OsynicOsuApiV1GlooClient</span><span class="hl-2">(</span><span class="hl-3">&#39;YOUR_API_KEY_HERE&#39;</span><span class="hl-2">)</span><br/><span class="hl-2">  </span><span class="hl-5">client</span><span class="hl-2">.</span><span class="hl-1">set_proxy_url</span><span class="hl-2">(</span><span class="hl-3">&#39;YOUR_CORS_PROXY_URL&#39;</span><span class="hl-2">) </span><span class="hl-0">// You can see https://github.com/Islatri/deno_osynic_cors</span><br/><br/><span class="hl-2">  </span><span class="hl-0">// 通过哈希值查询谱面</span><br/><span class="hl-2">  </span><span class="hl-6">const</span><span class="hl-2"> </span><span class="hl-7">beatmaps</span><span class="hl-2"> = </span><span class="hl-4">await</span><span class="hl-2"> </span><span class="hl-5">client</span><span class="hl-2">.</span><span class="hl-5">beatmap</span><span class="hl-2">.</span><span class="hl-1">getBeatmaps</span><span class="hl-2">({</span><br/><span class="hl-2">    </span><span class="hl-5">hash:</span><span class="hl-2"> </span><span class="hl-3">&#39;69f77b0dfe67d288c1bf748f91ceb133&#39;</span><br/><span class="hl-2">  })</span><br/><span class="hl-2">  </span><br/><span class="hl-2">  </span><span class="hl-5">console</span><span class="hl-2">.</span><span class="hl-1">log</span><span class="hl-2">(</span><span class="hl-5">beatmaps</span><span class="hl-2">)</span><br/><span class="hl-2">}</span><br/><br/><span class="hl-1">getBeatmapInfo</span><span class="hl-2">().</span><span class="hl-1">catch</span><span class="hl-2">(</span><span class="hl-5">console</span><span class="hl-2">.</span><span class="hl-5">error</span><span class="hl-2">)</span>
+</code><button type="button">Copy</button></pre>
+
+<h2 id="vue-3-集成示例" class="tsd-anchor-link">Vue 3 集成示例<a href="#vue-3-集成示例" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><pre><code class="vue"><template>
+    <div class="p-6 bg-gray-900 text-white min-h-screen">
+        <div class="max-w-2xl mx-auto space-y-4">
+            <div class="space-y-2">
+                <input v-model="query.bid" type="text" placeholder="谱面ID"
+                    class="w-full px-3 py-2 bg-gray-800 rounded border border-gray-700" />
+                <input v-model="query.sid" type="text" placeholder="谱面集ID"
+                    class="w-full px-3 py-2 bg-gray-800 rounded border border-gray-700" />
+                <select v-model="query.mode" class="w-full px-3 py-2 bg-gray-800 rounded border border-gray-700">
+                    <option value="">所有模式</option>
+                    <option value="0">标准</option>
+                    <option value="1">太鼓</option>
+                    <option value="2">接水果</option>
+                    <option value="3">mania</option>
+                </select>
+                <button @click="search" :disabled="loading"
+                    class="w-full px-3 py-2 bg-blue-600 hover:bg-blue-700 rounded disabled:opacity-50">
+                    {{ loading ? '加载中...' : '搜索' }}
+                </button>
+            </div>
+            <div v-if="error" class="text-red-400">{{ error }}</div>
+            <div v-if="beatmaps.length" class="space-y-2">
+                <div v-for="m in beatmaps" :key="m.beatmap_id" class="bg-gray-800 p-3 rounded text-sm">
+                    <div class="font-bold text-blue-300">{{ m.title }} [{{ m.version }}]</div>
+                    <div class="text-gray-400">★{{ parseFloat(m.difficultyrating).toFixed(2) }} | {{ m.artist }}</div>
+                    <div class="text-gray-500 text-xs mt-1">
+                        {{ formatTime(m.total_length) }} | BPM {{ parseInt(m.bpm) }} | {{ calcPassRate(m.playcount,
+                        m.passcount) }}% 通过率
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script setup lang="ts">
+import { ref, reactive } from 'vue';
+import { OsynicOsuApiV1GlooClient } from '@osynicite/osynic-osuapi';
+
+const client = new OsynicOsuApiV1GlooClient("YOUR_API_KEY_HERE_AND_PLS_NOT_SHARE_IT_IN_YOUR_CONCRETE_PROJECT");
+client.setProxyUrl("YOUR_PROXY_URL_HERE_BECAUSE_CORS"); // You can see https://github.com/Islatri/deno_osynic_cors
+
+const query = reactive({ bid: '', sid: '', mode: '' });
+const beatmaps = ref([]);
+const loading = ref(false);
+const error = ref('');
+
+const search = async () => {
+    loading.value = true;
+    error.value = '';
+    try {
+        const params = Object.fromEntries(Object.entries(query).filter(([, v]) => v));
+        beatmaps.value = await client.getBeatmaps(params).then(r => Array.isArray(r) ? r : [r]);
+    } catch (err: any) {
+        error.value = err?.message || '查询失败';
+    } finally {
+        loading.value = false;
+    }
+};
+
+const formatTime = (s: string) => {
+    const t = parseInt(s);
+    return `${Math.floor(t / 60)}:${(t % 60).toString().padStart(2, '0')}`;
+};
+
+const calcPassRate = (p: string, pa: string) => ((parseInt(pa) / parseInt(p)) * 100).toFixed(1);
+</script>
+</code><button type="button">Copy</button></pre>
+
+<h1 id="🎯-api-支持" class="tsd-anchor-link">🎯 API 支持<a href="#🎯-api-支持" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h1><h2 id="v1-api-支持情况" class="tsd-anchor-link">V1 API 支持情况<a href="#v1-api-支持情况" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><table>
+<thead>
+<tr>
+<th>API</th>
+<th>支持</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/get_beatmaps</td>
+<td>✅</td>
+<td>获取谱面</td>
+</tr>
+<tr>
+<td>/get_user</td>
+<td>✅</td>
+<td>获取用户</td>
+</tr>
+<tr>
+<td>/get_user_best</td>
+<td>✅</td>
+<td>获取用户最佳成绩</td>
+</tr>
+<tr>
+<td>/get_user_recent</td>
+<td>✅</td>
+<td>获取用户最近成绩</td>
+</tr>
+<tr>
+<td>/get_match</td>
+<td>✅</td>
+<td>获取比赛</td>
+</tr>
+<tr>
+<td>/get_scores</td>
+<td>✅</td>
+<td>获取谱面成绩</td>
+</tr>
+<tr>
+<td>/get_replay</td>
+<td>✅</td>
+<td>获取回放</td>
+</tr>
+</tbody>
+</table>
+<h2 id="v2-api-支持情况（主要端点）" class="tsd-anchor-link">V2 API 支持情况（主要端点）<a href="#v2-api-支持情况（主要端点）" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><table>
+<thead>
+<tr>
+<th>大类</th>
+<th>支持情况</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Authentication</td>
+<td>✅ 4/4</td>
+<td>OAuth 认证</td>
+</tr>
+<tr>
+<td>Beatmaps</td>
+<td>✅ 10/10</td>
+<td>谱面 API</td>
+</tr>
+<tr>
+<td>Beatmapsets</td>
+<td>⚠️ 2/7（部分需授权）</td>
+<td>谱面集 API</td>
+</tr>
+<tr>
+<td>Changelog</td>
+<td>✅ 3/3</td>
+<td>变更日志</td>
+</tr>
+<tr>
+<td>Comments</td>
+<td>⚠️ 2/7（部分需授权）</td>
+<td>评论 API</td>
+</tr>
+<tr>
+<td>Events</td>
+<td>✅ 1/1</td>
+<td>事件 API</td>
+</tr>
+<tr>
+<td>Forum</td>
+<td>⚠️ 4/8（部分需授权）</td>
+<td>论坛 API</td>
+</tr>
+<tr>
+<td>Matches</td>
+<td>✅ 2/2</td>
+<td>比赛 API</td>
+</tr>
+<tr>
+<td>News</td>
+<td>✅ 2/2</td>
+<td>新闻 API</td>
+</tr>
+<tr>
+<td>Rankings</td>
+<td>✅ 3/3</td>
+<td>排行榜 API</td>
+</tr>
+<tr>
+<td>Scores</td>
+<td>✅ 1/1</td>
+<td>成绩 API</td>
+</tr>
+<tr>
+<td>Users</td>
+<td>✅ 7/7</td>
+<td>用户 API</td>
+</tr>
+<tr>
+<td>Wiki</td>
+<td>✅ 1/1</td>
+<td>Wiki API</td>
+</tr>
+<tr>
+<td>Friends</td>
+<td>✅ 2/2</td>
+<td>好友 API</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>更多详细信息请查看主项目的 <a href="https://github.com/osynicite/osynic_osuapi#-api%E6%A3%80%E6%9F%A5%E8%A1%A8">API 检查表</a></p>
+</blockquote>
+<h1 id="⚡-性能特性" class="tsd-anchor-link">⚡ 性能特性<a href="#⚡-性能特性" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h1><h2 id="为什么使用-wasm-版本？" class="tsd-anchor-link">为什么使用 WASM 版本？<a href="#为什么使用-wasm-版本？" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
+<li><strong>🚀 高性能</strong>: 相比 JavaScript 有显著的性能优势，特别是在处理复杂计算时</li>
+<li><strong>💾 小包体积</strong>: 经过优化的 WASM 包比完整的 JavaScript 库更小</li>
+<li><strong>🔄 无依赖</strong>: 不依赖其他 JavaScript 库，可以直接在任何项目中使用</li>
+<li><strong>🌐 浏览器原生支持</strong>: 现代浏览器均支持 WebAssembly，无需额外配置</li>
+</ul>
+<h1 id="🔧-集成示例" class="tsd-anchor-link">🔧 集成示例<a href="#🔧-集成示例" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h1><h2 id="项目示例" class="tsd-anchor-link">项目示例<a href="#项目示例" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>本库提供完整的项目示例，位于 <code>wasm/examples/</code> 目录下：</p>
+<ul>
+<li><strong>Vue 3 项目</strong>: 基于 Vue 3 + TypeScript + Vite 的完整示例</li>
+<li>功能演示：用户查询、谱面搜索、成绩查看等</li>
+</ul>
+<h3 id="运行示例项目" class="tsd-anchor-link">运行示例项目<a href="#运行示例项目" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><pre><code class="bash"><span class="hl-1">cd</span><span class="hl-2"> </span><span class="hl-3">wasm/examples</span><br/><span class="hl-1">npm</span><span class="hl-2"> </span><span class="hl-3">install</span><br/><span class="hl-1">npm</span><span class="hl-2"> </span><span class="hl-3">run</span><span class="hl-2"> </span><span class="hl-3">dev</span>
+</code><button type="button">Copy</button></pre>
+
+<h2 id="在现有项目中使用" class="tsd-anchor-link">在现有项目中使用<a href="#在现有项目中使用" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="已有的-vite-项目" class="tsd-anchor-link">已有的 Vite 项目<a href="#已有的-vite-项目" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><pre><code class="bash"><span class="hl-1">npm</span><span class="hl-2"> </span><span class="hl-3">install</span><span class="hl-2"> </span><span class="hl-3">@osynicite/osynic-osuapi</span>
+</code><button type="button">Copy</button></pre>
+
+<p>然后在您的项目中：</p>
+<pre><code class="typescript"><span class="hl-4">import</span><span class="hl-2"> { </span><span class="hl-5">OsynicOsuApiV2Client</span><span class="hl-2"> } </span><span class="hl-4">from</span><span class="hl-2"> </span><span class="hl-3">&#39;@osynicite/osynic-osuapi&#39;</span><br/><br/><span class="hl-6">const</span><span class="hl-2"> </span><span class="hl-7">client</span><span class="hl-2"> = </span><span class="hl-6">new</span><span class="hl-2"> </span><span class="hl-1">OsynicOsuApiV2Client</span><span class="hl-2">()</span><br/><span class="hl-5">client</span><span class="hl-2">.</span><span class="hl-1">set_proxy_url</span><span class="hl-2">(</span><span class="hl-3">&#39;YOUR_CORS_PROXY_URL&#39;</span><span class="hl-2">) </span><span class="hl-0">// You can see https://github.com/Islatri/deno_osynic_cors</span>
+</code><button type="button">Copy</button></pre>
+
+<h1 id="⚠️-特别注意" class="tsd-anchor-link">⚠️ 特别注意<a href="#⚠️-特别注意" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h1><h2 id="浏览器-cors-限制" class="tsd-anchor-link">浏览器 CORS 限制<a href="#浏览器-cors-限制" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>由于浏览器的跨域政策限制，JavaScript 客户端无法直接访问 osu! API。本库暴露了<code>set_proxy_url</code> 方法，允许您设置一个 CORS 代理 URL 来绕过此限制。关于 CORS 代理服务器的搭建和使用，可以参考 <a href="https://github.com/Islatri/deno_osynic_cors">deno_osynic_cors</a>。</p>
+<h2 id="数据结构变化" class="tsd-anchor-link">数据结构变化<a href="#数据结构变化" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>使用本库时最常见的问题来源于 osu! API 官方实体结构的变动：</p>
+<ul>
+<li><strong>🔄 实体结构变动</strong>: osu! API 的结构可能随时变化，官方文档更新可能不及时</li>
+<li><strong>📝 返回字段变动</strong>: 某些接口的返回字段可能发生变化，尤其是较少使用的端点</li>
+<li><strong>❓ 异常空值</strong>: 某些字段可能在特定情况下返回 null，但文档中未标明为可选</li>
+</ul>
+<h2 id="问题反馈" class="tsd-anchor-link">问题反馈<a href="#问题反馈" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>如果您在使用过程中遇到问题，请提交 Issue 并附上：</p>
+<ol>
+<li><strong>使用的 API 端点</strong></li>
+<li><strong>请求参数</strong></li>
+<li><strong>错误信息或网络响应</strong></li>
+<li><strong>浏览器控制台输出</strong></li>
+</ol>
+<h2 id="常见问题" class="tsd-anchor-link">常见问题<a href="#常见问题" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="q-如何在生产环境中安全地使用-api？" class="tsd-anchor-link">Q: 如何在生产环境中安全地使用 API？<a href="#q-如何在生产环境中安全地使用-api？" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><p>A: 强烈建议在生产环境中使用后端代理或者V2的 Authorization Code Grant 方案，而不是直接在浏览器中暴露 <code>client_secret</code>。</p>
+<h3 id="q-支持-commonjs-吗？" class="tsd-anchor-link">Q: 支持 CommonJS 吗？<a href="#q-支持-commonjs-吗？" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><p>A: 本库主要支持 ES 模块。如需使用 CommonJS，请确保您的构建工具支持 ESM to CJS 转换。</p>
+<h3 id="q-可以在-nodejs-中使用吗？" class="tsd-anchor-link">Q: 可以在 Node.js 中使用吗？<a href="#q-可以在-nodejs-中使用吗？" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><p>A: 不建议在 Node.js 中使用 WASM 版本，因为 WASM 对 Node.js 的支持暂不完善，但可以通过 <code>vite-plugin-wasm</code> 、 <code>vite-plugin-top-level-await</code> 等插件来在各大前端框架中使用。</p>
+<h1 id="🤝-贡献指南" class="tsd-anchor-link">🤝 贡献指南<a href="#🤝-贡献指南" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h1><p>我们欢迎贡献！如果您发现任何问题或有改进建议，请遵循以下规则：</p>
+<h2 id="如何贡献" class="tsd-anchor-link">如何贡献<a href="#如何贡献" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><ol>
+<li><strong>Fork 项目</strong> - 在 GitHub 上 fork 该项目</li>
+<li><strong>创建分支</strong> - <code>git checkout -b feature/your-feature</code></li>
+<li><strong>提交更改</strong> - <code>git commit -am 'Add your feature'</code></li>
+<li><strong>推送到分支</strong> - <code>git push origin feature/your-feature</code></li>
+<li><strong>提交 Pull Request</strong> - 创建一个新的 Pull Request</li>
+</ol>
+<h2 id="开发指南" class="tsd-anchor-link">开发指南<a href="#开发指南" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="编译-wasm-库" class="tsd-anchor-link">编译 WASM 库<a href="#编译-wasm-库" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><pre><code class="bash"><span class="hl-0"># 从项目根目录</span><br/><span class="hl-1">cd</span><span class="hl-2"> </span><span class="hl-3">wasm</span><br/><br/><span class="hl-0"># 构建 WASM 库</span><br/><span class="hl-1">wasm-pack</span><span class="hl-2"> </span><span class="hl-3">build</span><span class="hl-2"> </span><span class="hl-6">--release</span><span class="hl-2"> </span><span class="hl-6">--target</span><span class="hl-2"> </span><span class="hl-3">bundler</span><span class="hl-2"> </span><span class="hl-6">--out-dir</span><span class="hl-2"> </span><span class="hl-3">pkg</span><span class="hl-2"> </span><span class="hl-6">--scope</span><span class="hl-2"> </span><span class="hl-3">osynicite</span>
+</code><button type="button">Copy</button></pre>
+
+<h3 id="构建-npm-包" class="tsd-anchor-link">构建 NPM 包<a href="#构建-npm-包" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><pre><code class="bash"><span class="hl-0"># 安装依赖</span><br/><span class="hl-1">npm</span><span class="hl-2"> </span><span class="hl-3">install</span><br/><br/><span class="hl-0"># 发布（维护者）</span><br/><span class="hl-1">npm</span><span class="hl-2"> </span><span class="hl-3">publish</span>
+</code><button type="button">Copy</button></pre>
+
+<h2 id="代码标准" class="tsd-anchor-link">代码标准<a href="#代码标准" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
+<li>遵循 Rust 官方编码规范</li>
+<li>新增功能需附带测试用例</li>
+<li>提交前运行 <code>cargo fmt</code> 和 <code>cargo clippy</code></li>
+<li>更新相关文档和示例</li>
+</ul>
+<h1 id="📜-开源协议" class="tsd-anchor-link">📜 开源协议<a href="#📜-开源协议" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h1><p>本项目基于 <a href="media/LICENSE">MIT License</a> 开源。</p>
+<hr>
+<h2 id="相关资源" class="tsd-anchor-link">相关资源<a href="#相关资源" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
+<li>📚 <a href="https://github.com/osynicite/osynic_osuapi">Rust 官方文档</a> - 完整的 Rust 库</li>
+<li>🌐 <a href="https://osynic-osuapi.deno.dev">在线体验</a> - 在线 API 体验平台</li>
+<li>📖 <a href="https://github.com/ppy/osu-api/wiki">V1 API 文档</a> - osu! API V1 官方文档</li>
+<li>📖 <a href="https://osu.ppy.sh/docs/index.html">V2 API 文档</a> - osu! API V2 官方文档</li>
+<li>💬 <a href="https://discord.gg/DRnZSES3BC">Discord 社区</a> - 加入我们的社区</li>
+</ul>
+</div></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-accordion"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-chevronDown"></use></svg><h3>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>External</span></label></li></ul></div><div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-chevronDown"></use></svg><h3>On This Page</h3></summary><div class="tsd-accordion-details"><a href="#📚-目录"><span>📚 目录</span></a><a href="#🧻-api体验网站"><span>🧻 <wbr/>API体验网站</span></a><a href="#✨-特性"><span>✨ 特性</span></a><a href="#🚀-快速开始"><span>🚀 快速开始</span></a><ul><li><a href="#步骤一：安装依赖"><span>步骤一：安装依赖</span></a></li><li><a href="#步骤二：基础配置"><span>步骤二：基础配置</span></a></li><li><ul><li><a href="#vite-配置"><span>Vite 配置</span></a></li></ul></li><li><a href="#步骤三：获取-api-授权"><span>步骤三：获取 <wbr/>API 授权</span></a></li></ul><a href="#📖-使用指南"><span>📖 使用指南</span></a><ul><li><a href="#v2-api-获取用户信息"><span>V2 <wbr/>API -<wbr/> 获取用户信息</span></a></li><li><ul><li><a href="#使用-client-credentials-grant-认证"><span>使用 <wbr/>Client <wbr/>Credentials <wbr/>Grant 认证</span></a></li><li><a href="#使用-authorization-code-grant-认证"><span>使用 <wbr/>Authorization <wbr/>Code <wbr/>Grant 认证</span></a></li></ul></li><li><a href="#v1-api-查询谱面信息"><span>V1 <wbr/>API -<wbr/> 查询谱面信息</span></a></li><li><a href="#vue-3-集成示例"><span>Vue 3 集成示例</span></a></li></ul><a href="#🎯-api-支持"><span>🎯 <wbr/>API 支持</span></a><ul><li><a href="#v1-api-支持情况"><span>V1 <wbr/>API 支持情况</span></a></li><li><a href="#v2-api-支持情况（主要端点）"><span>V2 <wbr/>API 支持情况（主要端点）</span></a></li></ul><a href="#⚡-性能特性"><span>⚡ 性能特性</span></a><ul><li><a href="#为什么使用-wasm-版本？"><span>为什么使用 <wbr/>WASM 版本？</span></a></li></ul><a href="#🔧-集成示例"><span>🔧 集成示例</span></a><ul><li><a href="#项目示例"><span>项目示例</span></a></li><li><ul><li><a href="#运行示例项目"><span>运行示例项目</span></a></li></ul></li><li><a href="#在现有项目中使用"><span>在现有项目中使用</span></a></li><li><ul><li><a href="#已有的-vite-项目"><span>已有的 <wbr/>Vite 项目</span></a></li></ul></li></ul><a href="#⚠️-特别注意"><span>⚠️ 特别注意</span></a><ul><li><a href="#浏览器-cors-限制"><span>浏览器 <wbr/>CORS 限制</span></a></li><li><a href="#数据结构变化"><span>数据结构变化</span></a></li><li><a href="#问题反馈"><span>问题反馈</span></a></li><li><a href="#常见问题"><span>常见问题</span></a></li><li><ul><li><a href="#q-如何在生产环境中安全地使用-api？"><span>Q: 如何在生产环境中安全地使用 <wbr/>API？</span></a></li><li><a href="#q-支持-commonjs-吗？"><span>Q: 支持 <wbr/>Common<wbr/>JS 吗？</span></a></li><li><a href="#q-可以在-nodejs-中使用吗？"><span>Q: 可以在 <wbr/>Node.js 中使用吗？</span></a></li></ul></li></ul><a href="#🤝-贡献指南"><span>🤝 贡献指南</span></a><ul><li><a href="#如何贡献"><span>如何贡献</span></a></li><li><a href="#开发指南"><span>开发指南</span></a></li><li><ul><li><a href="#编译-wasm-库"><span>编译 <wbr/>WASM 库</span></a></li><li><a href="#构建-npm-包"><span>构建 <wbr/>NPM 包</span></a></li></ul></li><li><a href="#代码标准"><span>代码标准</span></a></li></ul><a href="#📜-开源协议"><span>📜 开源协议</span></a><ul><li><a href="#相关资源"><span>相关资源</span></a></li></ul></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="modules.html">@osynicite/osynic-osuapi</a><ul class="tsd-small-nested-navigation" id="tsd-nav-container"><li>Loading...</li></ul></nav></div></div></div><footer><p class="tsd-generator">Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></footer><div class="overlay"></div></body></html>
