@@ -4,5 +4,11 @@
     "deployPath": "osynic-osuapi",
     "entryPoints": ["./osynic_osuapi.d.ts"],
     "description": "Osynic OSU API TypeScript Definitions"
+  },
+  {
+    "package": "@osynicite/osynic-osudb",
+    "deployPath": "osynic-osudb",
+    "entryPoints": ["./osynic_osudb.d.ts"],
+    "description": "Osynic osu!.db TypeScript Definitions"
   }
 ]

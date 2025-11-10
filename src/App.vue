@@ -81,6 +81,21 @@
             </a>
           </div>
         </div>
+
+        <!-- OSU DB TypeDoc -->
+        <div class="bg-slate-800 rounded-lg border border-slate-700 hover:border-purple-500 transition-colors p-6">
+          <h3 class="text-2xl font-bold text-purple-400 mb-4">Osynic osu!.db</h3>
+          <p class="text-slate-300 mb-6">Type documentation for osu!.db format definitions</p>
+          <div class="space-y-2">
+            <a
+              href="/osynic-osudb/"
+              target="_blank"
+              class="block px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded transition-colors text-center"
+            >
+              TypeDoc Reference
+            </a>
+          </div>
+        </div>
       </section>
 
       <!-- Footer -->
